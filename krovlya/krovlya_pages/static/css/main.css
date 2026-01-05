@@ -141,58 +141,26 @@ header .contact-details a:hover{
     background-repeat: no-repeat;
 }
 
-/* .main-offer .text-offer {
+.main-offer .text-offer {
     background-color: white;
     width: fit-content;
     height: fit-content;
-    height: 206px;
     margin: 150px;
     margin-left: 240px;
-    padding: 48px;
+    padding: 45px;
     border-radius: 30px;
 
-} */
-
-.main-offer .text-offer {
-    position: relative;
-    width: 879px;
-    margin: 150px;
-    margin-left: 240px;
-    padding: 48px;
-    background: #fff;
-    border-radius: 32px;
-    overflow: hidden;
 }
 
-.main-offer .text-offer::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: -40px;
-  height: 80px;
-  background: #ffffff;
-  border-radius: 0 0 50% 50%;
-  
-}
-
-/* .main-offer .text-offer {
-  position: relative;
-  z-index: 1;
-} */
 
 .main-offer .text-offer .text h1{
-    /* margin-bottom: 38px;
-    font-size: 85px;
-    /* text-transform: uppercase;
-    font-family: "InterBold";
-     */
     font-family: "InterBold";
     font-size: 85px;
     font-weight: 700;
-    line-height: 103px;
-    letter-spacing: -4%;
+    /* letter-spacing: -4%; */
     text-align: left;
+    margin: 0px;
+    margin-bottom: 46px;
 }
 
 .main-offer .text-offer a{
