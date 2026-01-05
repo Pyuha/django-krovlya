@@ -1,3 +1,4 @@
+
 body {
     font-family: "InterRegular";
     display: inline-flex;
@@ -141,52 +142,25 @@ header .contact-details a:hover{
     background-repeat: no-repeat;
 }
 
-/* .main-offer .text-offer {
+.main-offer .text-offer {
     background-color: white;
     width: fit-content;
     height: fit-content;
-    height: 206px;
     margin: 150px;
     margin-left: 240px;
-    padding: 48px;
+    padding: 45px;
     border-radius: 30px;
 
-} */
-
-.main-offer .text-offer {
-  position: relative;
-  max-width: 900px;
-  background: #fff;
-  border-radius: 32px;
-  padding: 48px;
-}
-
-.main-offer .text-offer::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: -40px;
-  height: 80px;
-  background: #ffffff;
-  border-radius: 0 0 50% 50%;
-}
-
-.main-offer .text-offer {
-  position: relative;
-  z-index: 1;
 }
 
 
-.main-offer  .text-offer .text {
-    margin-bottom: 38px;
-}
-
-.main-offer .text-offer .text .h1{
-    margin: 0px;
-    font-size: 38px;
-    text-transform: uppercase;
+.main-offer .text-offer .text h1{
     font-family: "InterBold";
+    font-size: 85px;
+    font-weight: 700;
+    text-align: left;
+    margin: 0px;
+    margin-bottom: 46px;
 }
 
 .main-offer .text-offer a{
@@ -260,11 +234,18 @@ header .contact-details a:hover{
 
 .advantages .adv-bubbles .adv {
     display: inline-flex;
-    justify-content: center;
-    width: 222px;
+    align-items: center;
+    max-width: 278px;
 }
-.advantages .adv img{
+
+.advantages .adv-bubbles .adv p{
+    font-size: 20px;
+}
+
+.advantages .adv-bubbles .adv img{
     margin-right: 20px;
+    width: 50px;
+    height: 50px;
 }
 
 
@@ -289,18 +270,27 @@ header .contact-details a:hover{
 
 
 .catalog .header-catalog a {
+    display: inline-flex;
+    align-items: center;
     color: #E40000;
-    background-color: white;
-    border-color: #E40000;
-    border-style: solid; 
-    outline: 1px solid #E40000;
-    outline-offset: -1px;
+    background-color: rgba(0, 0, 0, 0.1);
     padding-left: 23px;
     padding-right: 23px;
     padding-top: 16.5px;
     padding-bottom: 16.5px;
     border-radius: 30px;
     font-family: "InterBold";
+    text-decoration: none;
+
+}
+
+.catalog .header-catalog a .img{
+    height: 30px;
+    width: 30px;
+    background-color: #E40000;
+    /* background-repeat: no-repeat;
+    background-position: center; */
+    mask-image: url("../image/Caret_Right_SM.svg");
 }
 
 .catalog .header-catalog .header-catalog-text p{

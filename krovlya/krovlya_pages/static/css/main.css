@@ -1,3 +1,4 @@
+
 body {
     font-family: "InterRegular";
     display: inline-flex;
@@ -157,7 +158,6 @@ header .contact-details a:hover{
     font-family: "InterBold";
     font-size: 85px;
     font-weight: 700;
-    /* letter-spacing: -4%; */
     text-align: left;
     margin: 0px;
     margin-bottom: 46px;
@@ -223,10 +223,10 @@ header .contact-details a:hover{
 
 .advantages {    
     display: inline-flex;
-    margin-top: -25px;
+    margin-top: -30px;
     border-radius: 30px;
     padding-top: 50px;
-    margin-bottom: 80px;
+    margin-bottom: 50px;
     width: 100%;
     background-color: white;
     justify-content: center;
@@ -234,11 +234,18 @@ header .contact-details a:hover{
 
 .advantages .adv-bubbles .adv {
     display: inline-flex;
-    justify-content: center;
-    width: 222px;
+    align-items: center;
+    max-width: 278px;
 }
-.advantages .adv img{
+
+.advantages .adv-bubbles .adv p{
+    font-size: 20px;
+}
+
+.advantages .adv-bubbles .adv img{
     margin-right: 20px;
+    width: 50px;
+    height: 50px;
 }
 
 
@@ -253,7 +260,9 @@ header .contact-details a:hover{
     justify-content: space-between;
     align-items: center;
     width: 1440px;
-    margin: 50px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+
 }
 
 .catalog .header-catalog p {
@@ -263,18 +272,28 @@ header .contact-details a:hover{
 
 
 .catalog .header-catalog a {
+    display: inline-flex;
+    align-items: center;
     color: #E40000;
-    background-color: white;
-    border-color: #E40000;
-    border-style: solid; 
-    outline: 1px solid #E40000;
-    outline-offset: -1px;
+    background-color: rgba(0, 0, 0, 0.1);
     padding-left: 23px;
     padding-right: 23px;
     padding-top: 16.5px;
     padding-bottom: 16.5px;
     border-radius: 30px;
     font-family: "InterBold";
+    text-decoration: none;
+
+}
+
+.catalog .header-catalog a .img{
+    height: 20px;
+    width: 10px;
+    margin-left: 15px;
+    background-color: #E40000;
+    mask-image: url("../image/Caret_Right_SM.svg");
+    mask-repeat: no-repeat;
+    mask-position: center;
 }
 
 .catalog .header-catalog .header-catalog-text p{
@@ -291,22 +310,28 @@ header .contact-details a:hover{
     justify-content: space-between;
     align-items: center;
     width: 1440px;
-    margin: 50px;
+    gap: 12px;
 }
 
-.catalog .pannel-catalog .pannel-catalog-first {
-    width: 660px;
-    height: 362px;
-    background-color: #D9D9D9;
+.catalog .pannel-catalog .pannel-catalog-bottom {
+    width: 350px;
+    height: 350px;
+    color: white;
+    background-color: #E40000;
     background-repeat: no-repeat;
     background-size: cover;
     display: table;
     border-radius: 30px;
-    margin-bottom: 20px;
+    background-image: url("../image/Lines_back.svg");
+}
+
+
+#first{
+    background-image: url("../image/Roof.png");
 }
 
 .catalog .pannel-catalog p{
-    font-size: 19px;
+    font-size: 20px;
     padding-left: 42px;
     padding-bottom: 28px;
     vertical-align: bottom;
@@ -316,61 +341,6 @@ header .contact-details a:hover{
 
 .catalog .pannel-catalog p img {
     padding-left: 15px;
-}
-
-.catalog .pannel-catalog .pannel-catalog-second {
-    width: 360px;
-    height: 362px;
-    background-color: #D9D9D9;
-    background-repeat: no-repeat;
-    background-size: cover;
-    display: table;
-    border-radius: 30px;
-    margin-bottom: 20px;
-}
-
-.catalog .pannel-catalog .pannel-catalog-third {
-    width: 360px;
-    height: 362px;
-    background-color: #D9D9D9;
-    background-repeat: no-repeat;
-    background-size: cover;
-    display: table;
-    border-radius: 30px;
-    margin-bottom: 20px;
-}
-
-.catalog .pannel-catalog .pannel-catalog-fourth {
-    width: 360px;
-    height: 362px;
-    background-color: #D9D9D9;
-    background-repeat: no-repeat;
-    background-size: cover;
-    display: table;
-    border-radius: 30px;
-    margin-bottom: 20px;
-}
-
-.catalog .pannel-catalog .pannel-catalog-five {
-    width: 360px;
-    height: 362px;
-    background-color: #D9D9D9;
-    background-repeat: no-repeat;
-    background-size: cover;
-    display: table;
-    border-radius: 30px;
-    margin-bottom: 20px;
-}
-
-.catalog .pannel-catalog .pannel-catalog-six {
-    width: 660px;
-    height: 362px;
-    background-color: #D9D9D9;
-    background-repeat: no-repeat;
-    background-size: cover;
-    display: table;
-    border-radius: 30px;
-    margin-bottom: 20px;
 }
 
 
