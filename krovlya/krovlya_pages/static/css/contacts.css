@@ -1,0 +1,261 @@
+body {
+    font-family: "InterRegular";
+    display: inline-flex;
+    width: 100%;
+    flex-direction: column;
+    height: fit-content;
+    align-items: center;
+    font-size: 16px;
+    margin: 0px;
+}
+
+header {
+    font-family: "InterSemiBold";
+    display: inline-flex;
+    padding-top: 22px;
+    padding-left: 140px;
+    padding-right: 140px;
+    padding-bottom: 23px;
+    width: 1440px;
+    justify-content: center;
+    align-items: center;
+    justify-content: space-between;
+}
+
+header .contact-details{
+    display: inline-flex;
+    height: 55px;
+    font-size: 16px;
+    align-items: center;
+}
+
+.logo {
+    width: 246px;
+    height: 55px;
+}
+
+.phone {
+    margin-right: 22px;
+    display: inline-flex;
+}
+
+.phone img{
+    margin-right: 5px;
+}
+  
+.email {
+    text-decoration: none;
+    margin-right: 22px;
+    display: inline-flex;
+}
+
+.email img{
+    margin-right: 5px;
+}
+
+header .cont-button {
+    width: 24px;
+    height: 24px;
+}
+
+header .contact-details a{
+    background-color: #E40000;
+    padding-left: 23px;
+    padding-right: 23px;
+    padding-top: 16.5px;
+    padding-bottom: 16.5px;
+    color:white;
+    border-radius: 30px;
+    font-family: "InterBold";
+    display: flex;
+}
+
+header .contact-details a:hover{
+    color: #E40000;
+    background-color: white;
+    border-color: #E40000;
+    outline: 1px solid #E40000;
+    outline-offset: -1px;
+}
+
+
+.main-menu{
+    background-color: #3C4047;
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-evenly;
+    color:white;
+    height: 59px;
+    width: 100%;
+}
+
+.main-menu ul{
+    list-style: none;
+    display: inline-flex;
+    justify-content: space-between;
+    padding-inline-start: 0px;
+    height: 59px;
+    width: 1440px;
+    padding-left: 140px;
+    padding-right: 140px;
+    font-size: 16px;
+    font-family: "InterRegular";
+    display: inline-flex;
+    text-decoration: none;
+}
+.main-menu ul li{
+    display: inline-flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    padding: 18px;
+    padding-left: 20px;
+    padding-right: 20px;
+    
+}
+.main-menu ul li a {
+    text-decoration: none;
+    color: white;
+}
+
+.main-menu ul li:hover{
+    background-color: #E40000;
+}
+
+
+.nav-list ul{
+    padding: 10px 16px;
+    list-style: none;
+    display:inline-flex;
+    width: 1440px;
+    text-decoration: none;
+}
+
+.nav-list ul li{
+    margin: 7px;
+    text-decoration: none;
+    color: black;
+}
+
+.nav-list ul li a{
+    text-decoration: none;
+    color: black;
+}
+
+.nav-list ul li a:hover{
+    color: #E40000;
+}
+
+.how-to-connect {
+    width: 1440px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.phone-info {
+    width: 700px;
+    height: 164px;
+    border-radius: 30px;
+    background-color: #D9D9D9;
+    display:grid;
+    align-items: end;
+}
+
+.phone-info .phone-info-block {
+    margin-bottom: 32px;
+}
+.phone-info .phone-info-block p {
+    text-indent: 44px;
+    font-size: 16px;
+    margin: 7px;
+    
+}
+
+.mail-info {
+    width: 700px;
+    height: 164px;
+    border-radius: 30px;
+    background-color: #D9D9D9;
+    display:grid;
+    align-items: end;
+}
+
+.mail-info .mail-info-block {
+    margin-bottom: 32px;
+}
+
+.mail-info .mail-info-block p {
+    text-indent: 44px;
+    font-size: 16px;
+    margin: 7px;
+    
+}
+
+
+
+
+
+footer {
+    background-color: #3C4047;
+    width: 100%;
+    display: inline-flex;
+    border-radius: 30px 30px 0px 0px;
+    padding-top: 50px;
+    width: 100%;
+    height: 350px;
+    color: white;
+    justify-content: center;
+    font-size: 16px;
+}
+
+footer .footer-content {
+    display: inline-flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 1440px;
+}
+
+footer .footer-content ul {
+    list-style: none;
+    margin: 0px;
+}
+
+footer .footer-content ul li {
+    margin-bottom: 16px;
+}
+
+footer .footer-content .logo-down img {
+    margin-bottom: 50px;
+}
+
+
+
+
+
+@font-face {
+    font-family: "InterRegular"; 
+    src: url("/static/fonts/Inter/Inter-Regular.otf") format("truetype"); 
+    font-style:normal; 
+    font-weight: 16pt; 
+} 
+
+@font-face {
+    font-family: "InterSemiBold"; 
+    src: url("/static/fonts/Inter/Inter-SemiBold.otf") format("truetype"); 
+    font-style: normal; 
+    font-weight: normal; 
+} 
+
+@font-face {
+    font-family: "InterBold"; 
+    src: url("/static/fonts/Inter/Inter-Bold.otf") format("truetype"); 
+    font-style: normal; 
+    font-weight: normal; 
+} 
+
+@font-face {
+    font-family: "InterItalic"; 
+    src: url("/static/fonts/Inter/Inter-Italic.otf") format("truetype"); 
+    font-style: italic; 
+    font-weight: normal; 
+}  
