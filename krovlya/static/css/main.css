@@ -223,10 +223,10 @@ header .contact-details a:hover{
 
 .advantages {    
     display: inline-flex;
-    margin-top: -25px;
+    margin-top: -30px;
     border-radius: 30px;
     padding-top: 50px;
-    margin-bottom: 80px;
+    margin-bottom: 50px;
     width: 100%;
     background-color: white;
     justify-content: center;
@@ -260,7 +260,9 @@ header .contact-details a:hover{
     justify-content: space-between;
     align-items: center;
     width: 1440px;
-    margin: 50px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+
 }
 
 .catalog .header-catalog p {
@@ -285,12 +287,13 @@ header .contact-details a:hover{
 }
 
 .catalog .header-catalog a .img{
-    height: 30px;
-    width: 30px;
+    height: 20px;
+    width: 10px;
+    margin-left: 15px;
     background-color: #E40000;
-    /* background-repeat: no-repeat;
-    background-position: center; */
     mask-image: url("../image/Caret_Right_SM.svg");
+    mask-repeat: no-repeat;
+    mask-position: center;
 }
 
 .catalog .header-catalog .header-catalog-text p{
@@ -307,86 +310,75 @@ header .contact-details a:hover{
     justify-content: space-between;
     align-items: center;
     width: 1440px;
-    margin: 50px;
+    gap: 12px;
+    background-image: url("../image/Lines_back.svg");
 }
 
-.catalog .pannel-catalog .pannel-catalog-first {
-    width: 660px;
-    height: 362px;
-    background-color: #D9D9D9;
+.catalog .pannel-catalog .pannel-catalog-bottom {
+    width: 350px;
+    height: 350px;
+    color: white;
+    background-color: #E40000;
     background-repeat: no-repeat;
     background-size: cover;
-    display: table;
+    /* display: table; */
     border-radius: 30px;
-    margin-bottom: 20px;
+    background-image: url("../image/Lines_back.svg");
 }
 
-.catalog .pannel-catalog p{
-    font-size: 19px;
-    padding-left: 42px;
+
+#first {
+    background-image: url("../image//Roof.png");
+}
+
+#second {
+    background-image: url("../image//wall.png");
+}
+
+#third {
+    background-image: url("../image//water_down.png");
+}
+
+#fourth {
+    background-image: url("../image//chemystry.png");
+}
+
+#five {
+    background-image: url("../image//isolation.png");
+}
+
+#six {
+    background-image: url("../image//fence.png");
+}
+
+#seven {
+    background-image: url("../image//window.png");
+}
+
+#eight {
+    background-image: url("../image//lumber_cut.png");
+}
+
+.catalog .pannel-catalog .description{
+    /* font-size: 20px;
+    padding: 42px;
     padding-bottom: 28px;
     vertical-align: bottom;
-    display: table-cell;
-    width: fit-content;
+    display: inline-flex;
+    justify-content:flex-start; */
+    width: 350px;
+    height: fit-content;
+    background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(18, 18, 18, 1));
 }
 
 .catalog .pannel-catalog p img {
-    padding-left: 15px;
-}
-
-.catalog .pannel-catalog .pannel-catalog-second {
-    width: 360px;
-    height: 362px;
-    background-color: #D9D9D9;
-    background-repeat: no-repeat;
-    background-size: cover;
-    display: table;
-    border-radius: 30px;
-    margin-bottom: 20px;
-}
-
-.catalog .pannel-catalog .pannel-catalog-third {
-    width: 360px;
-    height: 362px;
-    background-color: #D9D9D9;
-    background-repeat: no-repeat;
-    background-size: cover;
-    display: table;
-    border-radius: 30px;
-    margin-bottom: 20px;
-}
-
-.catalog .pannel-catalog .pannel-catalog-fourth {
-    width: 360px;
-    height: 362px;
-    background-color: #D9D9D9;
-    background-repeat: no-repeat;
-    background-size: cover;
-    display: table;
-    border-radius: 30px;
-    margin-bottom: 20px;
-}
-
-.catalog .pannel-catalog .pannel-catalog-five {
-    width: 360px;
-    height: 362px;
-    background-color: #D9D9D9;
-    background-repeat: no-repeat;
-    background-size: cover;
-    display: table;
-    border-radius: 30px;
-    margin-bottom: 20px;
-}
-
-.catalog .pannel-catalog .pannel-catalog-six {
-    width: 660px;
-    height: 362px;
-    background-color: #D9D9D9;
-    background-repeat: no-repeat;
-    background-size: cover;
-    display: table;
-    border-radius: 30px;
-    margin-bottom: 20px;
+    margin-left: 15px;
+    background-color: #ffffff;
+    mask-image: url("../image/Arrow_up.svg");
+    mask-repeat: no-repeat;
+    mask-position: center;
+    width: 15px;
+    height: 15px;
 }
 
 
