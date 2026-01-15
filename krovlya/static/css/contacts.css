@@ -150,24 +150,31 @@ header .contact-details a:hover{
     width: 1440px;
     display: flex;
     justify-content: space-between;
+    margin-bottom: 40px;
 }
 
 .phone-info {
     width: 700px;
     height: 164px;
     border-radius: 30px;
-    background-color: #D9D9D9;
-    display:grid;
+    background-color: #EDEDED;
+    display: grid;
     align-items: end;
 }
 
 .phone-info .phone-info-block {
     margin-bottom: 32px;
+    margin-left: 54px;
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
 }
 .phone-info .phone-info-block p {
-    text-indent: 44px;
-    font-size: 16px;
-    margin: 7px;
+    font-size: 20px;
+    margin: 0px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
     
 }
 
@@ -175,23 +182,132 @@ header .contact-details a:hover{
     width: 700px;
     height: 164px;
     border-radius: 30px;
-    background-color: #D9D9D9;
+    background-color: #EDEDED;
     display:grid;
     align-items: end;
 }
 
 .mail-info .mail-info-block {
     margin-bottom: 32px;
+    margin-left: 54px;
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
 }
 
 .mail-info .mail-info-block p {
-    text-indent: 44px;
-    font-size: 16px;
-    margin: 7px;
+    font-size: 20px;
+    margin: 0px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
     
 }
 
+.how-to-go {
+    width: 1440px;
+    /* height: 878px; */
+    border-radius: 30px;
+    background-color: #EDEDED;
+    display:grid;
+    align-content: start;
+    margin-bottom: 40px;
+}
 
+.address-info {
+    width: 700px;
+    height: 164px;
+    border-radius: 30px;
+    display:grid;
+    align-items: end;
+}
+
+.address-info .address-info-block {
+    margin-bottom: 32px;
+    margin-left: 54px;
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+.address-info .address-info-block p {
+    font-size: 20px;
+    margin: 0px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.how-to-go .map{
+    width: 1332px;
+    height: 569px;
+    padding: 0 54px 54px 54px;
+    border-radius: 0px;
+}
+
+.how-to-go .map iframe {
+    width: 100%;
+    height: 100%;
+    border-radius: 0px;
+}
+
+.how-to-connect-block {
+    width: 1440px;
+    height: fit-content;
+    border-radius: 30px;
+    background-color: #F0F0F0;
+    background-image: url("/static/image/Question.png");
+    background-repeat: no-repeat;
+    background-size: 472px;
+    background-position: right;
+    background-position-x: 891px;
+    background-position-y: 30px;
+    margin-bottom: 50px;
+}
+
+.how-to-connect-block .text{
+    width: 664px;
+    font-size: 20px;
+    margin-bottom: 35px;
+    
+}
+
+.how-to-connect-block .text p{
+    margin-top: 35px;
+}
+
+.how-to-connect-block .leyout {
+    margin: 90px;
+}
+
+.how-to-connect-block .text h2{
+    margin: 0px;
+    font-size: 40px;
+    width: fit-content;
+    text-transform: uppercase;
+    font-family: "InterBold";
+    width:fit-content;
+}
+
+.how-to-connect-block .social-connect a{
+    display: inline-flex;
+    align-items: center;
+    color: white;
+    background-color: #E40000;
+    padding:0 28px 0 28px;
+    border-radius: 60px;
+    font-family: "InterBold";
+    text-decoration: none;
+    width: fit-content;
+    margin-right: 26px;
+    height: 80px;
+}
+
+.how-to-connect-block .social-connect img{
+    margin-left: 12px;
+    width: 43px;
+    height: 43px;
+}
 
 
 
