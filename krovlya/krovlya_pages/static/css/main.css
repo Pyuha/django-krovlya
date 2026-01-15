@@ -372,11 +372,14 @@ header .contact-details a:hover{
 }
 
 .catalog .pannel-catalog .description{
+    display: inline-flex;
+    justify-content: flex-start;
+    align-items: center;
     /* height: 97px; */
     background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(18, 18, 18, 1));
 }
 
-.catalog .pannel-catalog .description p{
+.catalog .pannel-catalog .description a{
     margin: 0px;
     font-size: 20px;
     padding: 42px;
@@ -385,15 +388,17 @@ header .contact-details a:hover{
     align-items: flex-end;
 }
 
-.catalog .pannel-catalog p img {
+.catalog .pannel-catalog .pannel-catalog-bottom .description a .img {
+    width: 15px;
+    height: 20px;
     margin-left: 15px;
-    background-color: #ffffff;
+    background-color: #ffffff; 
     mask-image: url("../image/Arrow_up.svg");
     mask-repeat: no-repeat;
     mask-position: center;
-    width: 15px;
-    height: 19px;
+    
 }
+
 
 
 .how-to-connect {
