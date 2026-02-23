@@ -21,5 +21,6 @@ from krovlya_pages import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.main, name = 'main'),
-    path("contacts/", views.contacts, name = 'contacts'),
+    path('contacts/', views.contacts, name = 'contacts'),
+    path('business/', views.business, name='business')
 ]

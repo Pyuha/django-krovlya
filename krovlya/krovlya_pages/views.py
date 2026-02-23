@@ -5,3 +5,6 @@ def main(request):
 
 def contacts(request):
     return render(request, "contacts.html")
+
+def business(request):
+    return render(request, "for_business.html")

@@ -204,6 +204,14 @@ header .contact-details a:hover{
     
 }
 
+
+.h1-title {
+    margin-top: -20px;
+    width: 1440px;
+    font-size: 60px;
+    text-align: left;
+}
+
 .how-to-go {
     width: 1440px;
     /* height: 878px; */
