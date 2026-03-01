@@ -264,151 +264,73 @@ header .contact-details a:hover{
     gap: 5px;
 }
 
-
-.catalog {
-    display: inline-flex;
-    flex-direction: column;
-    margin-bottom: 80px;
-}
-
-.catalog .header-catalog {
-    display: inline-flex;
-    justify-content: space-between;
-    align-items: center;
+.h1-title {
+    margin-top: -20px;
     width: 1440px;
-    margin-top: 50px;
-    margin-bottom: 50px;
-
+    font-size: 60px;
+    text-align: left;
 }
-
-.catalog .header-catalog p {
-    width: 446px;
-    font-size: 16px;
-}
-
-
-.catalog .header-catalog a {
-    display: inline-flex;
-    align-items: center;
-    color: #E40000;
-    background-color: rgba(0, 0, 0, 0.1);
-    padding-left: 23px;
-    padding-right: 23px;
-    padding-top: 16.5px;
-    padding-bottom: 16.5px;
-    border-radius: 30px;
-    font-family: "InterBold";
-    text-decoration: none;
-
-}
-
-.catalog .header-catalog a .img{
-    height: 20px;
-    width: 10px;
-    margin-left: 15px;
-    background-color: #E40000;
-    mask-image: url("../image/Caret_Right_SM.svg");
-    mask-repeat: no-repeat;
-    mask-position: center;
-}
-
-.catalog .header-catalog .header-catalog-text p{
-    margin: 0px;
-    font-size: 38px;
-    text-transform: uppercase;
-    font-family: "InterBold";
-    width:fit-content;
-}
-
-.catalog .pannel-catalog {
-    display: inline-flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: center;
-    width: 1440px;
-    gap: 12px;
-    background-image: url("../image/Lines_back.svg");
-}
-
-.catalog .pannel-catalog .pannel-catalog-bottom {
-    width: 350px;
-    height: 350px;
-    color: white;
-    background-color: #E40000;
-    background-repeat: no-repeat;
-    background-size: cover;
-    display: grid;
-    align-items: end;
-    border-radius: 30px;
-    overflow: hidden;
-    background-image: url("../image/Lines_back.svg");
-}
-
-
-#first {
-    
-    background-image: url("../image/Roof.png");
-}
-
-#second {
-    background-image: url("../image/wall.png");
-}
-
-#third {
-    background-image: url("../image/water_down.png");
-}
-
-#fourth {
-    background-image: url("../image/chemystry.png");
-}
-
-#five {
-    background-image: url("../image/isolation.png");
-}
-
-#six {
-    background-image: url("../image/fence.png");
-}
-
-#seven {
-    background-image: url("../image/window.png");
-}
-
-#eight {
-    background-image: url("../image/lumber_cut.png");
-}
-
-.catalog .pannel-catalog .description{
-    display: inline-flex;
-    justify-content: flex-start;
-    align-items: center;
-    /* height: 97px; */
-    background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(18, 18, 18, 1));
-}
-
-.catalog .pannel-catalog .description a{
-    margin: 0px;
-    font-size: 20px;
-    padding: 42px;
-    display: inline-flex;
-    justify-content: flex-start;
-    align-items: flex-end;
-}
-
-.catalog .pannel-catalog .pannel-catalog-bottom .description a .img {
-    width: 15px;
-    height: 20px;
-    margin-left: 15px;
-    background-color: #ffffff; 
-    mask-image: url("../image/Arrow_up.svg");
-    mask-repeat: no-repeat;
-    mask-position: center;
-    
-}
-
-
 
 .how-to-connect {
+    width: 1440px;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 40px;
+}
+
+
+.phone-info {
+    width: 700px;
+    height: 164px;
+    border-radius: 30px;
+    background-color: #EDEDED;
+    display: grid;
+    align-items: end;
+}
+
+.phone-info .phone-info-block {
+    margin-bottom: 32px;
+    margin-left: 54px;
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+.phone-info .phone-info-block p {
+    font-size: 20px;
+    margin: 0px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    
+}
+
+.mail-info {
+    width: 700px;
+    height: 164px;
+    border-radius: 30px;
+    background-color: #EDEDED;
+    display:grid;
+    align-items: end;
+}
+
+.mail-info .mail-info-block {
+    margin-bottom: 32px;
+    margin-left: 54px;
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+.mail-info .mail-info-block p {
+    font-size: 20px;
+    margin: 0px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+
+.how-to-connect-block {
     width: 1440px;
     height: fit-content;
     border-radius: 30px;
@@ -422,22 +344,22 @@ header .contact-details a:hover{
     margin-bottom: 50px;
 }
 
-.how-to-connect .text{
+.how-to-connect-block .text{
     width: 664px;
     font-size: 20px;
     margin-bottom: 35px;
     
 }
 
-.how-to-connect .text p{
+.how-to-connect-block .text p{
     margin-top: 35px;
 }
 
-.how-to-connect .leyout {
+.how-to-connect-block .leyout {
     margin: 90px;
 }
 
-.how-to-connect .text h2{
+.how-to-connect-block .text h2{
     margin: 0px;
     font-size: 40px;
     width: fit-content;
@@ -446,7 +368,7 @@ header .contact-details a:hover{
     width:fit-content;
 }
 
-.how-to-connect .social-connect a{
+.how-to-connect-block .social-connect a{
     display: inline-flex;
     align-items: center;
     color: white;
@@ -460,31 +382,11 @@ header .contact-details a:hover{
     height: 80px;
 }
 
-.how-to-connect .social-connect img{
+.how-to-connect-block .social-connect img{
     margin-left: 12px;
     width: 43px;
     height: 43px;
 }
- 
-
-.working-with {
-    width: 1440px;
-    margin-bottom: 50px;
-}
-
-
-.working-with .text h2{
-    margin: 0px;
-    font-size: 38px;
-    text-transform: uppercase;
-    font-family: "InterBold";
-    width:fit-content;
-    
-}
-.working-with .text {
-    margin-bottom: 50px;
-}
-
 
 
 footer {
