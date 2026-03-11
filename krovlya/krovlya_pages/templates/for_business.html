@@ -3,10 +3,14 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'css\for_business.css' %}">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://api-maps.yandex.ru/v3/?apikey=07c03977-7223-49af-a013-b45135acdd49&lang=ru_RU"></script>
+    
     <script>
         initMap();
 
@@ -52,7 +56,7 @@
             <li><img src="../static/image/More_Grid_Big.svg" style="padding-right: 5px;"><a href="/">Каталог товаров</a></li>
             <li><a href="contacts/">Акции</a></li>
             <li style="background-color: #E40000;"><a href="{% url 'business' %}">Для бизнеса</a></li>
-            <li><a href="contacts/">Услуги</a></li>
+            <li><a href="{% url 'service' %}">Услуги</a></li>
             <li><a href="contacts/">Доставка и оплата</a></li>
             <li><a href="contacts/">О нас</a></li>
             <li><a href="{% url 'contacts' %}">Контакты</a></li>
@@ -94,23 +98,83 @@
         </div>
       </div>
     </div>
+    <div class="header-catalog">
+      <div class="header-catalog-text">
+        <p>как оформить</p>
+        <p style="
+                      color: rgba(0, 0, 0, 0.4);
+                      padding-left: 84px;
+                      font-style: italic;
+                    ">
+          заказ на сайте
+        </p>
+      </div>
+      <p>
+        Мы обработаем Вашу заявку
+        максимально быстро!
+      </p>
+    </div>
     <div class="how-to-connect">
         
         <div class="phone-info">
             <div class="phone-info-block">
                 <p>Просто позвоните нам по телефону:</p>
-                <p style="font-size: 24px; font-family: InterSemiBold;">+7 (965) 264-00-19</p>
+                <p style="color: #e40000;font-size: 25px; font-family: Inter; font-weight: 600;">+7 (965) 264-00-19</p>
             </div>
         </div>
         <div class="mail-info">
             <div class="mail-info-block">
                 <p>Или напишите нам на почту:</p>
-                <p style="font-size: 24px; font-family: InterSemiBold;">ivanovo@cherdaq.ru</p>
+                <p style="color: #e40000;font-size: 25px; font-family: Inter; font-weight: 600;">ivanovo@cherdaq.ru</p>
             </div>
         </div>
     </div>
-
-    <div class="how-to-connect-block">
+    <div class="inter">
+      <div class="inter-text">
+          <p>для наших клиентов</p>
+          <p style="
+                        color: rgba(0, 0, 0, 0.4);
+                        padding-left: 84px;
+                        font-style: italic;
+                      ">
+            мы предлагаем
+          </p>
+        </div>
+    </div>
+  </div>
+<div class="inter-block">
+  <div class="inter-block-pannel" id="first-block">
+    <img src="{% static 'image/Bookmark.svg' %}">
+    <h1>Гибкую систему скидок</h1>
+    <p>Мы найдем для Вас лучшие цены от производителя.</p>
+  </div>
+  <div class="inter-block-pannel" id="first-block">
+    <img src="{% static 'image/Bookmark.svg' %}">
+    <h1>Персонального менеджера</h1>
+    <p>Мы найдем для Вас лучшие цены от производителя.</p>
+  </div>
+  <div class="inter-block-pannel" id="first-block">
+    <img src="{% static 'image/Bookmark.svg' %}">
+    <h1>Дополнительный ассортимент</h1>
+    <p>Мы найдем для Вас лучшие цены от производителя.</p>
+  </div>
+  <div class="inter-block-pannel" id="first-block">
+    <img src="{% static 'image/Bookmark.svg' %}">
+    <h1>Работу с НДС</h1>
+    <p>Мы найдем для Вас лучшие цены от производителя.</p>
+  </div>
+  <div class="inter-block-pannel" id="first-block">
+    <img src="{% static 'image/Bookmark.svg' %}">
+    <h1>Удобный документооборот</h1>
+    <p>Мы найдем для Вас лучшие цены от производителя.</p>
+  </div>
+  <div class="inter-block-pannel" id="first-block">
+    <img src="{% static 'image/Bookmark.svg' %}">
+    <h1>Резерв заказанных товаров</h1>
+    <p>Мы найдем для Вас лучшие цены от производителя.</p>
+  </div>
+</div>
+  <div class="how-to-connect-block">
     <div class="leyout">
       <div class="text">
         <h2>
@@ -132,6 +196,7 @@
       </div>
     </div>
   </div>
+  
   <footer>
     <div class="footer-content">
       <div class="logo-down">

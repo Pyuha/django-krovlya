@@ -1,6 +1,7 @@
 
 body {
-    font-family: "InterRegular";
+    font-family: "Inter";
+    font-weight: 400;
     display: inline-flex;
     width: 100%;
     flex-direction: column;
@@ -10,15 +11,9 @@ body {
     margin: 0px;
 }
 
-.h1{
-    margin: 0px;
-    font-size: 38px;
-    text-transform: uppercase;
-    font-family: "InterBold";
-}
-
 header {
-    font-family: "InterSemiBold";
+    font-family: "Inter";
+    font-weight: 600;
     display: inline-flex;
     padding-top: 22px;
     padding-left: 140px;
@@ -67,15 +62,23 @@ header .cont-button {
 }
 
 header .contact-details a{
-    background-color: #E40000;
-    padding-left: 23px;
-    padding-right: 23px;
-    padding-top: 16.5px;
-    padding-bottom: 16.5px;
-    color:white;
-    border-radius: 30px;
-    font-family: "InterBold";
+    /* Frame 36 */
+    width: 262.67px;
+    height: 69.33px;
+    /* Auto layout */
     display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    border-radius: 40px;
+    background: rgba(228, 0, 0, 1);
+    font-family: 'Inter';
+    /* font-style: Bold; */
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 24px;
+    letter-spacing: 1%;
+    text-align: left;
+    color: white;
 }
 
 header .contact-details a:hover{
@@ -107,7 +110,8 @@ header .contact-details a:hover{
     padding-left: 140px;
     padding-right: 140px;
     font-size: 16px;
-    font-family: "InterRegular";
+    font-family: "Inter";
+    font-weight: 400; 
     display: inline-flex;
     text-decoration: none;
 }
@@ -153,7 +157,7 @@ header .contact-details a:hover{
 
 
 .main-offer .text-offer .text h1{
-    font-family: "InterBold";
+    font-family: "Inter";
     font-size: 85px;
     font-weight: 700;
     text-align: left;
@@ -170,7 +174,8 @@ header .contact-details a:hover{
     padding-bottom: 16.5px;
     color:white;
     border-radius: 30px;
-    font-family: "InterBold";
+    font-family: "Inter";
+    font-weight: 700;
     display: inline-flex;
     text-decoration: none;
 }
@@ -209,46 +214,49 @@ header .contact-details a:hover{
     color: #E40000;
 }
 
-.main-offer .text-offer a:hover{
-    color: #E40000;
-    background-color: white;
-    border-color: #E40000;
-    outline: 1px solid #E40000;
-    outline-offset: -1px;
-    
+.h1-title {
+    margin-top: -20px;
+    width: 1440px;
+    font-size: 50px;
+    text-align: left;
 }
-
-.main-offer .text-offer a:hover .img{
-    background-color: #E40000;
-}
-
 
 .advantages .adv-bubbles{
     display: inline-flex;
     justify-content: space-between;
-    width: 1440px;
-    
+    width: 100%;
+    padding: 60px 85px 60px 85px;
 }
 
 .advantages {    
     display: inline-flex;
     margin-top: -30px;
-    border-radius: 30px;
-    padding-top: 50px;
+    border-radius: 54px;
     margin-bottom: 50px;
-    width: 100%;
-    background-color: white;
+    width: 1440px;
+    background-color: #F0F0F0;
     justify-content: center;
 }
 
 .advantages .adv-bubbles .adv {
     display: inline-flex;
     align-items: center;
-    max-width: 278px;
+    max-width: 333px;
+}
+
+.advantages .adv-bubbles .adv h1{
+    font-size: 20px;
+    text-transform:uppercase;
+    font-family:"Inter";
+    font-weight: 700;
+    margin: 0;
 }
 
 .advantages .adv-bubbles .adv p{
     font-size: 20px;
+    font-family: "Inter";
+    font-weight: 400;
+    margin: 0;
 }
 
 .advantages .adv-bubbles .adv img{
@@ -257,16 +265,26 @@ header .contact-details a:hover{
     height: 50px;
 }
 
-
-.catalog {
-    display: inline-flex;
+.advantages .adv-bubbles .adv .adv-cart{
+    display:flex;
     flex-direction: column;
-    margin-bottom: 80px;
+    gap: 5px;
 }
 
-.catalog .header-catalog {
+.h1-title h1{
+    width: 866px;
+    font-family: "Inter";
+    font-size: 79px;
+    font-weight: 700;
+    line-height: 105%;
+    letter-spacing: -2%;
+    text-align: left;
+}
+
+.header-catalog {
     display: inline-flex;
-    justify-content: space-between;
+    justify-content: left;
+    gap: 192px;
     align-items: center;
     width: 1440px;
     margin-top: 50px;
@@ -274,134 +292,82 @@ header .contact-details a:hover{
 
 }
 
-.catalog .header-catalog p {
+.header-catalog p {
     width: 446px;
     font-size: 16px;
 }
 
-
-.catalog .header-catalog a {
-    display: inline-flex;
-    align-items: center;
-    color: #E40000;
-    background-color: rgba(0, 0, 0, 0.1);
-    padding-left: 23px;
-    padding-right: 23px;
-    padding-top: 16.5px;
-    padding-bottom: 16.5px;
-    border-radius: 30px;
-    font-family: "InterBold";
-    text-decoration: none;
-
-}
-
-.catalog .header-catalog a .img{
-    height: 20px;
-    width: 10px;
-    margin-left: 15px;
-    background-color: #E40000;
-    mask-image: url("../image/Caret_Right_SM.svg");
-    mask-repeat: no-repeat;
-    mask-position: center;
-}
-
-.catalog .header-catalog .header-catalog-text p{
+.header-catalog .header-catalog-text p{
     margin: 0px;
-    font-size: 38px;
+    font-size: 40px;
     text-transform: uppercase;
-    font-family: "InterBold";
+    font-family: "Inter";
+    font-weight: 700;
     width:fit-content;
 }
 
-.catalog .pannel-catalog {
-    display: inline-flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: center;
+.how-to-connect {
     width: 1440px;
-    gap: 12px;
-    background-image: url("../image/Lines_back.svg");
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 40px;
 }
 
-.catalog .pannel-catalog .pannel-catalog-bottom {
-    width: 350px;
-    height: 350px;
-    color: white;
-    background-color: #E40000;
-    background-repeat: no-repeat;
-    background-size: cover;
+
+.phone-info {
+    width: 700px;
+    height: 164px;
+    border-radius: 37px;
+    background-color: #EDEDED;
     display: grid;
     align-items: end;
-    border-radius: 30px;
-    overflow: hidden;
-    background-image: url("../image/Lines_back.svg");
 }
 
-
-#first {
-    
-    background-image: url("../image/Roof.png");
+.phone-info .phone-info-block {
+    margin-bottom: 32px;
+    margin-left: 54px;
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
 }
-
-#second {
-    background-image: url("../image/wall.png");
-}
-
-#third {
-    background-image: url("../image/water_down.png");
-}
-
-#fourth {
-    background-image: url("../image/chemystry.png");
-}
-
-#five {
-    background-image: url("../image/isolation.png");
-}
-
-#six {
-    background-image: url("../image/fence.png");
-}
-
-#seven {
-    background-image: url("../image/window.png");
-}
-
-#eight {
-    background-image: url("../image/lumber_cut.png");
-}
-
-.catalog .pannel-catalog .description{
-    display: inline-flex;
+.phone-info .phone-info-block p {
+    font-size: 20px;
+    font-family: "Inter";
+    font-weight: 400;
+    margin: 0px;
+    display: flex;
     justify-content: flex-start;
     align-items: center;
-    /* height: 97px; */
-    background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(18, 18, 18, 1));
-}
-
-.catalog .pannel-catalog .description a{
-    margin: 0px;
-    font-size: 20px;
-    padding: 42px;
-    display: inline-flex;
-    justify-content: flex-start;
-    align-items: flex-end;
-}
-
-.catalog .pannel-catalog .pannel-catalog-bottom .description a .img {
-    width: 15px;
-    height: 20px;
-    margin-left: 15px;
-    background-color: #ffffff; 
-    mask-image: url("../image/Arrow_up.svg");
-    mask-repeat: no-repeat;
-    mask-position: center;
     
 }
 
+.mail-info {
+    width: 700px;
+    height: 164px;
+    border-radius: 37px;
+    background-color: #EDEDED;
+    display:grid;
+    align-items: end;
+}
+
+.mail-info .mail-info-block {
+    margin-bottom: 32px;
+    margin-left: 54px;
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+.mail-info .mail-info-block p {
+    font-size: 20px;
+    margin: 0px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
 
 
-.how-to-connect {
+.how-to-connect-block {
     width: 1440px;
     height: fit-content;
     border-radius: 30px;
@@ -415,70 +381,185 @@ header .contact-details a:hover{
     margin-bottom: 50px;
 }
 
-.how-to-connect .text{
+.how-to-connect-block .text{
     width: 664px;
     font-size: 20px;
     margin-bottom: 35px;
     
 }
 
-.how-to-connect .text p{
+.how-to-connect-block .text p{
     margin-top: 35px;
 }
 
-.how-to-connect .leyout {
+.how-to-connect-block .leyout {
     margin: 90px;
 }
 
-.how-to-connect .text h2{
+.how-to-connect-block .text h2{
     margin: 0px;
     font-size: 40px;
     width: fit-content;
     text-transform: uppercase;
-    font-family: "InterBold";
+    font-family: "Inter";
+    font-weight: 700;
     width:fit-content;
 }
 
-.how-to-connect .social-connect a{
+.how-to-connect-block .social-connect a{
     display: inline-flex;
     align-items: center;
     color: white;
     background-color: #E40000;
     padding:0 28px 0 28px;
     border-radius: 60px;
-    font-family: "InterBold";
+    font-family: "Inter";
+    font-weight: 700;
     text-decoration: none;
     width: fit-content;
     margin-right: 26px;
     height: 80px;
 }
 
-.how-to-connect .social-connect img{
+.how-to-connect-block .social-connect img{
     margin-left: 12px;
     width: 43px;
     height: 43px;
 }
- 
 
-.working-with {
+.inter {
+    display: inline-flex;
+    justify-content: space-between;
+    align-items: center;
     width: 1440px;
+    margin-top: 50px;
     margin-bottom: 50px;
+
 }
 
+.inter p {
+    width: 446px;
+    font-size: 16px;
+}
 
-.working-with .text h2{
+.inter-text p{
     margin: 0px;
-    font-size: 38px;
+    font-size: 40px;
     text-transform: uppercase;
-    font-family: "InterBold";
+    font-family: "Inter";
+    font-weight: 700;
     width:fit-content;
-    
-}
-.working-with .text {
-    margin-bottom: 50px;
 }
 
+.inter-block     {
+    display: inline-flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    width: 1440px;
+    gap: 40px;
+    margin-top: 50px;
+    margin-bottom: 100px;
+}
+.inter-block .inter-block-pannel {
+    width: 452px;
+    height: 202px;
+    border-radius: 30px;
+    background-color: #EDEDED;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
 
+.inter-block .inter-block-pannel > img{
+    position: absolute;
+  left: 40px;
+  width: 38px;
+  height: auto;
+  z-index: 1;
+  margin-top: 0px;
+}
+
+.inter-block .inter-block-pannel h1{
+    font-family: "Inter";
+    font-weight: 600;
+    font-size: 20px;
+    margin-left: 46px;
+}
+
+.inter-block .inter-block-pannel p{
+    font-family: "Inter";
+    font-weight: 400;
+    font-size: 20px;
+    margin-left: 46px;
+}
+
+/* ── Контейнер карточки ── */
+#second-block {
+  position: relative;
+  background: #F2F2F2;
+  border-radius: 20px;
+  width: 100%;
+  max-width: 697.5px;
+  height: 322px;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-start;
+    justify-content: flex-end;
+}
+
+/* ── Красная закладка (Bookmark.svg) ── 
+   Только прямой дочерний img, НЕ вложенные */
+#second-block > img {
+  position: absolute;
+  top: 0;
+  left: 40px;
+  width: 42px;
+  height: auto;
+  z-index: 3;
+  margin-left: 40px;
+}
+
+/* ── Блок с фото мастера ── */
+#second-block .description-image {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  height: 100%;
+  display: flex;
+  align-items: flex-end;
+  z-index: 1;
+}
+
+/* Сброс абсолюта для вложенного img */
+#second-block .description-image img {
+  position: relative;       /* ← убираем absolute */
+  left: auto;               /* ← сброс */
+  top: auto;                /* ← сброс */
+  height: 90%;
+  width: auto;
+  object-fit: contain;
+  display: block;
+}
+
+/* ── Текстовый блок ── */
+#second-block .description-text {
+  position: relative;
+  z-index: 2;
+  padding-bottom: 53px;   /* ← добавлен padding-top */
+  width: 400px;
+}
+
+#second-block .description-text h1{
+    padding: 18px;
+    margin: 0px;
+  padding-left: 80px;   /* ← добавлен padding-top */
+}
+
+#second-block .description-text p{
+    margin: 0px;
+  padding-left: 80px;   /* ← добавлен padding-top */
+}
 
 footer {
     background-color: #3C4047;
@@ -512,35 +593,3 @@ footer .footer-content ul li {
 footer .footer-content .logo-down img {
     margin-bottom: 50px;
 }
-
-
-
-
-
-@font-face {
-    font-family: "InterRegular"; 
-    src: url("/static/fonts/Inter/Inter-Regular.otf") format("truetype"); 
-    font-style:normal; 
-    font-weight: 16pt; 
-} 
-
-@font-face {
-    font-family: "InterSemiBold"; 
-    src: url("/static/fonts/Inter/Inter-SemiBold.otf") format("truetype"); 
-    font-style: normal; 
-    font-weight: normal; 
-} 
-
-@font-face {
-    font-family: "InterBold"; 
-    src: url("/static/fonts/Inter/Inter-Bold.otf") format("truetype"); 
-    font-style: normal; 
-    font-weight: normal; 
-} 
-
-@font-face {
-    font-family: "InterItalic"; 
-    src: url("/static/fonts/Inter/Inter-Italic.otf") format("truetype"); 
-    font-style: italic; 
-    font-weight: normal; 
-}  

@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css\for_business.css' %}">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://api-maps.yandex.ru/v3/?apikey=07c03977-7223-49af-a013-b45135acdd49&lang=ru_RU"></script>
+    
+    <script>
+        initMap();
+
+        async function initMap() {
+            await ymaps3.ready;
+
+            const {YMap, YMapDefaultSchemeLayer} = ymaps3;
+
+            const map = new YMap(
+                document.getElementById('map'),
+                {
+                    location: {
+                        center: [57.0004148, 40.8960315],
+                        zoom: 50
+                    }
+                }
+            );
+
+            map.addChild(new YMapDefaultSchemeLayer({}));
+        }
+
+    </script>
+    <title>Кровля и Фасады | Иваново</title>
+</head>
+<body>
+    <header>
+        <img id="logo" src="../static/image/лого.svg">
+        <div class="contact-details">
+            <div class="phone">
+                <img src="../static/image/Phone.svg" alt="">
+                <p>+7 (900) 555-33-22</p>
+            </div>
+            <div class="email">
+                <img src="../static/image/Mail.svg" alt="">
+                <p>krovlya@mail.ru</p>
+            </div>
+            <a url="####">Свяжитесь с нами</a>
+        </div>
+    </header>
+
+    <div class="main-menu">
+        <ul>
+            <li><img src="../static/image/More_Grid_Big.svg" style="padding-right: 5px;"><a href="/">Каталог товаров</a></li>
+            <li><a href="contacts/">Акции</a></li>
+            <li><a href="{% url 'business' %}">Для бизнеса</a></li>
+            <li style="background-color: #E40000;"><a href="contacts/">Услуги</a></li>
+            <li><a href="contacts/">Доставка и оплата</a></li>
+            <li><a href="contacts/">О нас</a></li>
+            <li><a href="{% url 'contacts' %}">Контакты</a></li>
+        </ul>
+    </div>
+    <div class="nav-list">
+        <ul class="breadcrumb">
+        <li><a href="{% url 'main' %}">Главная</a></li>
+        <li><img src="{% static 'image/Arrow-right.svg' %}"></li>
+        <li><a href="{% url 'contacts' %}">Услуги</a></li>
+        </ul>
+    </div>
+    <div class="h1-title">
+        <h1 style="color: #E40000;">Услуги,
+          <span style="font-style: italic; color: black">которые мы можем предоставить</span></h1>
+      </div>
+    
+  </div>
+<div class="inter-block">
+  <div class="inter-block-pannel" id="second-block">
+    <img src="{% static 'image/Bookmark.svg' %}">
+        <div class="description-image">
+            <img src="{% static 'image/zamer.png'%}">
+        </div>
+        <div class="description-text">
+            <h1>Бесплатный замер</h1>
+            <p>Профессиональный замер объекта с учётом всех особенностей кровли и фасада.</p>
+        </div>
+  </div>
+  <div class="inter-block-pannel" id="second-block">
+    <img src="{% static 'image/Bookmark.svg' %}">
+        <div class="description-image">
+            <img src="{% static 'image/builder.png'%}">
+        </div>
+        <div class="description-text">
+            <h1>Монтажные работы</h1>
+            <p>Работаем с проверенными строителями.</p>
+        </div>
+  </div>
+  <div class="inter-block-pannel" id="second-block">
+    <img src="{% static 'image/Bookmark.svg' %}">
+        <div class="description-image">
+            <img src="{% static 'image/box.png'%}">
+        </div>
+        <div class="description-text">
+            <h1>Доставка</h1>
+            <p>Стоимость рассчитывает менеджер индивидуально.</p>
+        </div>
+  </div>
+  <div class="inter-block-pannel" id="second-block">
+    <img src="{% static 'image/Bookmark.svg' %}">
+        <div class="description-image">
+            <img src="{% static 'image/order.png'%}">
+        </div>
+        <div class="description-text">
+            <h1>Гибочные изделия под заказ</h1>
+            <p>Изготавливаем: доборные элементы, колпаки и дымники, фасадные и кровельные планки.</p>
+        </div>
+  </div>
+</div>
+<div class="inter">
+    <div class="inter-text">
+        <p>наши мастера</p>
+        <p style="
+                    color: rgba(0, 0, 0, 0.4);
+                    padding-left: 84px;
+                    font-style: italic;
+                    ">
+        для сотрудничества
+        </p>
+    </div>
+    </div>
+    <div class="masters-section">
+  <div class="masters-section__cards">
+    <!-- Карточка 1 -->
+    <div class="masters-card">
+      <div class="masters-card__content">
+        <h3>НУЖЕН <span class="red">МАСТЕР?</span></h3>
+        <p>
+          Свяжитесь с нами любым удобным способом — <b>по телефону или в мессенджерах.</b>
+          Наши менеджеры помогут подобрать для вас опытного мастера. Мы сотрудничаем
+          с профессионалами своего дела, которых проверили на практике.
+        </p>
+      </div>
+      <a href="tel:+790546854865" class="masters-card__btn">
+        Позвонить по номеру: +790546854865
+      </a>
+    </div>
+
+    <!-- Карточка 2 -->
+    <div class="masters-card">
+      <div class="masters-card__content">
+        <h3>ВЫ <span class="red">МАСТЕР?</span></h3>
+        <p>
+          Станьте нашим <b>надежным партнером.</b> Мы предлагаем стабильный поток заказов:
+          большинство наших покупателей спрашивают контакты проверенных монтажников.
+          Мы рекомендуем вас как надежного партнера.
+        </p>
+      </div>
+      <a href="mailto:Ivanovo@cherdaq.ru" class="masters-card__btn">
+        Написать на E-mail: Ivanovo@cherdaq.ru
+      </a>
+    </div>
+  </div>
+</div>
+</div>
+  
+  <footer>
+    <div class="footer-content">
+      <div class="logo-down">
+        <img src="../static/image/logo-light.svg" alt="" />
+        <p>Адрес: ул. Парижской Коммуны, 147</p>
+      </div>
+      <ul>
+        <li><a>Каталог товаров</a></li>
+        <li><a>Акции</a></li>
+        <li><a src="business/">Для бизнеса</a></li>
+        <li><a>Услуги</a></li>
+        <li><a>Доставка и оплата</a></li>
+        <li><a>О нас</a></li>
+      </ul>
+      <div class="map" style="border-radius: 30px">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2172.986576545524!2d40.893451211226015!3d57.00041477346115!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x414d1670fe241987%3A0x5eb7e758e52e8f4e!2z0YPQuy4g0J_QsNGA0LjQttGB0LrQvtC5INCa0L7QvNC80YPQvdGLLCAxNDcsINCY0LLQsNC90L7QstC-LCDQmNCy0LDQvdC-0LLRgdC60LDRjyDQvtCx0LsuLCAxNTMwMTE!5e0!3m2!1sru!2sru!4v1763719218999!5m2!1sru!2sru"
+          width="600" height="300" style="border-radius: 16px; border: 0" allowfullscreen="" loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

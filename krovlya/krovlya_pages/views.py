@@ -8,3 +8,7 @@ def contacts(request):
 
 def business(request):
     return render(request, "for_business.html")
+
+def service(request):
+    return render(request, "services.html")
+
