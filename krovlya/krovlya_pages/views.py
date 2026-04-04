@@ -12,3 +12,6 @@ def business(request):
 def service(request):
     return render(request, "services.html")
 
+def delivery(request):
+    return render(request, "delivery.html")
+

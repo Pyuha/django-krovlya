@@ -561,6 +561,83 @@ header .contact-details a:hover{
   padding-left: 80px;   /* ← добавлен padding-top */
 }
 
+/* ── Секция ── */
+.masters-section {
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 40px 0;
+}
+
+/* ── Сетка карточек ── */
+.masters-section__cards {
+  display: flex;
+  gap: 20px;
+}
+
+/* ── Карточка ── */
+.masters-card {
+  flex: 1;
+  background: #F2F2F2;
+  border-radius: 37px;
+  padding: 36px 32px 32px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.masters-card__content h3 {
+  font-family: "Inter";
+  font-size: 40px;
+  font-weight: 700;
+  
+  color: #1A1A1A;
+  margin: 0 0 16px 0;
+}
+
+.masters-card__content h3 .red {
+  color: #E31E24;
+  font-style: italic;
+}
+
+.masters-card__content p {
+  font-family: "Inter";
+  font-size: 20px;
+  font-weight: 400;
+  color: #4A4A4A;
+  line-height: 1.65;
+  margin: 0;
+}
+
+.masters-card__content p b {
+  font-weight: 700;
+  color: #1A1A1A;
+}
+
+/* ── Кнопка ── */
+.masters-card__btn {
+  display: block;
+  width: 493px;
+  height: fit-content;
+  margin-top: 24px;
+  padding: 27.31px 27.31px;
+  background: #3C4047;
+  color: #ffffff;
+  font-family: "Inter";
+  font-size: 20px;
+  font-weight: 800;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 60.83px;
+  transition: background 0.3s ease;
+}
+
+.masters-card__btn:hover {
+  background: #1A1A1A;
+}
+
+
+
 footer {
     background-color: #3C4047;
     width: 100%;

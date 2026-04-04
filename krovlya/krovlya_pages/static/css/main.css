@@ -144,6 +144,7 @@ header .contact-details a:hover{
     /* background-color: rgb(255, 255, 255); */
     width: fit-content;
     height: fit-content;
+    
     margin: 150px;
     margin-left: 240px;
     padding: 45px;
@@ -153,7 +154,7 @@ header .contact-details a:hover{
 
 
 .main-offer .text-offer .text h1{
-    font-family: "InterBold";
+    font-family: "Inter";
     font-size: 85px;
     font-weight: 700;
     text-align: left;

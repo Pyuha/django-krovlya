@@ -1,0 +1,985 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Доставка и оплата — Кровля Фасад</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+  <style>
+    /* ══════════════════════════════════════
+       RESET & BASE
+    ══════════════════════════════════════ */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      color: #1A1A1A;
+      background: #fff;
+      line-height: 1.6;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    ul, li {
+      list-style: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 40px;
+    }
+
+    /* ══════════════════════════════════════
+       HEADER TOP
+    ══════════════════════════════════════ */
+    .header-top {
+      padding: 20px 0;
+    }
+
+    .header-top .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-icon {
+      width: 50px;
+      height: 50px;
+      position: relative;
+    }
+
+    .logo-icon svg {
+      width: 100%;
+      height: 100%;
+    }
+
+    .logo-text {
+      font-size: 20px;
+      font-weight: 900;
+      line-height: 1.2;
+      color: #1A1A1A;
+    }
+
+    .header-contacts {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+    }
+
+    .header-contact-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 14px;
+      font-weight: 600;
+      color: #1A1A1A;
+    }
+
+    .header-contact-item .icon {
+      width: 20px;
+      height: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .btn-contact {
+      background: #E31E24;
+      color: #fff;
+      padding: 12px 24px;
+      border-radius: 50px;
+      font-size: 14px;
+      font-weight: 600;
+      transition: background 0.3s;
+    }
+
+    .btn-contact:hover {
+      background: #c9181d;
+    }
+
+    /* ══════════════════════════════════════
+       NAVIGATION
+    ══════════════════════════════════════ */
+    .nav-bar {
+      background: #F2F2F2;
+      border-radius: 12px;
+      margin-bottom: 10px;
+    }
+
+    .nav-bar .container {
+      display: flex;
+      align-items: center;
+    }
+
+    .nav-catalog-btn {
+      background: #E31E24;
+      color: #fff;
+      padding: 16px 24px;
+      border-radius: 12px 0 0 12px;
+      font-size: 14px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      white-space: nowrap;
+    }
+
+    .nav-catalog-btn .grid-icon {
+      display: grid;
+      grid-template-columns: repeat(3, 5px);
+      gap: 3px;
+    }
+
+    .nav-catalog-btn .grid-icon span {
+      width: 5px;
+      height: 5px;
+      background: #fff;
+      border-radius: 1px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 0;
+      flex: 1;
+    }
+
+    .nav-links a {
+      padding: 16px 20px;
+      font-size: 14px;
+      font-weight: 500;
+      color: #1A1A1A;
+      transition: color 0.3s;
+      white-space: nowrap;
+    }
+
+    .nav-links a:hover {
+      color: #E31E24;
+    }
+
+    /* ══════════════════════════════════════
+       BREADCRUMBS
+    ══════════════════════════════════════ */
+    .breadcrumbs {
+      padding: 24px 0 16px;
+      font-size: 13px;
+      color: #999;
+    }
+
+    .breadcrumbs a {
+      color: #999;
+    }
+
+    .breadcrumbs span {
+      margin: 0 8px;
+    }
+
+    /* ══════════════════════════════════════
+       HERO SECTION
+    ══════════════════════════════════════ */
+    .hero-section {
+      padding: 0 0 60px;
+    }
+
+    .hero-section .container {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 40px;
+    }
+
+    .hero-text {
+      max-width: 480px;
+    }
+
+    .hero-text h1 {
+      font-size: 36px;
+      font-weight: 900;
+      line-height: 1.2;
+      margin-bottom: 20px;
+    }
+
+    .hero-text h1 em {
+      font-style: italic;
+      color: #E31E24;
+    }
+
+    .hero-text p {
+      font-size: 14px;
+      color: #4A4A4A;
+      line-height: 1.7;
+    }
+
+    .hero-image {
+      max-width: 400px;
+      flex-shrink: 0;
+    }
+
+    .hero-image img {
+      width: 100%;
+    }
+
+    /* Placeholder для картинки */
+    .img-placeholder {
+      background: #E8E8E8;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #aaa;
+      font-size: 12px;
+    }
+
+    /* ══════════════════════════════════════
+       HOW TO ORDER
+    ══════════════════════════════════════ */
+    .order-section {
+      padding: 40px 0 60px;
+    }
+
+    .order-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      margin-bottom: 40px;
+    }
+
+    .order-header h2 {
+      font-size: 28px;
+      font-weight: 900;
+      line-height: 1.3;
+    }
+
+    .order-header h2 span {
+      display: block;
+      color: #E31E24;
+      font-style: italic;
+    }
+
+    .order-header p {
+      font-size: 14px;
+      color: #4A4A4A;
+      max-width: 260px;
+      padding-top: 8px;
+    }
+
+    .order-cards {
+      display: flex;
+      gap: 20px;
+    }
+
+    .order-card {
+      flex: 1;
+      text-align: center;
+    }
+
+    .order-card-icon {
+      width: 100%;
+      height: 120px;
+      background: #F2F2F2;
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 16px;
+    }
+
+    .order-card-icon svg {
+      width: 48px;
+      height: 48px;
+      color: #999;
+    }
+
+    .order-card p {
+      font-size: 13px;
+      color: #4A4A4A;
+      margin-bottom: 4px;
+    }
+
+    .order-card .order-card-link {
+      font-size: 15px;
+      font-weight: 700;
+      color: #E31E24;
+    }
+
+    /* ══════════════════════════════════════
+       PAYMENT SECTION
+    ══════════════════════════════════════ */
+    .payment-section {
+      padding: 40px 0 60px;
+    }
+
+    .payment-section h2 {
+      font-size: 28px;
+      font-weight: 900;
+      line-height: 1.3;
+      margin-bottom: 30px;
+    }
+
+    .payment-section h2 span {
+      display: block;
+      color: #E31E24;
+      font-style: italic;
+    }
+
+    .payment-cards {
+      display: flex;
+      gap: 20px;
+    }
+
+    .payment-card {
+      flex: 1;
+      background: #F2F2F2;
+      border-radius: 20px;
+      padding: 32px 28px;
+    }
+
+    .payment-card h3 {
+      font-size: 16px;
+      font-weight: 700;
+      font-style: italic;
+      margin-bottom: 16px;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    .payment-card p,
+    .payment-card li {
+      font-size: 13px;
+      color: #4A4A4A;
+      line-height: 1.7;
+    }
+
+    .payment-card ul {
+      padding: 0;
+    }
+
+    .payment-card li {
+      margin-bottom: 10px;
+      padding-left: 12px;
+      position: relative;
+    }
+
+    .payment-card li::before {
+      content: '·';
+      position: absolute;
+      left: 0;
+      font-weight: 700;
+    }
+
+    /* ══════════════════════════════════════
+       DELIVERY SECTION
+    ══════════════════════════════════════ */
+    .delivery-section {
+      padding: 40px 0 60px;
+    }
+
+    .delivery-section h2 {
+      font-size: 28px;
+      font-weight: 900;
+      line-height: 1.3;
+      margin-bottom: 30px;
+    }
+
+    .delivery-section h2 span {
+      display: block;
+      color: #E31E24;
+      font-style: italic;
+    }
+
+    .delivery-block {
+      background: #F2F2F2;
+      border-radius: 20px;
+      padding: 36px 32px;
+    }
+
+    .delivery-block h3 {
+      font-size: 15px;
+      font-weight: 700;
+      font-style: italic;
+      margin-bottom: 14px;
+    }
+
+    .delivery-block p,
+    .delivery-block li {
+      font-size: 13px;
+      color: #4A4A4A;
+      line-height: 1.7;
+    }
+
+    .delivery-block li {
+      margin-bottom: 6px;
+      padding-left: 12px;
+      position: relative;
+    }
+
+    .delivery-block li::before {
+      content: '·';
+      position: absolute;
+      left: 0;
+      font-weight: 700;
+    }
+
+    .delivery-sub {
+      margin-top: 28px;
+    }
+
+    .delivery-sub h4 {
+      font-size: 15px;
+      font-weight: 700;
+      font-style: italic;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      margin-bottom: 14px;
+    }
+
+    /* ══════════════════════════════════════
+       CONSULTATION CTA
+    ══════════════════════════════════════ */
+    .cta-section {
+      padding: 40px 0 60px;
+    }
+
+    .cta-block {
+      background: #F2F2F2;
+      border-radius: 20px;
+      padding: 48px 40px;
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      position: relative;
+      overflow: hidden;
+      min-height: 320px;
+    }
+
+    .cta-content {
+      max-width: 500px;
+      z-index: 2;
+      position: relative;
+    }
+
+    .cta-content h2 {
+      font-size: 28px;
+      font-weight: 900;
+      margin-bottom: 16px;
+    }
+
+    .cta-content h2 em {
+      color: #E31E24;
+      font-style: italic;
+    }
+
+    .cta-content p {
+      font-size: 14px;
+      color: #4A4A4A;
+      line-height: 1.7;
+      margin-bottom: 24px;
+    }
+
+    .cta-content p b {
+      color: #1A1A1A;
+    }
+
+    .cta-buttons {
+      display: flex;
+      gap: 12px;
+    }
+
+    .cta-btn-red {
+      background: #E31E24;
+      color: #fff;
+      padding: 14px 24px;
+      border-radius: 50px;
+      font-size: 13px;
+      font-weight: 600;
+      transition: background 0.3s;
+    }
+
+    .cta-btn-red:hover {
+      background: #c9181d;
+    }
+
+    .cta-btn-dark {
+      background: #333;
+      color: #fff;
+      padding: 14px 24px;
+      border-radius: 50px;
+      font-size: 13px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: background 0.3s;
+    }
+
+    .cta-btn-dark:hover {
+      background: #1a1a1a;
+    }
+
+    .cta-image {
+      position: absolute;
+      right: 30px;
+      bottom: 0;
+      height: 100%;
+      z-index: 1;
+      display: flex;
+      align-items: flex-end;
+    }
+
+    .cta-image img {
+      height: 95%;
+      object-fit: contain;
+    }
+
+    /* ══════════════════════════════════════
+       FOOTER
+    ══════════════════════════════════════ */
+    .footer {
+      border-top: 1px solid #E8E8E8;
+      padding: 40px 0 50px;
+    }
+
+    .footer .container {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 40px;
+    }
+
+    .footer-left {
+      max-width: 220px;
+    }
+
+    .footer-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+
+    .footer-logo .logo-icon {
+      width: 40px;
+      height: 40px;
+    }
+
+    .footer-logo .logo-text {
+      font-size: 16px;
+    }
+
+    .footer-left p {
+      font-size: 13px;
+      color: #666;
+      line-height: 1.6;
+      margin-bottom: 8px;
+    }
+
+    .footer-left a {
+      font-size: 14px;
+      font-weight: 700;
+      color: #1A1A1A;
+    }
+
+    .footer-nav {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .footer-nav a {
+      font-size: 14px;
+      color: #1A1A1A;
+      transition: color 0.3s;
+    }
+
+    .footer-nav a:hover {
+      color: #E31E24;
+    }
+
+    .footer-map {
+      width: 280px;
+      height: 200px;
+      background: #F2F2F2;
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      font-weight: 700;
+      color: #999;
+      flex-shrink: 0;
+    }
+
+    /* ══════════════════════════════════════
+       RESPONSIVE
+    ══════════════════════════════════════ */
+    @media (max-width: 900px) {
+      .hero-section .container {
+        flex-direction: column;
+      }
+
+      .hero-image {
+        max-width: 100%;
+      }
+
+      .order-cards {
+        flex-direction: column;
+      }
+
+      .payment-cards {
+        flex-direction: column;
+      }
+
+      .order-header {
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      .cta-block {
+        flex-direction: column;
+        align-items: flex-start;
+        padding-bottom: 300px;
+      }
+
+      .cta-image {
+        right: 50%;
+        transform: translateX(50%);
+        height: 280px;
+      }
+
+      .footer .container {
+        flex-direction: column;
+      }
+
+      .footer-map {
+        width: 100%;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .container {
+        padding: 0 20px;
+      }
+
+      .header-contacts {
+        display: none;
+      }
+
+      .nav-links {
+        overflow-x: auto;
+      }
+
+      .nav-links a {
+        padding: 14px 12px;
+        font-size: 13px;
+      }
+
+      .hero-text h1 {
+        font-size: 28px;
+      }
+
+      .cta-buttons {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ══════════ HEADER TOP ══════════ -->
+  <header class="header-top">
+    <div class="container">
+      <a href="#" class="logo">
+        <div class="logo-icon">
+          <svg viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M5 28L25 10L45 28" stroke="#E31E24" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+            <rect x="10" y="26" width="30" height="18" rx="2" fill="#E31E24"/>
+            <rect x="20" y="30" width="10" height="14" rx="1" fill="#fff"/>
+          </svg>
+        </div>
+        <div class="logo-text">КРОВЛЯ<br>ФАСАД</div>
+      </a>
+
+      <div class="header-contacts">
+        <a href="tel:+79005553322" class="header-contact-item">
+          <span class="icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+          </span>
+          +7 (900) 555-33-22
+        </a>
+        <a href="mailto:krovlya@mail.ru" class="header-contact-item">
+          <span class="icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 4L12 13 2 4"/></svg>
+          </span>
+          krovlya@mail.ru
+        </a>
+        <a href="#" class="btn-contact">Свяжитесь с нами</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ══════════ NAVIGATION ══════════ -->
+  <nav class="nav-bar">
+    <div class="container">
+      <a href="#" class="nav-catalog-btn">
+        <span class="grid-icon">
+          <span></span><span></span><span></span>
+          <span></span><span></span><span></span>
+          <span></span><span></span><span></span>
+        </span>
+        Каталог товаров
+      </a>
+      <div class="nav-links">
+        <a href="#">Акции</a>
+        <a href="#">Для бизнеса</a>
+        <a href="#">Услуги</a>
+        <a href="#">Доставка и оплата</a>
+        <a href="#">О нас</a>
+        <a href="#">Контакты</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ══════════ BREADCRUMBS ══════════ -->
+  <div class="container">
+    <div class="breadcrumbs">
+      <a href="#">Главная</a>
+      <span>→</span>
+      Доставка и оплата
+    </div>
+  </div>
+
+  <!-- ══════════ HERO ══════════ -->
+  <section class="hero-section">
+    <div class="container">
+      <div class="hero-text">
+        <h1><em>Доставка</em> и оплата</h1>
+        <p>
+          Мы делаем все, чтобы процесс получения качественных товаров был
+          для вас максимально простым, быстрым и выгодным. Чёткая
+          логистика и простые форматы оплаты — основа нашего сервиса.
+          Выбирайте подходящий для себя вариант, а мы гарантируем
+          сохранность груза и соблюдение согласованных сроков.
+        </p>
+      </div>
+      <div class="hero-image">
+        <div class="img-placeholder" style="width:380px;height:200px;">
+          <!-- Фура -->
+          <svg width="200" height="100" viewBox="0 0 200 100" fill="none">
+            <rect x="0" y="30" width="130" height="55" rx="4" fill="#ddd"/>
+            <rect x="130" y="45" width="60" height="40" rx="4" fill="#E31E24"/>
+            <circle cx="30" cy="88" r="12" fill="#333"/>
+            <circle cx="100" cy="88" r="12" fill="#333"/>
+            <circle cx="170" cy="88" r="12" fill="#333"/>
+            <rect x="140" y="52" width="25" height="16" rx="2" fill="#fff"/>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════ HOW TO ORDER ══════════ -->
+  <section class="order-section">
+    <div class="container">
+      <div class="order-header">
+        <h2>КАК ОФОРМИТЬ<br><span>ЗАКАЗ НА САЙТЕ</span></h2>
+        <p>Мы обработаем Вашу заявку максимально быстро!</p>
+      </div>
+
+      <div class="order-cards">
+        <!-- Карточка 1 -->
+        <div class="order-card">
+          <div class="order-card-icon">
+            <svg viewBox="0 0 48 48" fill="none" stroke="#bbb" stroke-width="2">
+              <rect x="8" y="6" width="32" height="36" rx="4"/>
+              <line x1="14" y1="16" x2="34" y2="16"/>
+              <line x1="14" y1="22" x2="34" y2="22"/>
+              <line x1="14" y1="28" x2="26" y2="28"/>
+            </svg>
+          </div>
+        </div>
+
+        <!-- Карточка 2 -->
+        <div class="order-card">
+          <div class="order-card-icon">
+            <svg viewBox="0 0 48 48" fill="none" stroke="#bbb" stroke-width="2">
+              <rect x="6" y="10" width="36" height="28" rx="4"/>
+              <path d="M6 18h36"/>
+              <rect x="12" y="24" width="12" height="8" rx="1"/>
+            </svg>
+          </div>
+        </div>
+
+        <!-- Карточка 3: Телефон -->
+        <div class="order-card">
+          <div class="order-card-icon">
+            <svg viewBox="0 0 48 48" fill="none" stroke="#bbb" stroke-width="2">
+              <path d="M38 33.84v3a2 2 0 01-2.18 2A19.79 19.79 0 0127.19 35.77a19.5 19.5 0 01-6-6A19.79 19.79 0 0118.12 21.1 2 2 0 0120.11 19h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11l-1.27 1.27a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0138 33.84z"/>
+            </svg>
+          </div>
+          <p>Просто позвоните нам по телефону:</p>
+          <a href="tel:+79652640019" class="order-card-link">+7 (965) 264-00-19</a>
+        </div>
+
+        <!-- Карточка 4: Почта -->
+        <div class="order-card">
+          <div class="order-card-icon">
+            <svg viewBox="0 0 48 48" fill="none" stroke="#bbb" stroke-width="2">
+              <rect x="4" y="10" width="40" height="28" rx="4"/>
+              <path d="M4 14l20 13 20-13"/>
+            </svg>
+          </div>
+          <p>Или напишите нам на почту:</p>
+          <a href="mailto:Ivanovo@cherdaq.ru" class="order-card-link">Ivanovo@cherdaq.ru</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════ PAYMENT ══════════ -->
+  <section class="payment-section">
+    <div class="container">
+      <h2>ВЫ МОЖЕТЕ ОПЛАТИТЬ ЗАКАЗ<br><span>ЛЮБЫМ УДОБНЫМ СПОСОБОМ</span></h2>
+
+      <div class="payment-cards">
+        <!-- Для юр. лиц -->
+        <div class="payment-card">
+          <h3>Для юридических лиц</h3>
+          <ul>
+            <li>Безналичный расчет по счету. Мы выставляем счет с подробной спецификацией. Оплата осуществляется с расчетного счета компании на наш счет. Работаем с НДС и без НДС.</li>
+            <li>Постоплата по договору. Для постоянных партнеров и крупных проектов предусмотрены индивидуальные условия по отсрочке платежа.</li>
+          </ul>
+        </div>
+
+        <!-- Для физ. лиц -->
+        <div class="payment-card">
+          <h3>Для физических лиц</h3>
+          <ul>
+            <li>Наличными или картой при получении заказа на складе (самовывоз) или курьеру (при доставке по городу).</li>
+            <li>Безналичный расчет по счету для индивидуальных предпринимателей или по предоплате для резервирования позиций.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════ DELIVERY ══════════ -->
+  <section class="delivery-section">
+    <div class="container">
+      <h2>ДОСТАВЛЯЕМ<br><span>ПО ВСЕМУ РЕГИОНУ</span></h2>
+
+      <div class="delivery-block">
+        <h3>Самовывоз со склада (Бесплатно)</h3>
+        <ul>
+          <li>Адрес склада: г. Иваново, ул. Парижской коммуны, 147.</li>
+          <li>Режим работы склада: Пн-Пт: с 8:00 до 18:00, Сб: с 9:00 до 15:00.</li>
+          <li>Что нужно: Предварительно оформить заказ и дождаться подтверждения о его готовности к выдаче. При себе необходимо иметь номер заказа и паспорт.</li>
+          <li>Погрузка: Мы бесплатно помогаем с погрузкой материалов на ваш транспорт с помощью профессиональной техники (автопогрузчик).</li>
+        </ul>
+
+        <div class="delivery-sub">
+          <h4>Доставка нашим транспортом по Иваново</h4>
+          <ul>
+            <li><b>Стоимость:</b> Зависит от зоны доставки и габаритов груза. Рассчитывается индивидуально менеджером.</li>
+            <li><b>Тарифы:</b> по городу Иваново — 500руб., по области — от 2500 руб.</li>
+            <li><b>Сроки:</b> Доставка осуществляется в течение 1-2 рабочих дней после подтверждения заказа и готовности товара. Возможна доставка в день заказа (при условии оформления до 12:00).</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════ CTA ══════════ -->
+  <section class="cta-section">
+    <div class="container">
+      <div class="cta-block">
+        <div class="cta-content">
+          <h2>НУЖНА <em>КОНСУЛЬТАЦИЯ?</em></h2>
+          <p>
+            Свяжитесь с нами любым удобным способом — <b>по телефону или
+            в мессенджерах.</b> Наши менеджеры помогут подобрать
+            материалы под ваш проект, рассчитают необходимое количество,
+            подскажут по характеристикам и совместимости товаров,
+            а также ответят на все вопросы по наличию, доставке и ценам.
+          </p>
+          <div class="cta-buttons">
+            <a href="tel:+790546854865" class="cta-btn-red">Позвонить по номеру: +790546854865</a>
+            <a href="#" class="cta-btn-dark">
+              Связаться в
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="white">
+                <path d="M12.5 2C6.76 2 2.1 6.02 2.1 10.97c0 2.68 1.36 5.08 3.5 6.67V22l3.98-2.18c1.04.29 2.16.44 3.32.44 5.74 0 10.4-4.02 10.4-8.97S18.24 2 12.5 2zm1.04 12.1l-2.65-2.82-5.17 2.82 5.69-6.04 2.71 2.82 5.12-2.82-5.7 6.04z"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="cta-image">
+          <div class="img-placeholder" style="width:240px;height:300px;background:transparent;">
+            <!-- Строитель -->
+            <svg width="160" height="280" viewBox="0 0 160 280" fill="none">
+              <circle cx="80" cy="40" r="28" fill="#FFCC80"/>
+              <rect x="40" y="66" width="80" height="100" rx="8" fill="#FF9800"/>
+              <rect x="55" y="4" width="50" height="20" rx="4" fill="#FFC107"/>
+              <rect x="30" y="166" width="40" height="100" rx="6" fill="#1565C0"/>
+              <rect x="90" y="166" width="40" height="100" rx="6" fill="#1565C0"/>
+              <rect x="20" y="90" width="25" height="70" rx="5" fill="#FFCC80" transform="rotate(-15 20 90)"/>
+              <rect x="120" y="80" width="25" height="70" rx="5" fill="#FFCC80" transform="rotate(15 120 80)"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════ FOOTER ══════════ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-left">
+        <div class="footer-logo">
+          <div class="logo-icon">
+            <svg viewBox="0 0 50 50" fill="none">
+              <path d="M5 28L25 10L45 28" stroke="#E31E24" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+              <rect x="10" y="26" width="30" height="18" rx="2" fill="#E31E24"/>
+              <rect x="20" y="30" width="10" height="14" rx="1" fill="#fff"/>
+            </svg>
+          </div>
+          <div class="logo-text">КРОВЛЯ<br>ФАСАД</div>
+        </div>
+        <p>Адрес: г. Иваново, ул.<br>Парижской коммуны, 147</p>
+        <a href="tel:+79652640019">+7 (965) 264-00-19</a>
+      </div>
+
+      <nav class="footer-nav">
+        <a href="#">Каталог товаров</a>
+        <a href="#">Акции</a>
+        <a href="#">Для бизнеса</a>
+        <a href="#">Услуги</a>
+        <a href="#">Доставка и оплата</a>
+        <a href="#">О нас</a>
+      </nav>
+
+      <div class="footer-map">КАРТА</div>
+    </div>
+  </footer>
+
+</body>
+</html>
