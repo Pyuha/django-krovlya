@@ -24,5 +24,6 @@ urlpatterns = [
     path('contacts/', views.contacts, name = 'contacts'),
     path('business/', views.business, name='business'),
     path('service/', views.service, name='service'),
-    path('delivery/', views.delivery, name='delivery')
+    path('delivery/', views.delivery, name='delivery'),
+    path('about/', views.about, name='about')
 ]

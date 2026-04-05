@@ -15,3 +15,7 @@ def service(request):
 def delivery(request):
     return render(request, "delivery.html")
 
+def about(request):
+    return render(request, "about.html")
+
+
