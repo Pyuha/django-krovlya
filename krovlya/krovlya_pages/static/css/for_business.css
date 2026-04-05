@@ -281,6 +281,23 @@ header .contact-details a:hover{
     text-align: left;
 }
 
+.h1-title p{
+    width: 630px;
+    font-family: "Inter";
+    font-size: 19.81px;
+    font-weight: 400;
+    line-height: 105%;
+    letter-spacing: -2%;
+    text-align: left;
+}
+
+.hero {
+    display: inline-flex;
+    width: 1440px;
+    justify-content: center;
+    margin-bottom: 110px;
+}
+
 .header-catalog {
     display: inline-flex;
     justify-content: left;
@@ -293,7 +310,7 @@ header .contact-details a:hover{
 }
 
 .header-catalog p {
-    width: 446px;
+    width: 284px;
     font-size: 16px;
 }
 
@@ -302,7 +319,7 @@ header .contact-details a:hover{
     font-size: 40px;
     text-transform: uppercase;
     font-family: "Inter";
-    font-weight: 700;
+    font-weight: 600;
     width:fit-content;
 }
 
@@ -426,6 +443,70 @@ header .contact-details a:hover{
     width: 43px;
     height: 43px;
 }
+
+.payment-section {
+    width: 1440px;
+    height: fit-content;
+}
+
+.payment-section .container h2{
+    margin: 0px;
+    font-size: 40px;
+    text-transform: uppercase;
+    font-family: "Inter";
+    font-weight: 600;
+    width:fit-content;
+}
+
+.payment-section .container .payment-cards {
+    width: 1440px;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 40px;
+}
+
+.payment-section .container .payment-cards .payment-card {
+    width: 670px;
+    font-size: 20px;
+    flex: 1;
+    position: relative;           /* важно для позиционирования полосы */
+    padding-left: 32px;           /* отступ текста от красной полосы */
+    padding-top: 8px;
+    padding-bottom: 8px;
+
+}
+
+.payment-section .payment-card::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 30px;                    
+  bottom: 30px;                  
+  width: 11px;                   
+  background-color: #E40000;    
+  border-radius: 9999px;        
+}
+
+
+.payment-section .container .payment-cards .payment-card li{
+    margin-bottom: 15px;
+}
+
+.delivery-section {
+    width: 1440px;
+    height: fit-content;
+    font-size: 20px;
+}
+
+.delivery-section h2 {
+    margin: 0px;
+    font-size: 40px;
+    text-transform: uppercase;
+    font-family: "Inter";
+    font-weight: 600;
+    width:fit-content;
+}
+
 
 .inter {
     display: inline-flex;
