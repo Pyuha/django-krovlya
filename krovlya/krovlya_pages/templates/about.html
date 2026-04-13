@@ -59,8 +59,8 @@
             <li><a href="contacts/">Акции</a></li>
             <li><a href="{% url 'business' %}">Для бизнеса</a></li>
             <li><a href="{% url 'service' %}">Услуги</a></li>
-            <li style="background-color: #E40000;"><a href="{% url 'delivery' %}">Доставка и оплата</a></li>
-            <li><a href="{% url 'about' %}">О нас</a></li>
+            <li><a href="{% url 'delivery' %}">Доставка и оплата</a></li>
+            <li style="background-color: #E40000;"><a href="{% url 'about' %}">О нас</a></li>
             <li><a href="{% url 'contacts' %}">Контакты</a></li>
         </ul>
     </div>
@@ -68,21 +68,23 @@
         <ul class="breadcrumb">
         <li><a href="{% url 'main' %}">Главная</a></li>
         <li><img src="{% static 'image/Arrow-right.svg' %}"></li>
-        <li><a href="{% url 'contacts' %}">Доставка и оплата</a></li>
+        <li><a href="{% url 'contacts' %}">О нас</a></li>
         </ul>
     </div>
 
     <section>
       <div class="hero">
         <div class="h1-title">
-          <h1 style="color: #E40000;">Доставка <span style="font-style: italic; color: black">и оплата</span></h1>
+          <h1>О нашей <span style="font-style: italic; color: #E40000;">компании</span></h1>
           <p>
-            Мы делаем все, чтобы процесс получения качественных товаров был для вас максимально простым, быстрым и выгодным. Четкая логистика и простые форматы оплаты — основа нашего сервиса. Выбирайте подходящий для себя вариант, а мы гарантируем сохранность груза и соблюдение согласованных сроков.
+            Мы — больше чем просто поставщик. Мы — связующее звено между лучшими мировыми и отечественными производителями строительных материалов и теми, кто создает надежное и красивое пространство для жизни, работы и отдыха. Наша миссия — обеспечить профессионалов и частных застройщиков всем необходимым для кровли, фасада, изоляции и отделки, предлагая оптимальное соотношение цены, качества и сервиса.
+          </p>
+            <p>Мы тщательно отбираем в наш ассортимент только проверенные материалы от лидеров рынка, такие как Docke, Fakro, Hauberg, чтобы вы могли строить с уверенностью в завтрашнем дне.
           </p>
         </div>
         <div class="hero-image">
           <div class="img-placeholder" style="width:380px;height:200px;">
-            <img src="{% static 'image/tracks.svg'%}" alt="">
+            <img src="{% static 'image/logo_puzzle.svg'%}" alt="">
           </div>
         </div>
       </div>
@@ -90,92 +92,68 @@
 
   <div class="header-catalog">
       <div class="header-catalog-text">
-        <p>как оформить</p>
+        <p>О компании</p>
         <p style="
                       color: rgba(0, 0, 0, 0.4);
                       padding-left: 84px;
                       font-style: italic;
                     ">
-          заказ на сайте
+          в цифрах
         </p>
       </div>
-      <p>
-        Мы обработаем Вашу заявку
-        максимально быстро!
-      </p>
     </div>
-    <div class="how-to-connect">
-        
-        <div class="phone-info">
-            <div class="phone-info-block">
-                <p>Просто позвоните нам по телефону:</p>
-                <p style="color: #e40000;font-size: 25px; font-family: Inter; font-weight: 600;">+7 (965) 264-00-19</p>
+    <div class="values">
+        <div class="values-info">
+            <div class="values-info-block">
+                <h2>10+</h2>
+                <p>лет на рынке</p>
             </div>
-        </div>
-        <div class="mail-info">
-            <div class="mail-info-block">
-                <p>Или напишите нам на почту:</p>
-                <p style="color: #e40000;font-size: 25px; font-family: Inter; font-weight: 600;">ivanovo@cherdaq.ru</p>
+            <div class="values-info-block">
+                <h2>1000+</h2>
+                <p>довольных клиентов</p>
+            </div>
+            <div class="values-info-block">
+                <h2>1000+</h2>
+                <p>качественных товаров</p>
+            </div>
+            <div class="values-info-block">
+                <h2>10+</h2>
+                <p>производителей</p>
             </div>
         </div>
     </div>
 
   <!-- ══════════ PAYMENT ══════════ -->
-  <section class="payment-section">
+  <section class="why-choose">
     <div class="container">
-      <h2>ВЫ МОЖЕТЕ ОПЛАТИТЬ ЗАКАЗ<br><span style="
+      <h2>почему<br><span style="
                       color: rgba(0, 0, 0, 0.4);
                       padding-left: 84px;
-                      font-style: italic;">ЛЮБЫМ УДОБНЫМ СПОСОБОМ</span></h2>
+                      font-style: italic;">выбирают нас</span></h2>
 
-      <div class="payment-cards">
-        <!-- Для юр. лиц -->
-        <div class="payment-card">
-          <h3>Для юридических лиц</h3>
-          <ul>
-            <li>Безналичный расчет по счету. Мы выставляем счет с подробной спецификацией. Оплата осуществляется с расчетного счета компании на наш счет. Работаем с НДС и без НДС.</li>
-            <li>Постоплата по договору. Для постоянных партнеров и крупных проектов предусмотрены индивидуальные условия по отсрочке платежа.</li>
-          </ul>
+      <div class="values">
+        <div class="values-info">
+            <div class="values-info-block">
+                <p><span style="color: #e40000; font-style: italic; font-weight: 600;">Выгодные цены без компромиссов в качестве.</span> Мы работаем напрямую с производителями, минимизируем издержки и предлагаем вам действительно лучшие условия на рынке.</p>
+            </div>
+            <div class="values-info-block">
+                <p><span style="color: #e40000; font-style: italic; font-weight: 600;">Широчайший ассортимент 
+«под ключ».</span> От фундамента до конька крыши. У нас есть все: 
+от крепежа и изоляции до готовых фасадных систем и элементов безопасности.</p>
+            </div>
+            <div class="values-info-block">
+                <p><span style="color: #e40000; font-style: italic; font-weight: 600;">Профессиональные консультации.</span> Наши специалисты — практики
+с глубокими знаниями. Мы поможем подобрать материалы для вашей конкретной задачи, климата и бюджета.</p>
+            </div>
+            <div class="values-info-block">
+                <p><span style="color: #e40000; font-style: italic; font-weight: 600;">Четкая логистика и отлаженные поставки.</span> Мы ценим ваше время. Гибкие условия доставки, собственный или проверенный транспорт, оперативный самовывоз.</p>
+            </div>
+            <div class="values-info-block">
+                <p><span style="color: #e40000; font-style: italic; font-weight: 600;">Гарантии и ответственность.</span> Мы поставляем только сертифицированные материалы
+и предоставляем на них все гарантии производителей.</p>
+            </div>
         </div>
-
-        <!-- Для физ. лиц -->
-        <div class="payment-card">
-          <h3>Для физических лиц</h3>
-          <ul>
-            <li>Наличными или картой при получении заказа на складе (самовывоз) или курьеру (при доставке по городу).</li>
-            <li>Безналичный расчет по счету для индивидуальных предпринимателей или по предоплате для резервирования позиций.</li>
-          </ul>
-        </div>
-      </div>
     </div>
-  </section>
-
-  <!-- ══════════ DELIVERY ══════════ -->
-  <section class="delivery-section">
-    <div class="container">
-      <h2>ДОСТАВЛЯЕМ<br><span style="
-                      color: rgba(0, 0, 0, 0.4);
-                      padding-left: 84px;
-                      font-style: italic;">ПО ВСЕМУ РЕГИОНУ</span></h2>
-
-      <div class="delivery-block">
-        <h3 style="font-style: italic;">Самовывоз со склада (Бесплатно)</h3>
-        <ul>
-          <li>Адрес склада: г. Иваново, ул. Парижской коммуны, 147.</li>
-          <li>Режим работы склада: Пн-Пт: с 8:00 до 18:00, Сб: с 9:00 до 15:00.</li>
-          <li>Что нужно: Предварительно оформить заказ и дождаться подтверждения о его готовности к выдаче. При себе необходимо иметь номер заказа и паспорт.</li>
-          <li>Погрузка: Мы бесплатно помогаем с погрузкой материалов на ваш транспорт с помощью профессиональной техники (автопогрузчик).</li>
-        </ul>
-
-        <div class="delivery-sub">
-          <h4 style="font-style: italic;">Доставка нашим транспортом по Иваново</h4>
-          <ul>
-            <li><b>Стоимость:</b> Зависит от зоны доставки и габаритов груза. Рассчитывается индивидуально менеджером.</li>
-            <li><b>Тарифы:</b> по городу Иваново — 500руб., по области — от 2500 руб.</li>
-            <li><b>Сроки:</b> Доставка осуществляется в течение 1-2 рабочих дней после подтверждения заказа и готовности товара. Возможна доставка в день заказа (при условии оформления до 12:00).</li>
-          </ul>
-        </div>
-      </div>
     </div>
   </section>
 

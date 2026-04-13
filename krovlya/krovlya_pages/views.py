@@ -1,4 +1,6 @@
 from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
+from .models import Category, Product
 
 def main(request):
     return render(request, "main.html")
@@ -15,8 +17,6 @@ def service(request):
 def delivery(request):
     return render(request, "delivery.html")
 
-from django.shortcuts import render, get_object_or_404
-from .models import Category, Product
 
 
 def product_list(request, category_slug=None):

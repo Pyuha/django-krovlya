@@ -281,6 +281,23 @@ header .contact-details a:hover{
     text-align: left;
 }
 
+.h1-title p{
+    width: 630px;
+    font-family: "Inter";
+    font-size: 19.81px;
+    font-weight: 400;
+    line-height: 105%;
+    letter-spacing: -2%;
+    text-align: left;
+}
+
+.hero {
+    display: inline-flex;
+    width: 1440px;
+    justify-content: center;
+    margin-bottom: 110px;
+}
+
 .header-catalog {
     display: inline-flex;
     justify-content: left;
@@ -293,7 +310,7 @@ header .contact-details a:hover{
 }
 
 .header-catalog p {
-    width: 446px;
+    width: 284px;
     font-size: 16px;
 }
 
@@ -302,7 +319,7 @@ header .contact-details a:hover{
     font-size: 40px;
     text-transform: uppercase;
     font-family: "Inter";
-    font-weight: 700;
+    font-weight: 600;
     width:fit-content;
 }
 
@@ -426,6 +443,151 @@ header .contact-details a:hover{
     width: 43px;
     height: 43px;
 }
+
+.payment-section {
+    width: 1440px;
+    height: fit-content;
+}
+
+.payment-section .container h2{
+    margin: 0px;
+    font-size: 40px;
+    text-transform: uppercase;
+    font-family: "Inter";
+    font-weight: 600;
+    width:fit-content;
+}
+
+.payment-section .container .payment-cards {
+    width: 1440px;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 40px;
+}
+
+.payment-section .container .payment-cards .payment-card {
+    width: 670px;
+    font-size: 20px;
+    flex: 1;
+    position: relative;           /* важно для позиционирования полосы */
+    padding-left: 32px;           /* отступ текста от красной полосы */
+    padding-top: 8px;
+    padding-bottom: 8px;
+
+}
+
+.payment-section .payment-card::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 30px;                    
+  bottom: 30px;                  
+  width: 11px;                   
+  background-color: #E40000;    
+  border-radius: 9999px;        
+}
+
+
+.payment-section .container .payment-cards .payment-card li{
+    margin-bottom: 15px;
+}
+
+.delivery-section {
+    width: 1440px;
+    height: fit-content;
+    font-size: 20px;
+}
+
+.delivery-section h2 {
+    margin: 0px;
+    font-size: 40px;
+    text-transform: uppercase;
+    font-family: "Inter";
+    font-weight: 600;
+    width:fit-content;
+}
+
+.values {
+    width: 1440px;
+    height: fit-content;
+    margin-bottom: 100px;
+}
+
+.values-info {
+    display: flex;
+    gap: 24px;                 /* расстояние между карточками */
+    justify-content: center;   /* центрирование на широких экранах */
+    flex-wrap: wrap;           /* если экран узкий — карточки переносятся */
+}
+
+.values-info-block {
+    flex: 1;                   /* все карточки одинаковой ширины */
+    min-width: 220px;          /* минимальная ширина карточки */
+    background: #f8f8f8;       /* светло-серый фон как на скриншоте */
+    border-radius: 16px;       /* скруглённые углы */
+    padding: 32px 24px;
+    text-align: left;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03); /* лёгкая тень для объёма */
+    transition: transform 0.2s ease;
+}
+
+.values-info-block h2 {
+    margin: 0 0 8px 0;
+    font-size: 60px;
+    font-weight: 700;
+    color: #E40000;            /* красный цвет цифр */
+    line-height: 1;
+}
+
+.values-info-block p {
+    margin: 0;
+    font-size: 1.1rem;
+    color: #000000;
+    font-weight: 500;
+}
+
+.why-choose .container {
+    height: fit-content;
+}
+
+.why-choose h2 {
+    margin: 0px;
+    font-size: 40px;
+    text-transform: uppercase;
+    font-family: "Inter";
+    font-weight: 600;
+    width:fit-content;
+}
+
+.why-choose .values .values-info {
+    width: 1440px;
+    height: fit-content;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    justify-content: center;        /* ← вот главное исправление */
+    margin: 0 auto;
+    margin-top: 50px;
+}
+
+.why-choose .values .values-info .values-info-block {
+    background-color: #F0F0F0;
+    min-width: 340px;               /* минимальная ширина карточки */
+    max-width: 380px; 
+    border-radius: 38px;
+    text-align: left center;
+}
+
+.why-choose .values p {
+    margin: 0px;
+    padding: 10px;
+    font-size: 20px;
+    font-family: "Inter";
+    font-weight: 400;
+    width: fit-content;
+}
+
+
 
 .inter {
     display: inline-flex;
