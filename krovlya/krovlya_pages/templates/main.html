@@ -47,20 +47,20 @@
       <a url="####">Свяжитесь с нами</a>
     </div>
   </header>
-
+ 
   <div class="main-menu">
     <ul>
-      <li style="background-color: #e40000">
-        <img src="../static/image/More_Grid_Big.svg" style="padding-right: 5px" />Каталог товаров
-      </li>
+      <li style="background-color: #e40000"><a href="{% url 'krovlya_pages:product_list' %}">
+        <img src="../static/image/More_Grid_Big.svg" style="padding-right: 5px" />Каталог товаров</a></li>
       <li><a href="contacts/">Акции</a></li>
-      <li><a href="{% url 'business' %}">Для бизнеса</a></li>
-      <li><a href="{% url 'service' %}">Услуги</a></li>
-      <li><a href="{% url 'delivery' %}">Доставка и оплата</a></li>
+      <li><a href="{% url 'krovlya_pages:business' %}">Для бизнеса</a></li>
+      <li><a href="{% url 'krovlya_pages:service' %}">Услуги</a></li>
+      <li><a href="{% url 'krovlya_pages:delivery' %}">Доставка и оплата</a></li>
       <li><a href="contacts/">О нас</a></li>
-      <li><a href="{% url 'contacts' %}">Контакты</a></li>
+      <li><a href="{% url 'krovlya_pages:contacts' %}">Контакты</a></li>
     </ul>
   </div>
+  {% block content %}
   <div class="main-offer">
     <div class="text-offer">
       <div class="text">
@@ -196,6 +196,7 @@
       <img src="../static/image/image-comp.png">
     </div>
   </div>
+  {% endblock %}
   <footer>
     <div class="footer-content">
       <div class="logo-down">

@@ -1,0 +1,112 @@
+{% extends 'main.html' %}
+
+{% block content %}
+<div class="catalog-container">
+    <h1>Каталог товаров</h1>
+
+    <div class="catalog-layout">
+        <!-- ===== БОКОВАЯ ПАНЕЛЬ ФИЛЬТРОВ ===== -->
+        <aside class="filters-sidebar">
+            <h3>Фильтры</h3>
+
+            <form method="get" action="{% url 'krovlya_pages:product_list' %}">
+                <!-- Поиск -->
+                <div class="filter-group">
+                    <label>Поиск:</label>
+                    <input type="text" name="search" value="{{ search }}" placeholder="Название товара...">
+                </div>
+
+                <!-- Цена -->
+                <div class="filter-group">
+                    <label>Цена:</label>
+                    <input type="number" name="min_price" value="{{ min_price }}" placeholder="От">
+                    <input type="number" name="max_price" value="{{ max_price }}" placeholder="До">
+                </div>
+
+                <!-- Наличие -->
+                <div class="filter-group">
+                    <label>
+                        <input type="checkbox" name="in_stock" value="1"
+                               {% if in_stock %}checked{% endif %}>
+                        Только в наличии
+                    </label>
+                </div>
+
+                <!-- Сортировка -->
+                <div class="filter-group">
+                    <label>Сортировка:</label>
+                    <select name="sort">
+                        <option value="name" {% if current_sort == 'name' %}selected{% endif %}>
+                            По названию (А-Я)
+                        </option>
+                        <option value="-name" {% if current_sort == '-name' %}selected{% endif %}>
+                            По названию (Я-А)
+                        </option>
+                        <option value="price" {% if current_sort == 'price' %}selected{% endif %}>
+                            Сначала дешёвые
+                        </option>
+                        <option value="-price" {% if current_sort == '-price' %}selected{% endif %}>
+                            Сначала дорогие
+                        </option>
+                        <option value="-created" {% if current_sort == '-created' %}selected{% endif %}>
+                            Новинки
+                        </option>
+                    </select>
+                </div>
+
+                <button type="submit" class="btn-filter">Применить</button>
+                <a href="{% url 'krovlya_pages:product_list' %}" class="btn-reset">Сбросить</a>
+            </form>
+
+            <!-- Категории -->
+            <h3>Категории</h3>
+            <ul class="category-list">
+                <li {% if not category %}class="active"{% endif %}>
+                    <a href="{% url 'krovlya_pages:product_list' %}">Все</a>
+                </li>
+                {% for c in categories %}
+                <li {% if category.slug == c.slug %}class="active"{% endif %}>
+                    <a href="{% url 'krovlya_pages:product_list_by_category' c.slug %}">
+                        {{ c.name }}
+                    </a>
+                </li>
+                {% endfor %}
+            </ul>
+        </aside>
+
+        <!-- ===== СЕТКА ТОВАРОВ ===== -->
+        <div class="products-grid">
+            {% if category %}
+                <h2>{{ category.name }}</h2>
+            {% endif %}
+
+            {% if products %}
+                <div class="grid">
+                    {% for product in products %}
+                    <div class="product-card">
+                        <a href="{% url 'krovlya_pages:product_detail' product.id product.slug %}">
+                            {% if product.image %}
+                                <img src="{{ product.image.url }}" alt="{{ product.name }}">
+                            {% else %}
+                                <img src="https://via.placeholder.com/300x200?text=Нет+фото" alt="Нет фото">
+                            {% endif %}
+                            <h3>{{ product.name }}</h3>
+                        </a>
+                        <p class="price">{{ product.price }} ₽</p>
+                        <p class="stock">
+                            {% if product.stock > 0 %}
+                                В наличии: {{ product.stock }} шт.
+                            {% else %}
+                                <span class="out-of-stock">Нет в наличии</span>
+                            {% endif %}
+                        </p>
+                    </div>
+                    {% endfor %}
+                </div>
+            {% else %}
+                <p>Товары не найдены.</p>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}
