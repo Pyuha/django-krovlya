@@ -1,65 +1,50 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 {% load static %}
 <html lang="ru">
 
 <head>
   <meta charset="UTF-8" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="{% static 'css/main.css' %}" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <script src="https://api-maps.yandex.ru/v3/?apikey=07c03977-7223-49af-a013-b45135acdd49&lang=ru_RU"></script>
-  <script>
-    initMap();
-
-    async function initMap() {
-      await ymaps3.ready;
-
-      const { YMap, YMapDefaultSchemeLayer } = ymaps3;
-
-      const map = new YMap(document.getElementById("map"), {
-        location: {
-          center: [57.0004148, 40.8960315],
-          zoom: 50,
-        },
-      });
-
-      map.addChild(new YMapDefaultSchemeLayer({}));
-    }
-  </script>
   <title>Кровля и Фасады | Иваново</title>
 </head>
 
 <body>
   <header>
-    <img id="logo" src="/static/image/лого.svg" />
+    <img id="logo" src="{% static 'image/logo.svg' %}" />
     <div class="contact-details">
       <div class="phone">
-        <img src="/static/image/Phone.svg" alt="" />
+        <img src="{% static 'image/Phone.svg' %}" alt="" />
         <p>+7 (900) 555-33-22</p>
       </div>
       <div class="email">
-        <img src="/static/image/Mail.svg" alt="" />
+        <img src="{% static 'image/Mail.svg' %}" alt="" />
         <p>krovlya@mail.ru</p>
       </div>
-      <a url="####">Свяжитесь с нами</a>
+      <a href="#">Свяжитесь с нами</a>
     </div>
   </header>
- 
+
   <div class="main-menu">
     <ul>
-      <li style="background-color: #e40000"><a href="{% url 'krovlya_pages:product_list' %}">
-        <img src="../static/image/More_Grid_Big.svg" style="padding-right: 5px" />Каталог товаров</a></li>
-      <li><a href="contacts/">Акции</a></li>
+      <li style="background-color: #e40000">
+        <a href="{% url 'krovlya_pages:product_list' %}">
+          <img src="{% static 'image/More_Grid_Big.svg' %}" style="padding-right: 5px" />Каталог товаров
+        </a>
+      </li>
+      <li><a href="#">Акции</a></li>
       <li><a href="{% url 'krovlya_pages:business' %}">Для бизнеса</a></li>
       <li><a href="{% url 'krovlya_pages:service' %}">Услуги</a></li>
       <li><a href="{% url 'krovlya_pages:delivery' %}">Доставка и оплата</a></li>
-      <li><a href="contacts/">О нас</a></li>
+      <li><a href="{% url 'krovlya_pages:about' %}">О нас</a></li>
       <li><a href="{% url 'krovlya_pages:contacts' %}">Контакты</a></li>
     </ul>
   </div>
+
   {% block content %}
   <div class="main-offer">
     <div class="text-offer">
@@ -67,52 +52,46 @@
         <h1>
           Надёжная кровля<br />
           и стильный фасад<br />
-          для вашего дома</span>
+          для вашего дома
         </h1>
-        <a href="####">Посмотреть весь ассортимент<div class="img"></div></a>
+        <a href="{% url 'krovlya_pages:product_list' %}">Посмотреть весь ассортимент<div class="img"></div></a>
       </div>
     </div>
   </div>
+
   <div class="advantages">
     <div class="adv-bubbles">
       <div class="adv" id="1">
-        <img src="../static/image/tick.svg" />
+        <img src="{% static 'image/tick.svg' %}" />
         <p>Работаем напрямую с производителем</p>
       </div>
       <div class="adv" id="2">
-        <img src="../static/image/tick.svg" />
+        <img src="{% static 'image/tick.svg' %}" />
         <p>Сжатые сроки доставки</p>
       </div>
       <div class="adv" id="3">
-        <img src="../static/image/tick.svg" />
+        <img src="{% static 'image/tick.svg' %}" />
         <p>Цены ниже конкурентов</p>
       </div>
       <div class="adv" id="4">
-        <img src="../static/image/tick.svg" />
+        <img src="{% static 'image/tick.svg' %}" />
         <p>Высокое качество всей продукции</p>
       </div>
     </div>
   </div>
-  <secton class="catalog">
+
+  <section class="catalog">
     <div class="header-catalog">
       <div class="header-catalog-text">
         <p>Категории</p>
-        <p style="
-                      color: rgba(0, 0, 0, 0.4);
-                      padding-left: 84px;
-                      font-style: italic;
-                    ">
-          товаров
-        </p>
+        <p style="color: rgba(0, 0, 0, 0.4); padding-left: 84px; font-style: italic;">товаров</p>
       </div>
       <p>
         Мы собрали всё необходимое для качественной кровли и эффектной отделки
         фасада. Наши материалы — это проверенная временем защита, эстетика и
         комфорт для вашего дома.
       </p>
-      <a href="d">Все товары
-        <div class="img"></div>
-      </a>
+      <a href="{% url 'krovlya_pages:product_list' %}">Все товары<div class="img"></div></a>
     </div>
     <div class="pannel-catalog">
       <div class="pannel-catalog-bottom" id="first">
@@ -147,9 +126,7 @@
       </div>
       <div class="pannel-catalog-bottom" id="seven">
         <div class="description">
-          <a>
-            Мансардные окна <br />и чердачные лестницы<div class="img"></div>
-          </a>
+          <a>Мансардные окна <br />и чердачные лестницы<div class="img"></div></a>
         </div>
       </div>
       <div class="pannel-catalog-bottom" id="eight">
@@ -158,14 +135,12 @@
         </div>
       </div>
     </div>
-  </secton>
+  </section>
+
   <div class="how-to-connect">
     <div class="leyout">
       <div class="text">
-        <h2>
-          Нужна
-          <span style="color: #e40000; font-style: italic">консультация?</span>
-        </h2>
+        <h2>Нужна <span style="color: #e40000; font-style: italic">консультация?</span></h2>
         <p>
           Свяжитесь с нами любым удобным способом —
           <span style="font-family: InterBold">по телефону или в мессенджерах</span>. Наши менеджеры помогут подобрать
@@ -176,40 +151,36 @@
         </p>
       </div>
       <div class="social-connect">
-        <a href="###">Позвоните по номеру: +790546854865</a>
-        <a href="###" style="background-color: rgba(60, 64, 71, 1)">Связаться в<img src="../static/image/vk-logo.png"/></a>
+        <a href="#">Позвоните по номеру: +790546854865</a>
+        <a href="#" style="background-color: rgba(60, 64, 71, 1)">Связаться в<img src="{% static 'image/vk-logo.png' %}"/></a>
       </div>
     </div>
   </div>
+
   <div class="working-with">
     <div class="text">
       <h2>Работаем</h2>
-      <h2 style="
-            color: rgba(0, 0, 0, 0.4);
-            padding-left: 70px;
-            font-style: italic;
-          ">
-        со многими производителями
-      </h2>
+      <h2 style="color: rgba(0, 0, 0, 0.4); padding-left: 70px; font-style: italic;">со многими производителями</h2>
     </div>
     <div class="image-comp">
-      <img src="../static/image/image-comp.png">
+      <img src="{% static 'image/image-comp.png' %}">
     </div>
   </div>
   {% endblock %}
+
   <footer>
     <div class="footer-content">
       <div class="logo-down">
-        <img src="../static/image/logo-light.svg" alt="" />
+        <img src="{% static 'image/logo-light.svg' %}" alt="" />
         <p>Адрес: ул. Парижской Коммуны, 147</p>
       </div>
       <ul>
-        <li><a>Каталог товаров</a></li>
-        <li><a>Акции</a></li>
-        <li><a src="business/">Для бизнеса</a></li>
-        <li><a>Услуги</a></li>
-        <li><a>Доставка и оплата</a></li>
-        <li><a>О нас</a></li>
+        <li><a href="{% url 'krovlya_pages:product_list' %}">Каталог товаров</a></li>
+        <li><a href="#">Акции</a></li>
+        <li><a href="{% url 'krovlya_pages:business' %}">Для бизнеса</a></li>
+        <li><a href="{% url 'krovlya_pages:service' %}">Услуги</a></li>
+        <li><a href="{% url 'krovlya_pages:delivery' %}">Доставка и оплата</a></li>
+        <li><a href="{% url 'krovlya_pages:about' %}">О нас</a></li>
       </ul>
       <div class="map" style="border-radius: 30px">
         <iframe

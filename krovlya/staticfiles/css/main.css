@@ -124,6 +124,8 @@ header .contact-details a:hover{
 .main-menu ul li a {
     text-decoration: none;
     color: white;
+    display: flex;
+    align-items: center;
 }
 
 .main-menu ul li:hover{

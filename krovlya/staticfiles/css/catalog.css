@@ -1,0 +1,393 @@
+/* ===== ОБЩИЕ СТИЛИ (скопируйте из main.css шапку/футер или импортируйте) ===== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #fff;
+}
+
+/* --- HEADER --- */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 60px;
+}
+
+header #logo {
+    height: 50px;
+}
+
+header .contact-details {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+header .contact-details .phone,
+header .contact-details .email {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+header .contact-details a {
+    background-color: #e40000;
+    color: #fff;
+    padding: 12px 24px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+/* --- MENU --- */
+.main-menu {
+    background-color: #3C4047;
+    padding: 0 60px;
+}
+
+.main-menu ul {
+    display: flex;
+    list-style: none;
+    gap: 0;
+}
+
+.main-menu ul li {
+    padding: 14px 20px;
+}
+
+.main-menu ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+}
+
+/* --- ХЛЕБНЫЕ КРОШКИ --- */
+.nav-list {
+    padding: 20px 60px 0;
+}
+
+.breadcrumb {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+}
+
+.breadcrumb a {
+    color: #888;
+    text-decoration: none;
+}
+
+.breadcrumb li:last-child a {
+    color: #333;
+}
+
+.breadcrumb img {
+    width: 12px;
+    height: 12px;
+}
+
+/* --- ЗАГОЛОВОК КАТАЛОГА --- */
+.catalog-title {
+    padding: 20px 60px 30px;
+}
+
+.catalog-title h1 {
+    font-size: 48px;
+    font-weight: 700;
+    color: #000;
+}
+
+/* ===== ОСНОВНАЯ ОБЁРТКА КАТАЛОГА ===== */
+.catalog-wrapper {
+    display: flex;
+    gap: 40px;
+    padding: 0 60px 60px;
+    align-items: flex-start;
+}
+
+/* --- САЙДБАР --- */
+.catalog-sidebar {
+    width: 220px;
+    flex-shrink: 0;
+}
+
+.sidebar-section {
+    margin-bottom: 30px;
+}
+
+.sidebar-section h3 {
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 12px;
+    color: #000;
+}
+
+.sidebar-categories {
+    list-style: none;
+}
+
+.sidebar-categories li {
+    margin-bottom: 8px;
+}
+
+.sidebar-categories a {
+    text-decoration: none;
+    color: #333;
+    font-size: 14px;
+    transition: color 0.2s;
+}
+
+.sidebar-categories a:hover,
+.sidebar-categories a.active {
+    color: #e40000;
+    text-decoration: underline;
+}
+
+/* Чекбоксы производителей */
+.manufacturer-filter {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.checkbox-label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    cursor: pointer;
+    color: #333;
+}
+
+.checkbox-label input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    accent-color: #e40000;
+    cursor: pointer;
+}
+
+/* --- СЕТКА ТОВАРОВ --- */
+.catalog-grid-wrapper {
+    flex: 1;
+}
+
+.catalog-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+}
+
+/* --- КАРТОЧКА ТОВАРА --- */
+.product-card {
+    display: flex;
+    flex-direction: column;
+}
+
+.product-card a {
+    text-decoration: none;
+}
+
+.product-card .product-image {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    border-radius: 16px;
+    background-color: #f0f0f0;
+    display: block;
+}
+
+.product-image-placeholder {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    background-color: #d9d9d9;
+    border-radius: 16px;
+}
+
+.product-info {
+    padding: 10px 0;
+}
+
+.product-name {
+    font-size: 15px;
+    font-weight: 600;
+    color: #000;
+    margin-bottom: 4px;
+}
+
+.product-description {
+    font-size: 13px;
+    color: #888;
+}
+
+.no-products {
+    grid-column: 1 / -1;
+    text-align: center;
+    font-size: 18px;
+    color: #999;
+    padding: 40px 0;
+}
+
+/* --- ПАГИНАЦИЯ --- */
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    margin-top: 40px;
+    padding-bottom: 20px;
+}
+
+.page-num {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+    font-size: 16px;
+    font-weight: 500;
+    color: #333;
+    text-decoration: none;
+    transition: all 0.2s;
+}
+
+.page-num:hover {
+    border-color: #e40000;
+    color: #e40000;
+}
+
+.page-num.active {
+    border-color: #e40000;
+    color: #e40000;
+    font-weight: 700;
+}
+
+.page-arrow {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    color: #333;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.page-arrow:hover {
+    color: #e40000;
+}
+
+/* ===== БЛОК КОНСУЛЬТАЦИИ ===== */
+.how-to-connect-block {
+    background-color: #EDEDED;
+    padding: 60px;
+    margin: 0 60px 60px;
+    border-radius: 30px;
+}
+
+.how-to-connect-block .leyout {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 40px;
+}
+
+.how-to-connect-block .text {
+    max-width: 550px;
+}
+
+.how-to-connect-block .text h2 {
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 16px;
+}
+
+.how-to-connect-block .text p {
+    font-size: 14px;
+    line-height: 1.6;
+    color: #333;
+}
+
+.social-connect {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.social-connect a {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 14px 24px;
+    border-radius: 50px;
+    background-color: #e40000;
+    color: #fff;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.social-connect a img {
+    height: 20px;
+}
+
+/* ===== FOOTER ===== */
+footer {
+    background-color: #3C4047;
+    padding: 40px 60px;
+    color: #fff;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 40px;
+}
+
+.footer-content .logo-down img {
+    height: 40px;
+    margin-bottom: 12px;
+}
+
+.footer-content .logo-down p {
+    font-size: 13px;
+    color: #aaa;
+}
+
+.footer-content ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.footer-content ul li a {
+    color: #ccc;
+    text-decoration: none;
+    font-size: 14px;
+    transition: color 0.2s;
+}
+
+.footer-content ul li a:hover {
+    color: #fff;
+}
+
+.footer-content .map iframe {
+    border-radius: 16px;
+}

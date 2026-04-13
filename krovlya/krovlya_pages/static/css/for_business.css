@@ -623,6 +623,7 @@ header .contact-details a:hover{
     margin-top: 50px;
     margin-bottom: 100px;
 }
+
 .inter-block .inter-block-pannel {
     width: 452px;
     height: 202px;
@@ -631,15 +632,17 @@ header .contact-details a:hover{
     display: flex;
     flex-direction: column;
     justify-content: center;
+    position: relative;          
 }
 
 .inter-block .inter-block-pannel > img{
     position: absolute;
-  left: 40px;
-  width: 38px;
-  height: auto;
-  z-index: 1;
-  margin-top: 0px;
+    left: 40px;
+    width: 38px;
+    height: auto;
+    z-index: 1;
+    top: 0;
+    margin-top: 0px;
 }
 
 .inter-block .inter-block-pannel h1{

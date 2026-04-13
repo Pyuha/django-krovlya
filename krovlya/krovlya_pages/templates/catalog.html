@@ -1,112 +1,199 @@
-{% extends 'main.html' %}
+﻿<!DOCTYPE html>
+{% load static %}
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/catalog.css' %}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Кровля и Фасады | {% if category %}{{ category.name }}{% else %}Каталог{% endif %}</title>
+</head>
+<body>
+    <header>
+        <img id="logo" src="{% static 'image/logo.svg' %}">
+        <div class="contact-details">
+            <div class="phone">
+                <img src="{% static 'image/Phone.svg' %}" alt="">
+                <p>+7 (900) 555-33-22</p>
+            </div>
+            <div class="email">
+                <img src="{% static 'image/Mail.svg' %}" alt="">
+                <p>krovlya@mail.ru</p>
+            </div>
+            <a href="#">Свяжитесь с нами</a>
+        </div>
+    </header>
 
-{% block content %}
-<div class="catalog-container">
-    <h1>Каталог товаров</h1>
+    <div class="main-menu">
+        <ul>
+            <li style="background-color: #e40000">
+                <a href="{% url 'krovlya_pages:product_list' %}" style="display: flex; align-items: center;">
+                    <img src="{% static 'image/More_Grid_Big.svg' %}" style="padding-right: 5px;">
+                    Каталог товаров
+                </a>
+            </li>
+            <li><a href="#">Акции</a></li>
+            <li><a href="{% url 'krovlya_pages:business' %}">Для бизнеса</a></li>
+            <li><a href="{% url 'krovlya_pages:service' %}">Услуги</a></li>
+            <li><a href="{% url 'krovlya_pages:delivery' %}">Доставка и оплата</a></li>
+            <li><a href="{% url 'krovlya_pages:about' %}">О нас</a></li>
+            <li><a href="{% url 'krovlya_pages:contacts' %}">Контакты</a></li>
+        </ul>
+    </div>
 
-    <div class="catalog-layout">
-        <!-- ===== БОКОВАЯ ПАНЕЛЬ ФИЛЬТРОВ ===== -->
-        <aside class="filters-sidebar">
-            <h3>Фильтры</h3>
+    <!-- Хлебные крошки -->
+    <div class="nav-list">
+        <ul class="breadcrumb">
+            <li><a href="{% url 'krovlya_pages:main' %}">Главная</a></li>
+            <li><img src="{% static 'image/Arrow-right.svg' %}"></li>
+            <li><a href="{% url 'krovlya_pages:product_list' %}">Каталог</a></li>
+            {% if category %}
+                <li><img src="{% static 'image/Arrow-right.svg' %}"></li>
+                <li><a href="{{ category.get_absolute_url }}">{{ category.name }}</a></li>
+            {% endif %}
+        </ul>
+    </div>
 
-            <form method="get" action="{% url 'krovlya_pages:product_list' %}">
-                <!-- Поиск -->
-                <div class="filter-group">
-                    <label>Поиск:</label>
-                    <input type="text" name="search" value="{{ search }}" placeholder="Название товара...">
-                </div>
+    <!-- Заголовок -->
+    <div class="catalog-title">
+        <h1>{% if category %}{{ category.name }}{% else %}Каталог{% endif %}</h1>
+    </div>
 
-                <!-- Цена -->
-                <div class="filter-group">
-                    <label>Цена:</label>
-                    <input type="number" name="min_price" value="{{ min_price }}" placeholder="От">
-                    <input type="number" name="max_price" value="{{ max_price }}" placeholder="До">
-                </div>
+    <!-- Основной контент -->
+    <div class="catalog-wrapper">
 
-                <!-- Наличие -->
-                <div class="filter-group">
-                    <label>
-                        <input type="checkbox" name="in_stock" value="1"
-                               {% if in_stock %}checked{% endif %}>
-                        Только в наличии
-                    </label>
-                </div>
-
-                <!-- Сортировка -->
-                <div class="filter-group">
-                    <label>Сортировка:</label>
-                    <select name="sort">
-                        <option value="name" {% if current_sort == 'name' %}selected{% endif %}>
-                            По названию (А-Я)
-                        </option>
-                        <option value="-name" {% if current_sort == '-name' %}selected{% endif %}>
-                            По названию (Я-А)
-                        </option>
-                        <option value="price" {% if current_sort == 'price' %}selected{% endif %}>
-                            Сначала дешёвые
-                        </option>
-                        <option value="-price" {% if current_sort == '-price' %}selected{% endif %}>
-                            Сначала дорогие
-                        </option>
-                        <option value="-created" {% if current_sort == '-created' %}selected{% endif %}>
-                            Новинки
-                        </option>
-                    </select>
-                </div>
-
-                <button type="submit" class="btn-filter">Применить</button>
-                <a href="{% url 'krovlya_pages:product_list' %}" class="btn-reset">Сбросить</a>
-            </form>
-
+        <!-- САЙДБАР -->
+        <aside class="catalog-sidebar">
             <!-- Категории -->
-            <h3>Категории</h3>
-            <ul class="category-list">
-                <li {% if not category %}class="active"{% endif %}>
-                    <a href="{% url 'krovlya_pages:product_list' %}">Все</a>
-                </li>
-                {% for c in categories %}
-                <li {% if category.slug == c.slug %}class="active"{% endif %}>
-                    <a href="{% url 'krovlya_pages:product_list_by_category' c.slug %}">
-                        {{ c.name }}
-                    </a>
-                </li>
-                {% endfor %}
-            </ul>
+            <div class="sidebar-section">
+                <h3>Категория</h3>
+                <ul class="sidebar-categories">
+                    {% if subcategories %}
+                        {% for sub in subcategories %}
+                            <li>
+                                <a href="{{ sub.get_absolute_url }}">› {{ sub.name }}</a>
+                            </li>
+                        {% endfor %}
+                    {% else %}
+                        {% for cat in categories %}
+                            <li>
+                                <a href="{{ cat.get_absolute_url }}" {% if category and category.slug == cat.slug %}class="active"{% endif %}>
+                                    › {{ cat.name }}
+                                </a>
+                            </li>
+                        {% endfor %}
+                    {% endif %}
+                </ul>
+            </div>
+
+            <!-- Производители -->
+            <div class="sidebar-section">
+                <h3>Производители</h3>
+                <form method="get" action="" class="manufacturer-filter">
+                    {% if category %}
+                        <!-- сохраняем текущую категорию -->
+                    {% endif %}
+                    {% for m in manufacturers %}
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="manufacturer" value="{{ m.slug }}"
+                                {% if m.slug in selected_manufacturers %}checked{% endif %}
+                                onchange="this.form.submit()">
+                            {{ m.name }}
+                        </label>
+                    {% endfor %}
+                </form>
+            </div>
         </aside>
 
-        <!-- ===== СЕТКА ТОВАРОВ ===== -->
-        <div class="products-grid">
-            {% if category %}
-                <h2>{{ category.name }}</h2>
-            {% endif %}
-
-            {% if products %}
-                <div class="grid">
-                    {% for product in products %}
+        <!-- СЕТКА ТОВАРОВ -->
+        <div class="catalog-grid-wrapper">
+            <div class="catalog-grid">
+                {% for product in products %}
                     <div class="product-card">
-                        <a href="{% url 'krovlya_pages:product_detail' product.id product.slug %}">
+                        <a href="{{ product.get_absolute_url }}">
                             {% if product.image %}
-                                <img src="{{ product.image.url }}" alt="{{ product.name }}">
+                                <img src="{{ product.image.url }}" alt="{{ product.name }}" class="product-image">
                             {% else %}
-                                <img src="https://via.placeholder.com/300x200?text=Нет+фото" alt="Нет фото">
+                                <div class="product-image-placeholder"></div>
                             {% endif %}
-                            <h3>{{ product.name }}</h3>
                         </a>
-                        <p class="price">{{ product.price }} ₽</p>
-                        <p class="stock">
-                            {% if product.stock > 0 %}
-                                В наличии: {{ product.stock }} шт.
-                            {% else %}
-                                <span class="out-of-stock">Нет в наличии</span>
-                            {% endif %}
-                        </p>
+                        <div class="product-info">
+                            <p class="product-name">{{ product.name }}</p>
+                            <p class="product-description">{{ product.description|truncatewords:5 }}</p>
+                        </div>
                     </div>
+                {% empty %}
+                    <p class="no-products">Товары не найдены.</p>
+                {% endfor %}
+            </div>
+
+            <!-- ПАГИНАЦИЯ -->
+            {% if page_obj.paginator.num_pages > 1 %}
+                <div class="pagination">
+                    {% if page_obj.has_previous %}
+                        <a href="?page={{ page_obj.previous_page_number }}{% for m in selected_manufacturers %}&manufacturer={{ m }}{% endfor %}" class="page-arrow">←</a>
+                    {% endif %}
+
+                    {% for num in page_obj.paginator.page_range %}
+                        {% if page_obj.number == num %}
+                            <span class="page-num active">{{ num }}</span>
+                        {% else %}
+                            <a href="?page={{ num }}{% for m in selected_manufacturers %}&manufacturer={{ m }}{% endfor %}" class="page-num">{{ num }}</a>
+                        {% endif %}
                     {% endfor %}
+
+                    {% if page_obj.has_next %}
+                        <a href="?page={{ page_obj.next_page_number }}{% for m in selected_manufacturers %}&manufacturer={{ m }}{% endfor %}" class="page-arrow">→</a>
+                    {% endif %}
                 </div>
-            {% else %}
-                <p>Товары не найдены.</p>
             {% endif %}
         </div>
     </div>
-</div>
-{% endblock %}
+
+    <!-- Консультация -->
+    <div class="how-to-connect-block">
+        <div class="leyout">
+            <div class="text">
+                <h2>Нужна <span style="color: #e40000; font-style: italic">консультация?</span></h2>
+                <p>
+                    Свяжитесь с нами любым удобным способом —
+                    <span style="font-weight: 700;">по телефону или в мессенджерах</span>. Наши менеджеры помогут подобрать
+                    материалы под ваш проект,
+                    рассчитают необходимое количество, подскажут по характеристикам и
+                    совместимости товаров, а также ответят на все вопросы по наличию,
+                    доставке и ценам.
+                </p>
+            </div>
+            <div class="social-connect">
+                <a href="#">Позвоните по номеру: +790546854865</a>
+                <a href="#" style="background-color: rgba(60, 64, 71, 1)">Связаться в<img src="{% static 'image/vk-logo.png' %}"/></a>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="logo-down">
+                <img src="{% static 'image/logo-light.svg' %}" alt="">
+                <p>Адрес: ул. Парижской Коммуны, 147</p>
+            </div>
+            <ul>
+                <li><a href="{% url 'krovlya_pages:product_list' %}">Каталог товаров</a></li>
+                <li><a href="#">Акции</a></li>
+                <li><a href="{% url 'krovlya_pages:business' %}">Для бизнеса</a></li>
+                <li><a href="{% url 'krovlya_pages:service' %}">Услуги</a></li>
+                <li><a href="{% url 'krovlya_pages:delivery' %}">Доставка и оплата</a></li>
+                <li><a href="{% url 'krovlya_pages:about' %}">О нас</a></li>
+            </ul>
+            <div class="map" style="border-radius: 30px">
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2172.986576545524!2d40.893451211226015!3d57.00041477346115!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x414d1670fe241987%3A0x5eb7e758e52e8f4e!2z0YPQuy4g0J_QsNGA0LjQttGB0LrQvtC5INCa0L7QvNC80YPQvdGLLCAxNDcsINCY0LLQsNC90L7QstC-LCDQmNCy0LDQvdC-0LLRgdC60LDRjyDQvtCx0LsuLCAxNTMwMTE!5e0!3m2!1sru!2sru!4v1763719218999!5m2!1sru!2sru"
+                    width="600" height="300" style="border-radius: 16px; border: 0" allowfullscreen="" loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

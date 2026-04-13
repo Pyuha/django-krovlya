@@ -1,4 +1,34 @@
+/* ===== ШРИФТЫ ===== */
+@font-face {
+    font-family: "InterRegular"; 
+    src: url("/static/fonts/Inter/Inter-Regular.otf") format("opentype"); 
+    font-style: normal; 
+    font-weight: normal; 
+} 
 
+@font-face {
+    font-family: "InterSemiBold"; 
+    src: url("/static/fonts/Inter/Inter-SemiBold.otf") format("opentype"); 
+    font-style: normal; 
+    font-weight: normal; 
+} 
+
+@font-face {
+    font-family: "InterBold"; 
+    src: url("/static/fonts/Inter/Inter-Bold.otf") format("opentype"); 
+    font-style: normal; 
+    font-weight: normal; 
+} 
+
+@font-face {
+    font-family: "InterItalic"; 
+    src: url("/static/fonts/Inter/Inter-Italic.otf") format("opentype"); 
+    font-style: italic; 
+    font-weight: normal; 
+}
+
+
+/* ===== БАЗОВЫЕ СТИЛИ ===== */
 body {
     font-family: "InterRegular";
     display: inline-flex;
@@ -10,27 +40,27 @@ body {
     margin: 0px;
 }
 
-.h1{
+.h1 {
     margin: 0px;
     font-size: 38px;
     text-transform: uppercase;
     font-family: "InterBold";
 }
 
+
+/* ===== HEADER ===== */
 header {
     font-family: "InterSemiBold";
     display: inline-flex;
     padding-top: 22px;
-    padding-left: 140px;
-    padding-right: 140px;
     padding-bottom: 23px;
     width: 1440px;
-    justify-content: center;
     align-items: center;
     justify-content: space-between;
+    box-sizing: border-box;
 }
 
-header .contact-details{
+header .contact-details {
     display: inline-flex;
     height: 55px;
     font-size: 16px;
@@ -45,9 +75,10 @@ header .contact-details{
 .phone {
     margin-right: 22px;
     display: inline-flex;
+    align-items: center;
 }
 
-.phone img{
+.phone img {
     margin-right: 5px;
 }
   
@@ -55,9 +86,10 @@ header .contact-details{
     text-decoration: none;
     margin-right: 22px;
     display: inline-flex;
+    align-items: center;
 }
 
-.email img{
+.email img {
     margin-right: 5px;
 }
 
@@ -66,95 +98,96 @@ header .cont-button {
     height: 24px;
 }
 
-header .contact-details a{
+header .contact-details a {
     background-color: #E40000;
     padding-left: 23px;
     padding-right: 23px;
     padding-top: 16.5px;
     padding-bottom: 16.5px;
-    color:white;
+    color: white;
     border-radius: 30px;
     font-family: "InterBold";
     display: flex;
+    text-decoration: none;
+    transition: all 0.2s;
 }
 
-header .contact-details a:hover{
+header .contact-details a:hover {
     color: #E40000;
     background-color: white;
-    border-color: #E40000;
     outline: 1px solid #E40000;
     outline-offset: -1px;
 }
 
 
-.main-menu{
+/* ===== ГЛАВНОЕ МЕНЮ ===== */
+.main-menu {
     background-color: #3C4047;
     display: inline-flex;
     align-items: center;
-    justify-content: space-evenly;
-    color:white;
+    justify-content: center;
+    color: white;
     height: 59px;
     width: 100%;
 }
 
-.main-menu ul{
+.main-menu ul {
     list-style: none;
     display: inline-flex;
     justify-content: space-between;
     padding-inline-start: 0px;
     height: 59px;
     width: 1440px;
-    padding-left: 140px;
-    padding-right: 140px;
+    /* padding-left: 140px;
+    padding-right: 140px; */
     font-size: 16px;
     font-family: "InterRegular";
-    display: inline-flex;
-    text-decoration: none;
+    margin: 0;
+    box-sizing: border-box;
 }
-.main-menu ul li{
+
+.main-menu ul li {
     display: inline-flex;
     width: 100%;
     align-items: center;
     justify-content: center;
-    padding: 18px;
-    padding-left: 20px;
-    padding-right: 20px;
-    
+    padding: 18px 20px;
+    transition: background-color 0.2s;
 }
+
 .main-menu ul li a {
     text-decoration: none;
     color: white;
+    display: flex;
+    align-items: center;
 }
 
-.main-menu ul li:hover{
+.main-menu ul li:hover {
     background-color: #E40000;
 }
 
+
+/* ===== ГЛАВНЫЙ БАННЕР ===== */
 .main-offer {
     width: 100%;
     height: 100%;
     background-image: url("../image/main-page-back.jpg");
-    background-size: 100%;
-    background-position: 100%;
+    background-size: cover;
     background-position: top;
     background-repeat: no-repeat;
 }
 
 .main-offer .text-offer {
-    /* background-color: rgb(255, 255, 255); */
     width: fit-content;
     height: fit-content;
-    
     margin: 150px;
     margin-left: 240px;
     padding: 45px;
     border-radius: 30px;
-
 }
 
-
-.main-offer .text-offer .text h1{
-    font-family: "Inter";
+.main-offer .text-offer .text h1 {
+    font-family: "InterBold";
     font-size: 85px;
     font-weight: 700;
     text-align: left;
@@ -162,21 +195,19 @@ header .contact-details a:hover{
     margin-bottom: 46px;
 }
 
-.main-offer .text-offer a{
-    padding-top: 134px;
+.main-offer .text-offer a {
     background-color: #E40000;
-    padding-left: 23px;
-    padding-right: 23px;
-    padding-top: 16.5px;
-    padding-bottom: 16.5px;
-    color:white;
+    padding: 16.5px 23px;
+    color: white;
     border-radius: 30px;
     font-family: "InterBold";
     display: inline-flex;
     text-decoration: none;
+    align-items: center;
+    transition: all 0.2s;
 }
 
-.main-offer .text-offer a .img{
+.main-offer .text-offer a .img {
     height: 20px;
     width: 10px;
     margin-left: 15px;
@@ -186,51 +217,43 @@ header .contact-details a:hover{
     mask-position: center;
 }
 
-
-.nav-list ul{
-    padding: 10px 16px;
-    list-style: none;
-    display:inline-flex;
-    width: 1440px;
-    text-decoration: none;
-}
-
-.nav-list ul li{
-    margin: 7px;
-    text-decoration: none;
-    color: black;
-}
-
-.nav-list ul li a{
-    text-decoration: none;
-    color: black;
-}
-
-.nav-list ul li a:hover{
-    color: #E40000;
-}
-
-.main-offer .text-offer a:hover{
+.main-offer .text-offer a:hover {
     color: #E40000;
     background-color: white;
-    border-color: #E40000;
     outline: 1px solid #E40000;
     outline-offset: -1px;
-    
 }
 
-.main-offer .text-offer a:hover .img{
+.main-offer .text-offer a:hover .img {
     background-color: #E40000;
 }
 
 
-.advantages .adv-bubbles{
+/* ===== ХЛЕБНЫЕ КРОШКИ ===== */
+.nav-list ul {
+    padding: 10px 16px;
+    list-style: none;
     display: inline-flex;
-    justify-content: space-between;
     width: 1440px;
-    
+    text-decoration: none;
+    box-sizing: border-box;
 }
 
+.nav-list ul li {
+    margin: 7px;
+}
+
+.nav-list ul li a {
+    text-decoration: none;
+    color: black;
+}
+
+.nav-list ul li a:hover {
+    color: #E40000;
+}
+
+
+/* ===== ПРЕИМУЩЕСТВА ===== */
 .advantages {    
     display: inline-flex;
     margin-top: -30px;
@@ -240,6 +263,16 @@ header .contact-details a:hover{
     width: 100%;
     background-color: white;
     justify-content: center;
+    position: relative;
+    z-index: 1;
+}
+
+.advantages .adv-bubbles {
+    display: inline-flex;
+    justify-content: space-between;
+    width: 1440px;
+    /* padding: 0 140px; */
+    box-sizing: border-box;
 }
 
 .advantages .adv-bubbles .adv {
@@ -248,17 +281,18 @@ header .contact-details a:hover{
     max-width: 278px;
 }
 
-.advantages .adv-bubbles .adv p{
+.advantages .adv-bubbles .adv p {
     font-size: 20px;
 }
 
-.advantages .adv-bubbles .adv img{
+.advantages .adv-bubbles .adv img {
     margin-right: 20px;
     width: 50px;
     height: 50px;
 }
 
 
+/* ===== КАТАЛОГ НА ГЛАВНОЙ ===== */
 .catalog {
     display: inline-flex;
     flex-direction: column;
@@ -272,7 +306,6 @@ header .contact-details a:hover{
     width: 1440px;
     margin-top: 50px;
     margin-bottom: 50px;
-
 }
 
 .catalog .header-catalog p {
@@ -280,23 +313,19 @@ header .contact-details a:hover{
     font-size: 16px;
 }
 
-
 .catalog .header-catalog a {
     display: inline-flex;
     align-items: center;
     color: #E40000;
     background-color: rgba(0, 0, 0, 0.1);
-    padding-left: 23px;
-    padding-right: 23px;
-    padding-top: 16.5px;
-    padding-bottom: 16.5px;
+    padding: 16.5px 23px;
     border-radius: 30px;
     font-family: "InterBold";
     text-decoration: none;
-
+    transition: all 0.2s;
 }
 
-.catalog .header-catalog a .img{
+.catalog .header-catalog a .img {
     height: 20px;
     width: 10px;
     margin-left: 15px;
@@ -306,12 +335,12 @@ header .contact-details a:hover{
     mask-position: center;
 }
 
-.catalog .header-catalog .header-catalog-text p{
+.catalog .header-catalog .header-catalog-text p {
     margin: 0px;
     font-size: 38px;
     text-transform: uppercase;
     font-family: "InterBold";
-    width:fit-content;
+    width: fit-content;
 }
 
 .catalog .pannel-catalog {
@@ -321,7 +350,6 @@ header .contact-details a:hover{
     align-items: center;
     width: 1440px;
     gap: 12px;
-    background-image: url("../image/Lines_back.svg");
 }
 
 .catalog .pannel-catalog .pannel-catalog-bottom {
@@ -335,58 +363,34 @@ header .contact-details a:hover{
     align-items: end;
     border-radius: 30px;
     overflow: hidden;
-    background-image: url("../image/Lines_back.svg");
 }
 
+#first  { background-image: url("../image/Roof.png"); }
+#second { background-image: url("../image/wall.png"); }
+#third  { background-image: url("../image/water_down.png"); }
+#fourth { background-image: url("../image/chemystry.png"); }
+#five   { background-image: url("../image/isolation.png"); }
+#six    { background-image: url("../image/fence.png"); }
+#seven  { background-image: url("../image/window.png"); }
+#eight  { background-image: url("../image/lumber_cut.png"); }
 
-#first {
-    
-    background-image: url("../image/Roof.png");
-}
-
-#second {
-    background-image: url("../image/wall.png");
-}
-
-#third {
-    background-image: url("../image/water_down.png");
-}
-
-#fourth {
-    background-image: url("../image/chemystry.png");
-}
-
-#five {
-    background-image: url("../image/isolation.png");
-}
-
-#six {
-    background-image: url("../image/fence.png");
-}
-
-#seven {
-    background-image: url("../image/window.png");
-}
-
-#eight {
-    background-image: url("../image/lumber_cut.png");
-}
-
-.catalog .pannel-catalog .description{
+.catalog .pannel-catalog .description {
     display: inline-flex;
     justify-content: flex-start;
     align-items: center;
-    /* height: 97px; */
     background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(18, 18, 18, 1));
+    width: 100%;
 }
 
-.catalog .pannel-catalog .description a{
+.catalog .pannel-catalog .description a {
     margin: 0px;
     font-size: 20px;
     padding: 42px;
     display: inline-flex;
     justify-content: flex-start;
     align-items: flex-end;
+    text-decoration: none;
+    color: white;
 }
 
 .catalog .pannel-catalog .pannel-catalog-bottom .description a .img {
@@ -397,11 +401,10 @@ header .contact-details a:hover{
     mask-image: url("../image/Arrow_up.svg");
     mask-repeat: no-repeat;
     mask-position: center;
-    
 }
 
 
-
+/* ===== КАК СВЯЗАТЬСЯ ===== */
 .how-to-connect {
     width: 1440px;
     height: fit-content;
@@ -410,20 +413,19 @@ header .contact-details a:hover{
     background-image: url("/static/image/Question.png");
     background-repeat: no-repeat;
     background-size: 472px;
-    background-position: right;
     background-position-x: 891px;
     background-position-y: 30px;
     margin-bottom: 50px;
+    box-sizing: border-box;
 }
 
-.how-to-connect .text{
+.how-to-connect .text {
     width: 664px;
     font-size: 20px;
     margin-bottom: 35px;
-    
 }
 
-.how-to-connect .text p{
+.how-to-connect .text p {
     margin-top: 35px;
 }
 
@@ -431,59 +433,58 @@ header .contact-details a:hover{
     margin: 90px;
 }
 
-.how-to-connect .text h2{
+.how-to-connect .text h2 {
     margin: 0px;
     font-size: 40px;
-    width: fit-content;
     text-transform: uppercase;
     font-family: "InterBold";
-    width:fit-content;
+    width: fit-content;
 }
 
-.how-to-connect .social-connect a{
+.how-to-connect .social-connect a {
     display: inline-flex;
     align-items: center;
     color: white;
     background-color: #E40000;
-    padding:0 28px 0 28px;
+    padding: 0 28px;
     border-radius: 60px;
     font-family: "InterBold";
     text-decoration: none;
     width: fit-content;
     margin-right: 26px;
     height: 80px;
+    transition: all 0.2s;
 }
 
-.how-to-connect .social-connect img{
+.how-to-connect .social-connect img {
     margin-left: 12px;
     width: 43px;
     height: 43px;
 }
- 
 
+
+/* ===== РАБОТАЕМ С ===== */
 .working-with {
     width: 1440px;
     margin-bottom: 50px;
 }
 
-
-.working-with .text h2{
+.working-with .text h2 {
     margin: 0px;
     font-size: 38px;
     text-transform: uppercase;
     font-family: "InterBold";
-    width:fit-content;
-    
+    width: fit-content;
 }
+
 .working-with .text {
     margin-bottom: 50px;
 }
 
 
-
+/* ===== FOOTER ===== */
 footer {
     background-color: #3C4047;
-    width: 100%;
     display: inline-flex;
     border-radius: 30px 30px 0px 0px;
     padding-top: 50px;
@@ -499,11 +500,14 @@ footer .footer-content {
     justify-content: space-between;
     align-items: flex-start;
     width: 1440px;
+    padding: 0 140px;
+    box-sizing: border-box;
 }
 
 footer .footer-content ul {
     list-style: none;
     margin: 0px;
+    padding: 0;
 }
 
 footer .footer-content ul li {
@@ -513,200 +517,3 @@ footer .footer-content ul li {
 footer .footer-content .logo-down img {
     margin-bottom: 50px;
 }
-
-
-/* ===== КАТАЛОГ ===== */
-.catalog-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
-}
-
-.catalog-layout {
-    display: flex;
-    gap: 30px;
-}
-
-/* Боковая панель */
-.filters-sidebar {
-    width: 260px;
-    flex-shrink: 0;
-    background: #f5f5f5;
-    padding: 20px;
-    border-radius: 8px;
-    height: fit-content;
-}
-
-.filter-group {
-    margin-bottom: 15px;
-}
-
-.filter-group label {
-    display: block;
-    font-weight: bold;
-    margin-bottom: 5px;
-}
-
-.filter-group input[type="text"],
-.filter-group input[type="number"],
-.filter-group select {
-    width: 100%;
-    padding: 8px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    box-sizing: border-box;
-    margin-bottom: 5px;
-}
-
-.btn-filter {
-    width: 100%;
-    padding: 10px;
-    background: #2196F3;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 14px;
-}
-
-.btn-filter:hover {
-    background: #1976D2;
-}
-
-.btn-reset {
-    display: block;
-    text-align: center;
-    margin-top: 8px;
-    color: #666;
-    text-decoration: none;
-}
-
-/* Список категорий */
-.category-list {
-    list-style: none;
-    padding: 0;
-}
-
-.category-list li {
-    margin-bottom: 8px;
-}
-
-.category-list li a {
-    text-decoration: none;
-    color: #333;
-}
-
-.category-list li.active a {
-    font-weight: bold;
-    color: #2196F3;
-}
-
-/* Сетка товаров */
-.products-grid {
-    flex: 1;
-}
-
-.grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 20px;
-}
-
-.product-card {
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    padding: 15px;
-    text-align: center;
-    transition: box-shadow 0.3s;
-}
-
-.product-card:hover {
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-}
-
-.product-card img {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-    border-radius: 4px;
-}
-
-.product-card h3 {
-    margin: 10px 0 5px;
-    font-size: 16px;
-}
-
-.product-card a {
-    text-decoration: none;
-    color: #333;
-}
-
-.price {
-    font-size: 20px;
-    font-weight: bold;
-    color: #e53935;
-}
-
-.out-of-stock {
-    color: #999;
-}
-
-/* ===== ДЕТАЛЬНАЯ СТРАНИЦА ===== */
-.product-detail {
-    max-width: 1000px;
-    margin: 0 auto;
-    padding: 20px;
-}
-
-.product-detail-layout {
-    display: flex;
-    gap: 40px;
-    margin-top: 20px;
-}
-
-.product-image {
-    flex: 1;
-}
-
-.product-image img {
-    width: 100%;
-    border-radius: 8px;
-}
-
-.product-info {
-    flex: 1;
-}
-
-.back-link {
-    text-decoration: none;
-    color: #2196F3;
-}
-
-
-@font-face {
-    font-family: "InterRegular"; 
-    src: url("/static/fonts/Inter/Inter-Regular.otf") format("truetype"); 
-    font-style:normal; 
-    font-weight: 16pt; 
-} 
-
-@font-face {
-    font-family: "InterSemiBold"; 
-    src: url("/static/fonts/Inter/Inter-SemiBold.otf") format("truetype"); 
-    font-style: normal; 
-    font-weight: normal; 
-} 
-
-@font-face {
-    font-family: "InterBold"; 
-    src: url("/static/fonts/Inter/Inter-Bold.otf") format("truetype"); 
-    font-style: normal; 
-    font-weight: normal; 
-} 
-
-@font-face {
-    font-family: "InterItalic"; 
-    src: url("/static/fonts/Inter/Inter-Italic.otf") format("truetype"); 
-    font-style: italic; 
-    font-weight: normal; 
-}  

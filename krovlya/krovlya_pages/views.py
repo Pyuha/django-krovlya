@@ -1,70 +1,122 @@
-from django.shortcuts import render
 from django.shortcuts import render, get_object_or_404
-from .models import Category, Product
+from django.core.paginator import Paginator
+from .models import Category, Manufacturer, Product
+
 
 def main(request):
+    """Главная страница"""
     return render(request, "main.html")
 
+
 def contacts(request):
+    """Страница контактов"""
     return render(request, "contacts.html")
 
+
 def business(request):
+    """Страница для бизнеса"""
     return render(request, "for_business.html")
 
+
 def service(request):
+    """Страница услуг"""
     return render(request, "services.html")
 
+
 def delivery(request):
+    """Страница доставки"""
     return render(request, "delivery.html")
 
 
+def about(request):
+    """Страница о компании"""
+    return render(request, "about.html")
+
 
 def product_list(request, category_slug=None):
+    """Каталог товаров с фильтрацией и пагинацией"""
     category = None
-    categories = Category.objects.all()
+    categories = Category.objects.filter(parent=None)  # Только корневые
     products = Product.objects.filter(available=True)
 
-    # Фильтр по категории (через URL)
+    # Фильтр по категории
     if category_slug:
         category = get_object_or_404(Category, slug=category_slug)
-        products = products.filter(category=category)
+        # Включаем товары из подкатегорий
+        child_categories = category.children.all()
+        if child_categories.exists():
+            all_cats = [category] + list(child_categories)
+            products = products.filter(category__in=all_cats)
+        else:
+            products = products.filter(category=category)
 
-    # Фильтр по цене (через GET-параметры)
-    min_price = request.GET.get('min_price')
-    max_price = request.GET.get('max_price')
-    if min_price:
-        products = products.filter(price__gte=min_price)
-    if max_price:
-        products = products.filter(price__lte=max_price)
+    # Фильтр по производителям
+    manufacturers = Manufacturer.objects.all()
+    selected_manufacturers = request.GET.getlist('manufacturer')
+    if selected_manufacturers:
+        products = products.filter(manufacturer__slug__in=selected_manufacturers)
 
-    # Фильтр по наличию на складе
-    in_stock = request.GET.get('in_stock')
-    if in_stock:
-        products = products.filter(stock__gt=0)
+    # Фильтр по цене
+    price_min = request.GET.get('price_min')
+    price_max = request.GET.get('price_max')
+    if price_min:
+        products = products.filter(price__gte=price_min)
+    if price_max:
+        products = products.filter(price__lte=price_max)
 
     # Сортировка
     sort = request.GET.get('sort', 'name')
-    if sort in ['name', '-name', 'price', '-price', '-created']:
-        products = products.order_by(sort)
+    if sort == 'price_asc':
+        products = products.order_by('price')
+    elif sort == 'price_desc':
+        products = products.order_by('-price')
+    elif sort == 'name':
+        products = products.order_by('name')
 
-    # Поиск по названию
-    search = request.GET.get('search', '')
-    if search:
-        products = products.filter(name__icontains=search)
+    # Подкатегории для сайдбара
+    subcategories = []
+    parent_category = None
+    if category:
+        if category.children.exists():
+            # Это родительская категория — показываем её подкатегории
+            subcategories = category.children.all()
+            parent_category = category
+        elif category.parent:
+            # Это подкатегория — показываем подкатегории родителя
+            subcategories = category.parent.children.all()
+            parent_category = category.parent
+
+    # Пагинация — 21 товар на страницу (7 рядов по 3)
+    paginator = Paginator(products, 21)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
 
     context = {
         'category': category,
         'categories': categories,
-        'products': products,
-        'min_price': min_price or '',
-        'max_price': max_price or '',
-        'in_stock': in_stock or '',
+        'subcategories': subcategories,
+        'parent_category': parent_category,
+        'manufacturers': manufacturers,
+        'selected_manufacturers': selected_manufacturers,
+        'products': page_obj,
+        'page_obj': page_obj,
         'current_sort': sort,
-        'search': search,
     }
     return render(request, 'catalog.html', context)
 
 
 def product_detail(request, id, slug):
+    """Детальная страница товара"""
     product = get_object_or_404(Product, id=id, slug=slug, available=True)
-    return render(request, 'product_detail.html', {'product': product})
+
+    # Похожие товары (из той же категории)
+    related_products = Product.objects.filter(
+        category=product.category,
+        available=True
+    ).exclude(id=product.id)[:4]
+
+    context = {
+        'product': product,
+        'related_products': related_products,
+    }
+    return render(request, 'product_detail.html', context)

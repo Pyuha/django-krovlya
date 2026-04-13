@@ -1,0 +1,586 @@
+/* ===== ШРИФТЫ ===== */
+@font-face {
+    font-family: "InterRegular"; 
+    src: url("/static/fonts/Inter/Inter-Regular.otf") format("opentype"); 
+    font-style: normal; 
+    font-weight: normal; 
+} 
+
+@font-face {
+    font-family: "InterSemiBold"; 
+    src: url("/static/fonts/Inter/Inter-SemiBold.otf") format("opentype"); 
+    font-style: normal; 
+    font-weight: normal; 
+} 
+
+@font-face {
+    font-family: "InterBold"; 
+    src: url("/static/fonts/Inter/Inter-Bold.otf") format("opentype"); 
+    font-style: normal; 
+    font-weight: normal; 
+} 
+
+@font-face {
+    font-family: "InterItalic"; 
+    src: url("/static/fonts/Inter/Inter-Italic.otf") format("opentype"); 
+    font-style: italic; 
+    font-weight: normal; 
+}
+
+
+/* ===== БАЗОВЫЕ СТИЛИ ===== */
+body {
+    font-family: "InterRegular";
+    display: inline-flex;
+    width: 100%;
+    flex-direction: column;
+    height: fit-content;
+    align-items: center;
+    font-size: 16px;
+    margin: 0px;
+}
+
+.h1 {
+    margin: 0px;
+    font-size: 38px;
+    text-transform: uppercase;
+    font-family: "InterBold";
+}
+
+
+/* ===== HEADER ===== */
+header {
+    font-family: "InterSemiBold";
+    display: inline-flex;
+    padding-top: 22px;
+    padding-bottom: 23px;
+    width: 1440px;
+    align-items: center;
+    justify-content: space-between;
+    box-sizing: border-box;
+}
+
+header .contact-details {
+    display: inline-flex;
+    height: 55px;
+    font-size: 16px;
+    align-items: center;
+}
+
+.logo {
+    width: 246px;
+    height: 55px;
+}
+
+.phone {
+    margin-right: 22px;
+    display: inline-flex;
+    align-items: center;
+}
+
+.phone img {
+    margin-right: 5px;
+}
+  
+.email {
+    text-decoration: none;
+    margin-right: 22px;
+    display: inline-flex;
+    align-items: center;
+}
+
+.email img {
+    margin-right: 5px;
+}
+
+header .cont-button {
+    width: 24px;
+    height: 24px;
+}
+
+header .contact-details a {
+    background-color: #E40000;
+    padding-left: 23px;
+    padding-right: 23px;
+    padding-top: 16.5px;
+    padding-bottom: 16.5px;
+    color: white;
+    border-radius: 30px;
+    font-family: "InterBold";
+    display: flex;
+    text-decoration: none;
+    transition: all 0.2s;
+}
+
+header .contact-details a:hover {
+    color: #E40000;
+    background-color: white;
+    outline: 1px solid #E40000;
+    outline-offset: -1px;
+}
+
+
+/* ===== ГЛАВНОЕ МЕНЮ ===== */
+.main-menu {
+    background-color: #3C4047;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    height: 59px;
+    width: 100%;
+}
+
+.main-menu ul {
+    list-style: none;
+    display: inline-flex;
+    justify-content: space-between;
+    padding-inline-start: 0px;
+    height: 59px;
+    width: 1440px;
+    /* padding-left: 140px;
+    padding-right: 140px; */
+    font-size: 16px;
+    font-family: "InterRegular";
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.main-menu ul li {
+    display: inline-flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    padding: 18px 20px;
+    transition: background-color 0.2s;
+}
+
+.main-menu ul li a {
+    text-decoration: none;
+    color: white;
+    display: flex;
+    align-items: center;
+}
+
+.main-menu ul li:hover {
+    background-color: #E40000;
+}
+
+/* ===== ХЛЕБНЫЕ КРОШКИ ===== */
+.nav-list ul {
+    padding: 10px 16px;
+    list-style: none;
+    display: inline-flex;
+    width: 1440px;
+    text-decoration: none;
+    box-sizing: border-box;
+}
+
+.nav-list ul li {
+    margin: 7px;
+}
+
+.nav-list ul li a {
+    text-decoration: none;
+    color: black;
+}
+
+.nav-list ul li a:hover {
+    color: #E40000;
+}
+
+.how-to-connect-block {
+    width: 1440px;
+    height: fit-content;
+    border-radius: 30px;
+    background-color: #F0F0F0;
+    background-image: url("/static/image/Question.png");
+    background-repeat: no-repeat;
+    background-size: 472px;
+    background-position: right;
+    background-position-x: 891px;
+    background-position-y: 30px;
+    margin-bottom: 50px;
+}
+
+.how-to-connect-block .text{
+    width: 664px;
+    font-size: 20px;
+    margin-bottom: 35px;
+    
+}
+
+.how-to-connect-block .text p{
+    margin-top: 35px;
+}
+
+.how-to-connect-block .leyout {
+    margin: 90px;
+}
+
+.how-to-connect-block .text h2{
+    margin: 0px;
+    font-size: 40px;
+    width: fit-content;
+    text-transform: uppercase;
+    font-family: "Inter";
+    font-weight: 700;
+    width:fit-content;
+}
+
+.how-to-connect-block .social-connect a{
+    display: inline-flex;
+    align-items: center;
+    color: white;
+    background-color: #E40000;
+    padding:0 28px 0 28px;
+    border-radius: 60px;
+    font-family: "Inter";
+    font-weight: 700;
+    text-decoration: none;
+    width: fit-content;
+    margin-right: 26px;
+    height: 80px;
+}
+
+.how-to-connect-block .social-connect img{
+    margin-left: 12px;
+    width: 43px;
+    height: 43px;
+}
+
+
+/* ===== РАБОТАЕМ С ===== */
+.working-with {
+    width: 1440px;
+    margin-bottom: 50px;
+}
+
+.working-with .text h2 {
+    margin: 0px;
+    font-size: 38px;
+    text-transform: uppercase;
+    font-family: "InterBold";
+    width: fit-content;
+}
+
+.working-with .text {
+    margin-bottom: 50px;
+}
+
+
+/* ===== FOOTER ===== */
+footer {
+    background-color: #3C4047;
+    display: inline-flex;
+    border-radius: 30px 30px 0px 0px;
+    padding-top: 50px;
+    width: 100%;
+    height: 350px;
+    color: white;
+    justify-content: center;
+    font-size: 16px;
+}
+
+footer .footer-content {
+    display: inline-flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 1440px;
+    padding: 0 140px;
+    box-sizing: border-box;
+}
+
+footer .footer-content ul {
+    list-style: none;
+    margin: 0px;
+    padding: 0;
+}
+
+footer .footer-content ul li {
+    margin-bottom: 16px;
+}
+
+footer .footer-content .logo-down img {
+    margin-bottom: 50px;
+}
+
+/* --- ЗАГОЛОВОК КАТАЛОГА --- */
+.catalog-title {
+    display: flex;
+    width: 1440px;
+    align-items: flex-start;
+    font-size: 79px;
+    font-family: "InterBold";
+}
+
+.catalog-title h1 {
+    font-size: 48px;
+    font-weight: 700;
+    color: #000;
+}
+
+/* ===== ОСНОВНАЯ ОБЁРТКА КАТАЛОГА ===== */
+.catalog-wrapper {
+    display: flex;
+    width: 1440px;
+    gap: 40px;
+    padding: 0 60px 60px;
+    align-items: flex-start;
+}
+
+/* --- САЙДБАР --- */
+.catalog-sidebar {
+    width: 220px;
+    flex-shrink: 0;
+}
+
+.sidebar-section {
+    margin-bottom: 30px;
+}
+
+.sidebar-section h3 {
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 12px;
+    color: #000;
+}
+
+.sidebar-categories {
+    list-style: none;
+}
+
+.sidebar-categories li {
+    margin-bottom: 8px;
+}
+
+.sidebar-categories a {
+    text-decoration: none;
+    color: #333;
+    font-size: 14px;
+    transition: color 0.2s;
+}
+
+.sidebar-categories a:hover,
+.sidebar-categories a.active {
+    color: #e40000;
+    text-decoration: underline;
+}
+
+/* Чекбоксы производителей */
+.manufacturer-filter {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.checkbox-label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    cursor: pointer;
+    color: #333;
+}
+
+.checkbox-label input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    accent-color: #e40000;
+    cursor: pointer;
+}
+
+/* --- СЕТКА ТОВАРОВ --- */
+.catalog-grid-wrapper {
+    flex: 1;
+}
+
+.catalog-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+}
+
+/* ============================================
+   ДЕТАЛЬНАЯ СТРАНИЦА ТОВАРА (обновлённая)
+   ============================================ */
+.product-detail {
+    width: 1440px;
+    padding: 0 140px;
+    box-sizing: border-box;
+    margin-bottom: 80px;
+}
+
+.product-detail-layout {
+    display: flex;
+    gap: 60px;
+    margin-top: 30px;
+}
+
+/* --- Галерея фото --- */
+.product-gallery {
+    width: 400px;
+    flex-shrink: 0;
+}
+
+.product-gallery .main-photo {
+    width: 400px;
+    height: 400px;
+    background-color: #F0F0F0;
+    border-radius: 20px;
+    overflow: hidden;
+    margin-bottom: 15px;
+}
+
+.product-gallery .main-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.product-gallery .thumbnails {
+    display: flex;
+    gap: 10px;
+}
+
+.product-gallery .thumb {
+    width: 80px;
+    height: 80px;
+    border-radius: 12px;
+    overflow: hidden;
+    cursor: pointer;
+    border: 2px solid transparent;
+    background-color: #F0F0F0;
+    transition: border-color 0.2s;
+}
+
+.product-gallery .thumb:hover {
+    border-color: #ccc;
+}
+
+.product-gallery .thumb.active {
+    border-color: #E40000;
+}
+
+.product-gallery .thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* --- Информация о товаре --- */
+.product-info {
+    flex: 1;
+}
+
+.product-info h1 {
+    font-size: 28px;
+    font-family: "InterBold";
+    margin: 0 0 20px 0;
+    text-transform: none;
+    line-height: 1.3;
+}
+
+.product-short-desc {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #555;
+    margin-bottom: 30px;
+}
+
+/* --- Таблица характеристик --- */
+.product-specs h3 {
+    font-family: "InterBold";
+    font-size: 18px;
+    margin: 0 0 15px 0;
+}
+
+.specs-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.specs-table tr {
+    border-bottom: 1px solid #eee;
+}
+
+.specs-table td {
+    padding: 12px 0;
+    font-size: 15px;
+}
+
+.specs-table .spec-name {
+    color: #777;
+    width: 55%;
+}
+
+.specs-table .spec-value {
+    color: #333;
+    font-family: "InterSemiBold";
+    text-align: right;
+}
+
+/* Скрытые строки */
+.spec-hidden {
+    display: none;
+}
+
+.spec-hidden.spec-show {
+    display: table-row;
+}
+
+/* Кнопка "Показать все" */
+.btn-toggle-specs {
+    display: inline-flex;
+    align-items: center;
+    margin-top: 20px;
+    padding: 14px 28px;
+    background: #F0F0F0;
+    border: none;
+    border-radius: 30px;
+    font-family: "InterSemiBold";
+    font-size: 15px;
+    color: #333;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.btn-toggle-specs:hover {
+    background: #e0e0e0;
+}
+
+.btn-toggle-specs .arrow-down {
+    width: 15px;
+    height: 15px;
+    margin-left: 10px;
+    background-color: #333;
+    mask-image: url("../image/Arrow_up.svg");
+    mask-repeat: no-repeat;
+    mask-position: center;
+    transform: rotate(180deg);
+    transition: transform 0.3s;
+}
+
+.btn-toggle-specs .arrow-down.arrow-up {
+    transform: rotate(0deg);
+}
+
+/* --- Полное описание --- */
+.product-full-description {
+    margin-top: 50px;
+    padding-top: 40px;
+    border-top: 1px solid #eee;
+}
+
+.product-full-description h3 {
+    font-family: "InterBold";
+    font-size: 20px;
+    margin: 0 0 20px 0;
+}
+
+.product-full-description .description-text {
+    font-size: 16px;
+    line-height: 1.8;
+    color: #555;
+    max-width: 800px;
+}

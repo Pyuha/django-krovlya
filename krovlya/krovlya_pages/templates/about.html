@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 {% load static %}
 <html lang="ru">
 <head>
@@ -55,20 +55,20 @@
   <!-- ══════════ NAVIGATION ══════════ -->
   <div class="main-menu">
         <ul>
-            <li><img src="../static/image/More_Grid_Big.svg" style="padding-right: 5px;"><a href="{% url 'main' %}">Каталог товаров</a></li>
+            <li><img src="../static/image/More_Grid_Big.svg" style="padding-right: 5px;"><a href="{% url 'krovlya_pages:main' %}">Каталог товаров</a></li>
             <li><a href="contacts/">Акции</a></li>
-            <li><a href="{% url 'business' %}">Для бизнеса</a></li>
-            <li><a href="{% url 'service' %}">Услуги</a></li>
-            <li><a href="{% url 'delivery' %}">Доставка и оплата</a></li>
-            <li style="background-color: #E40000;"><a href="{% url 'about' %}">О нас</a></li>
-            <li><a href="{% url 'contacts' %}">Контакты</a></li>
+            <li><a href="{% url 'krovlya_pages:business' %}">Для бизнеса</a></li>
+            <li><a href="{% url 'krovlya_pages:service' %}">Услуги</a></li>
+            <li><a href="{% url 'krovlya_pages:delivery' %}">Доставка и оплата</a></li>
+            <li style="background-color: #E40000;"><a href="{% url 'krovlya_pages:about' %}">О нас</a></li>
+            <li><a href="{% url 'krovlya_pages:contacts' %}">Контакты</a></li>
         </ul>
     </div>
     <div class="nav-list">
         <ul class="breadcrumb">
-        <li><a href="{% url 'main' %}">Главная</a></li>
+        <li><a href="{% url 'krovlya_pages:main' %}">Главная</a></li>
         <li><img src="{% static 'image/Arrow-right.svg' %}"></li>
-        <li><a href="{% url 'contacts' %}">О нас</a></li>
+        <li><a href="{% url 'krovlya_pages:contacts' %}">О нас</a></li>
         </ul>
     </div>
 

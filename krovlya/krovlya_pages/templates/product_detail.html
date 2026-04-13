@@ -1,34 +1,139 @@
-{% extends 'main.html' %}
+﻿{% extends "catalog.html" %}
+{% load static %}
 
 {% block content %}
-<div class="product-detail">
-    <a href="{% url 'krovlya_pages:product_list' %}" class="back-link">← Назад в каталог</a>
 
+<!-- Хлебные крошки -->
+<div class="nav-list">
+    <ul>
+        <li><a href="{% url 'home' %}">Главная</a> →</li>
+        <li><a href="{% url 'product_list' %}">Каталог товаров</a> →</li>
+        {% if product.category.parent %}
+            <li><a href="{{ product.category.parent.get_absolute_url }}">{{ product.category.parent.name }}</a> →</li>
+        {% endif %}
+        <li><a href="{{ product.category.get_absolute_url }}">{{ product.category.name }}</a> →</li>
+        <li>{{ product.name }}</li>
+    </ul>
+</div>
+
+<div class="product-detail">
     <div class="product-detail-layout">
-        <div class="product-image">
-            {% if product.image %}
-                <img src="{{ product.image.url }}" alt="{{ product.name }}">
-            {% else %}
-                <img src="https://via.placeholder.com/500x400?text=Нет+фото" alt="Нет фото">
+        
+        <!-- ФОТО -->
+        <div class="product-gallery">
+            <div class="main-photo">
+                {% if product.image %}
+                    <img id="mainImage" src="{{ product.image.url }}" alt="{{ product.name }}">
+                {% else %}
+                    <img id="mainImage" src="{% static 'image/no-image.png' %}" alt="Нет фото">
+                {% endif %}
+            </div>
+            
+            {% if product.images.all %}
+            <div class="thumbnails">
+                {% if product.image %}
+                <div class="thumb active" onclick="changeImage(this, '{{ product.image.url }}')">
+                    <img src="{{ product.image.url }}" alt="">
+                </div>
+                {% endif %}
+                {% for img in product.images.all %}
+                <div class="thumb" onclick="changeImage(this, '{{ img.image.url }}')">
+                    <img src="{{ img.image.url }}" alt="">
+                </div>
+                {% endfor %}
+            </div>
             {% endif %}
         </div>
 
+        <!-- ИНФО -->
         <div class="product-info">
             <h1>{{ product.name }}</h1>
-            <p class="category">Категория: {{ product.category.name }}</p>
-            <p class="price">{{ product.price }} ₽</p>
-            <p class="stock">
-                {% if product.stock > 0 %}
-                    В наличии: {{ product.stock }} шт.
-                {% else %}
-                    Нет в наличии
+            
+            {% if product.short_description %}
+                <div class="product-short-desc">
+                    {{ product.short_description|linebreaksbr }}
+                </div>
+            {% endif %}
+
+            <!-- Основные характеристики -->
+            {% with specs=product.get_specs %}
+            {% if specs %}
+            <div class="product-specs">
+                <h3>Основные характеристики</h3>
+                <table class="specs-table" id="specsTable">
+                    {% for name, value in specs %}
+                    <tr class="{% if forloop.counter > 6 %}spec-hidden{% endif %}">
+                        <td class="spec-name">{{ name }}</td>
+                        <td class="spec-value">{{ value }}</td>
+                    </tr>
+                    {% endfor %}
+                </table>
+
+                {% if specs|length > 6 %}
+                <button class="btn-toggle-specs" id="toggleSpecs" onclick="toggleSpecs()">
+                    <span id="toggleText">Показать все характеристики</span>
+                    <div class="img arrow-down"></div>
+                </button>
                 {% endif %}
-            </p>
-            <div class="description">
-                <h3>Описание</h3>
-                <p>{{ product.description|linebreaks }}</p>
             </div>
+            {% endif %}
+            {% endwith %}
+
+        </div>
+    </div>
+
+    <!-- Полное описание -->
+    {% if product.description %}
+    <div class="product-full-description">
+        <h3>Описание</h3>
+        <div class="description-text">
+            {{ product.description|linebreaksbr }}
+        </div>
+    </div>
+    {% endif %}
+</div>
+
+<!-- Консультация -->
+<div class="how-to-connect">
+    <div class="leyout">
+        <div class="text">
+            <h2>Нужна <span style="color: #E40000;">консультация?</span></h2>
+            <p>Свяжитесь с нами любым удобным способом — <b>по телефону или в мессенджерах</b>. 
+            Наши менеджеры помогут подобрать материалы под ваш проект, рассчитают необходимое количество, 
+            подскажут по характеристикам и совместимости товаров, а также ответят на все вопросы 
+            по наличию, доставке и ценам.</p>
+        </div>
+        <div class="social-connect">
+            <a href="tel:+79054885485">Позвонить по номеру: +790548854865</a>
+            <a href="#">Связаться в <img src="{% static 'image/VK.svg' %}" alt="VK"></a>
         </div>
     </div>
 </div>
+
+<script>
+function changeImage(thumb, url) {
+    document.getElementById('mainImage').src = url;
+    document.querySelectorAll('.thumb').forEach(t => t.classList.remove('active'));
+    thumb.classList.add('active');
+}
+
+function toggleSpecs() {
+    const hidden = document.querySelectorAll('.spec-hidden');
+    const btn = document.getElementById('toggleText');
+    const arrow = document.querySelector('.btn-toggle-specs .arrow-down');
+    
+    hidden.forEach(row => {
+        row.classList.toggle('spec-show');
+    });
+    
+    if (btn.textContent.includes('Показать')) {
+        btn.textContent = 'Скрыть все характеристики';
+        arrow.classList.add('arrow-up');
+    } else {
+        btn.textContent = 'Показать все характеристики';
+        arrow.classList.remove('arrow-up');
+    }
+}
+</script>
+
 {% endblock %}
