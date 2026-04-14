@@ -1,0 +1,21 @@
+{% for node in tree %}
+<li class="tree-item {% if node.is_open %}open{% endif %}">
+    <div class="tree-item__row {% if node.is_active %}active{% endif %}">
+        <a href="{{ node.category.get_absolute_url }}" class="tree-link">
+            {% if node.has_children %}
+                <svg class="tree-arrow" width="12" height="12" viewBox="0 0 12 12"
+                     fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M4 2l4 4-4 4"/>
+                </svg>
+            {% endif %}
+            {{ node.category.name }}
+        </a>
+    </div>
+
+    {% if node.has_children %}
+        <ul class="tree-children {% if node.is_open %}show{% endif %}">
+            {% include 'includes/category_tree.html' with tree=node.children %}
+        </ul>
+    {% endif %}
+</li>
+{% endfor %}

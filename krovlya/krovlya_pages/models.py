@@ -1,36 +1,40 @@
 from django.db import models
 from django.urls import reverse
 
+# models.py
 
 class Category(models.Model):
-    name = models.CharField(max_length=200)
+    name = models.CharField(max_length=200, verbose_name='Название')
     slug = models.SlugField(max_length=200, unique=True)
     parent = models.ForeignKey(
-        'self', on_delete=models.CASCADE,
-        null=True, blank=True, related_name='children'
+        'self',
+        on_delete=models.CASCADE,
+        null=True,
+        blank=True,
+        related_name='children',
+        verbose_name='Родительская категория'
     )
-    image = models.ImageField(
-        'Изображение категории',
-        upload_to='categories/',
-        blank=True, null=True
-    )
-    order = models.PositiveIntegerField('Порядок сортировки', default=0)
+    order = models.PositiveIntegerField(default=0, verbose_name='Порядок')
 
     class Meta:
         verbose_name = 'Категория'
         verbose_name_plural = 'Категории'
         ordering = ['order', 'name']
 
+    def __str__(self):
+        return self.name
+
     def get_absolute_url(self):
         return reverse('krovlya_pages:product_list_by_category', args=[self.slug])
 
-    def __str__(self):
-        full_path = [self.name]
-        parent = self.parent
-        while parent is not None:
-            full_path.append(parent.name)
-            parent = parent.parent
-        return ' → '.join(full_path[::-1])
+    def get_ancestors(self):
+        """Все родители для хлебных крошек"""
+        ancestors = []
+        current = self.parent
+        while current:
+            ancestors.insert(0, current)
+            current = current.parent
+        return ancestors
 
 
 class Manufacturer(models.Model):

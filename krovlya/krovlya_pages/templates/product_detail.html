@@ -1,139 +1,426 @@
-﻿{% extends "catalog.html" %}
+﻿<!DOCTYPE html>
 {% load static %}
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/product_detail.css' %}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ product.name }} — Кровля и Фасад</title>
+</head>
+<body>
 
-{% block content %}
-
-<!-- Хлебные крошки -->
-<div class="nav-list">
-    <ul>
-        <li><a href="{% url 'home' %}">Главная</a> →</li>
-        <li><a href="{% url 'product_list' %}">Каталог товаров</a> →</li>
-        {% if product.category.parent %}
-            <li><a href="{{ product.category.parent.get_absolute_url }}">{{ product.category.parent.name }}</a> →</li>
-        {% endif %}
-        <li><a href="{{ product.category.get_absolute_url }}">{{ product.category.name }}</a> →</li>
-        <li>{{ product.name }}</li>
-    </ul>
-</div>
-
-<div class="product-detail">
-    <div class="product-detail-layout">
-        
-        <!-- ФОТО -->
-        <div class="product-gallery">
-            <div class="main-photo">
-                {% if product.image %}
-                    <img id="mainImage" src="{{ product.image.url }}" alt="{{ product.name }}">
-                {% else %}
-                    <img id="mainImage" src="{% static 'image/no-image.png' %}" alt="Нет фото">
-                {% endif %}
+    <!-- HEADER -->
+    <header>
+        <img id="logo" src="{% static 'image/logo.svg' %}">
+        <div class="contact-details">
+            <div class="phone">
+                <img src="{% static 'image/Phone.svg' %}" alt="">
+                <p>+7 (965) 264-00-19</p>
             </div>
-            
-            {% if product.images.all %}
-            <div class="thumbnails">
-                {% if product.image %}
-                <div class="thumb active" onclick="changeImage(this, '{{ product.image.url }}')">
-                    <img src="{{ product.image.url }}" alt="">
-                </div>
-                {% endif %}
-                {% for img in product.images.all %}
-                <div class="thumb" onclick="changeImage(this, '{{ img.image.url }}')">
-                    <img src="{{ img.image.url }}" alt="">
-                </div>
-                {% endfor %}
+            <div class="email">
+                <img src="{% static 'image/Mail.svg' %}" alt="">
+                <p>Ivanovo@cherdaq.ru</p>
             </div>
-            {% endif %}
+            <a href="#">Свяжитесь с нами</a>
         </div>
+    </header>
 
-        <!-- ИНФО -->
-        <div class="product-info">
-            <h1>{{ product.name }}</h1>
-            
-            {% if product.short_description %}
-                <div class="product-short-desc">
-                    {{ product.short_description|linebreaksbr }}
-                </div>
+    <!-- MENU -->
+    <div class="main-menu">
+        <ul>
+            <li style="background-color: #e40000">
+                <a href="{% url 'krovlya_pages:product_list' %}" style="display: flex; align-items: center;">
+                    <img src="{% static 'image/More_Grid_Big.svg' %}" style="padding-right: 5px;">
+                    Каталог товаров
+                </a>
+            </li>
+            <li><a href="#">Акции</a></li>
+            <li><a href="{% url 'krovlya_pages:business' %}">Для бизнеса</a></li>
+            <li><a href="{% url 'krovlya_pages:service' %}">Услуги</a></li>
+            <li><a href="{% url 'krovlya_pages:delivery' %}">Доставка и оплата</a></li>
+            <li><a href="{% url 'krovlya_pages:about' %}">О нас</a></li>
+            <li><a href="{% url 'krovlya_pages:contacts' %}">Контакты</a></li>
+        </ul>
+    </div>
+
+    <!-- BREADCRUMBS -->
+    <div class="nav-list">
+        <ul class="breadcrumb">
+            <li><a href="{% url 'krovlya_pages:main' %}">Главная</a></li>
+            <li><img src="{% static 'image/Arrow-right.svg' %}"></li>
+            {% if product.category %}
+                <li><a href="{{ product.category.get_absolute_url }}">{{ product.category.name }}</a></li>
+                <li><img src="{% static 'image/Arrow-right.svg' %}"></li>
             {% endif %}
+            <li><span>{{ product.name|truncatewords:5 }}</span></li>
+        </ul>
+    </div>
 
-            <!-- Основные характеристики -->
-            {% with specs=product.get_specs %}
-            {% if specs %}
-            <div class="product-specs">
-                <h3>Основные характеристики</h3>
-                <table class="specs-table" id="specsTable">
-                    {% for name, value in specs %}
-                    <tr class="{% if forloop.counter > 6 %}spec-hidden{% endif %}">
-                        <td class="spec-name">{{ name }}</td>
-                        <td class="spec-value">{{ value }}</td>
-                    </tr>
+    <!-- ==========================================
+         PRODUCT DETAIL
+         ========================================== -->
+    <section class="product-detail">
+        <div class="product-detail__container">
+
+            <!-- ЛЕВАЯ ЧАСТЬ — ФОТО -->
+            <div class="product-detail__gallery">
+                <div class="gallery-main">
+                    {% if product.image %}
+                        <img src="{{ product.image.url }}" alt="{{ product.name }}" id="main-image">
+                    {% else %}
+                        <div class="gallery-main__placeholder">
+                            <span>фото</span>
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="gallery-thumbs">
+                    {% if product.image %}
+                        <div class="gallery-thumb active">
+                            <img src="{{ product.image.url }}" alt="" onclick="changeImage(this)">
+                        </div>
+                    {% endif %}
+                    {% for img in product.images.all %}
+                        <div class="gallery-thumb">
+                            <img src="{{ img.image.url }}" alt="" onclick="changeImage(this)">
+                        </div>
                     {% endfor %}
-                </table>
-
-                {% if specs|length > 6 %}
-                <button class="btn-toggle-specs" id="toggleSpecs" onclick="toggleSpecs()">
-                    <span id="toggleText">Показать все характеристики</span>
-                    <div class="img arrow-down"></div>
-                </button>
-                {% endif %}
+                    {% if not product.image and not product.images.all %}
+                        <div class="gallery-thumb">
+                            <div class="thumb-placeholder"></div>
+                        </div>
+                        <div class="gallery-thumb">
+                            <div class="thumb-placeholder"></div>
+                        </div>
+                        <div class="gallery-thumb">
+                            <div class="thumb-placeholder"></div>
+                        </div>
+                    {% endif %}
+                </div>
             </div>
-            {% endif %}
-            {% endwith %}
 
+            <!-- ПРАВАЯ ЧАСТЬ — ИНФО -->
+            <div class="product-detail__info">
+                <h1 class="product-detail__title">{{ product.name }}</h1>
+
+                <!-- Описание -->
+                {% if product.description %}
+                    <div class="product-detail__description">
+                        {{ product.description|linebreaksbr }}
+                    </div>
+                {% endif %}
+
+                <!-- Характеристики -->
+                <div class="product-detail__specs">
+                    <h3 class="specs-title">Основные характеристики</h3>
+
+                    <div class="specs-table" id="specs-table">
+
+                        {% if product.brand %}
+                        <div class="specs-row">
+                            <span class="specs-label">Бренд</span>
+                            <span class="specs-dots"></span>
+                            <span class="specs-value">{{ product.brand }}</span>
+                        </div>
+                        {% endif %}
+
+                        {% if product.surface_gloss %}
+                        <div class="specs-row">
+                            <span class="specs-label">Блеск поверхности</span>
+                            <span class="specs-dots"></span>
+                            <span class="specs-value">{{ product.surface_gloss }}</span>
+                        </div>
+                        {% endif %}
+
+                        {% if product.profile_type %}
+                        <div class="specs-row">
+                            <span class="specs-label">Вид профиля кровельного материала</span>
+                            <span class="specs-dots"></span>
+                            <span class="specs-value">{{ product.profile_type }}</span>
+                        </div>
+                        {% endif %}
+
+                        {% if product.wave_height %}
+                        <div class="specs-row">
+                            <span class="specs-label">Высота волны</span>
+                            <span class="specs-dots"></span>
+                            <span class="specs-value">{{ product.wave_height }}</span>
+                        </div>
+                        {% endif %}
+
+                        {% if product.step_height %}
+                        <div class="specs-row">
+                            <span class="specs-label">Высота ступеньки</span>
+                            <span class="specs-dots"></span>
+                            <span class="specs-value">{{ product.step_height }}</span>
+                        </div>
+                        {% endif %}
+
+                        {% if product.warranty_appearance %}
+                        <div class="specs-row">
+                            <span class="specs-label">Гарантия на внешний вид</span>
+                            <span class="specs-dots"></span>
+                            <span class="specs-value">{{ product.warranty_appearance }}</span>
+                        </div>
+                        {% endif %}
+
+                        {% if product.warranty_technical %}
+                        <div class="specs-row">
+                            <span class="specs-label">Гарантия на технические характеристики</span>
+                            <span class="specs-dots"></span>
+                            <span class="specs-value">{{ product.warranty_technical }}</span>
+                        </div>
+                        {% endif %}
+
+                        <!-- Скрытые характеристики (показываются по клику) -->
+                        <div class="specs-hidden" id="specs-hidden">
+
+                            {% if product.length %}
+                            <div class="specs-row">
+                                <span class="specs-label">Длина изделия</span>
+                                <span class="specs-dots"></span>
+                                <span class="specs-value">{{ product.length }}</span>
+                            </div>
+                            {% endif %}
+
+                            {% if product.protective_layer %}
+                            <div class="specs-row">
+                                <span class="specs-label">Защитный слой</span>
+                                <span class="specs-dots"></span>
+                                <span class="specs-value">{{ product.protective_layer }}</span>
+                            </div>
+                            {% endif %}
+
+                            {% if product.material %}
+                            <div class="specs-row">
+                                <span class="specs-label">Материал</span>
+                                <span class="specs-dots"></span>
+                                <span class="specs-value">{{ product.material }}</span>
+                            </div>
+                            {% endif %}
+
+                            {% if product.purpose %}
+                            <div class="specs-row">
+                                <span class="specs-label">Назначение</span>
+                                <span class="specs-dots"></span>
+                                <span class="specs-value">{{ product.purpose }}</span>
+                            </div>
+                            {% endif %}
+
+                            {% if product.back_side %}
+                            <div class="specs-row">
+                                <span class="specs-label">Обратная сторона</span>
+                                <span class="specs-dots"></span>
+                                <span class="specs-value">{{ product.back_side }}</span>
+                            </div>
+                            {% endif %}
+
+                            {% if product.resistance %}
+                            <div class="specs-row">
+                                <span class="specs-label">Стойкость</span>
+                                <span class="specs-dots"></span>
+                                <span class="specs-value">{{ product.resistance }}</span>
+                            </div>
+                            {% endif %}
+
+                            {% if product.country_brand %}
+                            <div class="specs-row">
+                                <span class="specs-label">Страна бренда</span>
+                                <span class="specs-dots"></span>
+                                <span class="specs-value">{{ product.country_brand }}</span>
+                            </div>
+                            {% endif %}
+
+                            {% if product.country_production %}
+                            <div class="specs-row">
+                                <span class="specs-label">Страна производства</span>
+                                <span class="specs-dots"></span>
+                                <span class="specs-value">{{ product.country_production }}</span>
+                            </div>
+                            {% endif %}
+
+                            {% if product.surface_texture %}
+                            <div class="specs-row">
+                                <span class="specs-label">Текстура поверхности</span>
+                                <span class="specs-dots"></span>
+                                <span class="specs-value">{{ product.surface_texture }}</span>
+                            </div>
+                            {% endif %}
+
+                            {% if product.form_type %}
+                            <div class="specs-row">
+                                <span class="specs-label">Тип формы</span>
+                                <span class="specs-dots"></span>
+                                <span class="specs-value">{{ product.form_type }}</span>
+                            </div>
+                            {% endif %}
+
+                            {% if product.coating_thickness %}
+                            <div class="specs-row">
+                                <span class="specs-label">Толщина покрытия</span>
+                                <span class="specs-dots"></span>
+                                <span class="specs-value">{{ product.coating_thickness }}</span>
+                            </div>
+                            {% endif %}
+
+                            {% if product.roof_angle %}
+                            <div class="specs-row">
+                                <span class="specs-label">Угол наклона кровли</span>
+                                <span class="specs-dots"></span>
+                                <span class="specs-value">{{ product.roof_angle }}</span>
+                            </div>
+                            {% endif %}
+
+                            {% if product.color_name %}
+                            <div class="specs-row">
+                                <span class="specs-label">Цветовой оттенок</span>
+                                <span class="specs-dots"></span>
+                                <span class="specs-value">{{ product.color_name }}</span>
+                            </div>
+                            {% endif %}
+
+                            {% if product.step_pitch %}
+                            <div class="specs-row">
+                                <span class="specs-label">Шаг ступеньки</span>
+                                <span class="specs-dots"></span>
+                                <span class="specs-value">{{ product.step_pitch }}</span>
+                            </div>
+                            {% endif %}
+
+                            {% if product.width_total %}
+                            <div class="specs-row">
+                                <span class="specs-label">Ширина общая</span>
+                                <span class="specs-dots"></span>
+                                <span class="specs-value">{{ product.width_total }}</span>
+                            </div>
+                            {% endif %}
+
+                            {% if product.width_working %}
+                            <div class="specs-row">
+                                <span class="specs-label">Ширина рабочая</span>
+                                <span class="specs-dots"></span>
+                                <span class="specs-value">{{ product.width_working }}</span>
+                            </div>
+                            {% endif %}
+
+                            {% if product.color %}
+                            <div class="specs-row">
+                                <span class="specs-label">Цвет</span>
+                                <span class="specs-dots"></span>
+                                <span class="specs-value">{{ product.color }}</span>
+                            </div>
+                            {% endif %}
+
+                            {% if product.coating %}
+                            <div class="specs-row">
+                                <span class="specs-label">Покрытие</span>
+                                <span class="specs-dots"></span>
+                                <span class="specs-value">{{ product.coating }}</span>
+                            </div>
+                            {% endif %}
+
+                            {% if product.thickness %}
+                            <div class="specs-row">
+                                <span class="specs-label">Толщина</span>
+                                <span class="specs-dots"></span>
+                                <span class="specs-value">{{ product.thickness }}</span>
+                            </div>
+                            {% endif %}
+
+                        </div>
+                    </div>
+
+                    <!-- Кнопка показать/скрыть -->
+                    <button class="specs-toggle" id="specs-toggle" onclick="toggleSpecs()">
+                        <span id="toggle-text">Показать все характеристики</span>
+                        <svg id="toggle-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M7 17L17 7M17 7H7M17 7V17"/>
+                        </svg>
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- КОНСУЛЬТАЦИЯ -->
+    <div class="how-to-connect-block">
+        <div class="leyout">
+            <div class="text">
+                <h2>Нужна <span style="color: #e40000; font-style: italic">консультация?</span></h2>
+                <p>
+                    Свяжитесь с нами любым удобным способом —
+                    <span style="font-weight: 700;">по телефону или в мессенджерах</span>. Наши менеджеры помогут подобрать
+                    материалы под ваш проект,
+                    рассчитают необходимое количество, подскажут по характеристикам и
+                    совместимости товаров, а также ответят на все вопросы по наличию,
+                    доставке и ценам.
+                </p>
+            </div>
+            <div class="social-connect">
+                <a href="#">Позвоните по номеру: +790546854865</a>
+                <a href="#" style="background-color: rgba(60, 64, 71, 1)">Связаться в<img src="{% static 'image/vk-logo.png' %}"/></a>
+            </div>
         </div>
     </div>
 
-    <!-- Полное описание -->
-    {% if product.description %}
-    <div class="product-full-description">
-        <h3>Описание</h3>
-        <div class="description-text">
-            {{ product.description|linebreaksbr }}
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-content">
+            <div class="logo-down">
+                <img src="{% static 'image/logo-light.svg' %}" alt="">
+                <p>Адрес: ул. Парижской Коммуны, 147</p>
+            </div>
+            <ul>
+                <li><a href="{% url 'krovlya_pages:product_list' %}">Каталог товаров</a></li>
+                <li><a href="#">Акции</a></li>
+                <li><a href="{% url 'krovlya_pages:business' %}">Для бизнеса</a></li>
+                <li><a href="{% url 'krovlya_pages:service' %}">Услуги</a></li>
+                <li><a href="{% url 'krovlya_pages:delivery' %}">Доставка и оплата</a></li>
+                <li><a href="{% url 'krovlya_pages:about' %}">О нас</a></li>
+            </ul>
+            <div class="map" style="border-radius: 30px">
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2172.986576545524!2d40.893451211226015!3d57.00041477346115!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x414d1670fe241987%3A0x5eb7e758e52e8f4e!2z0YPQuy4g0J_QsNGA0LjQttGB0LrQvtC5INCa0L7QvNC80YPQvdGLLCAxNDcsINCY0LLQsNC90L7QstC-LCDQmNCy0LDQvdC-0LLRgdC60LDRjyDQvtCx0LsuLCAxNTMwMTE!5e0!3m2!1sru!2sru!4v1763719218999!5m2!1sru!2sru"
+                    width="600" height="300" style="border-radius: 16px; border: 0" allowfullscreen="" loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
         </div>
-    </div>
-    {% endif %}
-</div>
+    </footer>
 
-<!-- Консультация -->
-<div class="how-to-connect">
-    <div class="leyout">
-        <div class="text">
-            <h2>Нужна <span style="color: #E40000;">консультация?</span></h2>
-            <p>Свяжитесь с нами любым удобным способом — <b>по телефону или в мессенджерах</b>. 
-            Наши менеджеры помогут подобрать материалы под ваш проект, рассчитают необходимое количество, 
-            подскажут по характеристикам и совместимости товаров, а также ответят на все вопросы 
-            по наличию, доставке и ценам.</p>
-        </div>
-        <div class="social-connect">
-            <a href="tel:+79054885485">Позвонить по номеру: +790548854865</a>
-            <a href="#">Связаться в <img src="{% static 'image/VK.svg' %}" alt="VK"></a>
-        </div>
-    </div>
-</div>
+    <!-- СКРИПТ -->
+    <script>
+        // Показать/скрыть характеристики
+        function toggleSpecs() {
+            const hidden = document.getElementById('specs-hidden');
+            const text = document.getElementById('toggle-text');
+            const arrow = document.getElementById('toggle-arrow');
 
-<script>
-function changeImage(thumb, url) {
-    document.getElementById('mainImage').src = url;
-    document.querySelectorAll('.thumb').forEach(t => t.classList.remove('active'));
-    thumb.classList.add('active');
-}
+            if (hidden.classList.contains('show')) {
+                hidden.classList.remove('show');
+                text.textContent = 'Показать все характеристики';
+                arrow.style.transform = 'rotate(0deg)';
+            } else {
+                hidden.classList.add('show');
+                text.textContent = 'Скрыть все характеристики';
+                arrow.style.transform = 'rotate(90deg)';
+            }
+        }
 
-function toggleSpecs() {
-    const hidden = document.querySelectorAll('.spec-hidden');
-    const btn = document.getElementById('toggleText');
-    const arrow = document.querySelector('.btn-toggle-specs .arrow-down');
-    
-    hidden.forEach(row => {
-        row.classList.toggle('spec-show');
-    });
-    
-    if (btn.textContent.includes('Показать')) {
-        btn.textContent = 'Скрыть все характеристики';
-        arrow.classList.add('arrow-up');
-    } else {
-        btn.textContent = 'Показать все характеристики';
-        arrow.classList.remove('arrow-up');
-    }
-}
-</script>
+        // Смена главного фото
+        function changeImage(el) {
+            const mainImg = document.getElementById('main-image');
+            if (mainImg) {
+                mainImg.src = el.src;
+            }
+            // Убираем active у всех
+            document.querySelectorAll('.gallery-thumb').forEach(t => t.classList.remove('active'));
+            // Добавляем active текущему
+            el.parentElement.classList.add('active');
+        }
+    </script>
 
-{% endblock %}
+</body>
+</html>

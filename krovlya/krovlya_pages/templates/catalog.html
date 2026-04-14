@@ -44,17 +44,22 @@
     </div>
 
     <!-- Хлебные крошки -->
-    <div class="nav-list">
-        <ul class="breadcrumb">
-            <li><a href="{% url 'krovlya_pages:main' %}">Главная</a></li>
-            <li><img src="{% static 'image/Arrow-right.svg' %}"></li>
-            <li><a href="{% url 'krovlya_pages:product_list' %}">Каталог</a></li>
-            {% if category %}
+    <!-- Хлебные крошки -->
+<div class="nav-list">
+    <ul class="breadcrumb">
+        <li><a href="{% url 'krovlya_pages:main' %}">Главная</a></li>
+        <li><img src="{% static 'image/Arrow-right.svg' %}"></li>
+        <li><a href="{% url 'krovlya_pages:product_list' %}">Каталог</a></li>
+        {% if category %}
+            {% for ancestor in ancestors %}
                 <li><img src="{% static 'image/Arrow-right.svg' %}"></li>
-                <li><a href="{{ category.get_absolute_url }}">{{ category.name }}</a></li>
-            {% endif %}
-        </ul>
-    </div>
+                <li><a href="{{ ancestor.get_absolute_url }}">{{ ancestor.name }}</a></li>
+            {% endfor %}
+            <li><img src="{% static 'image/Arrow-right.svg' %}"></li>
+            <li><span class="breadcrumb-current">{{ category.name }}</span></li>
+        {% endif %}
+    </ul>
+</div>
 
     <!-- Заголовок -->
     <div class="catalog-title">
@@ -64,92 +69,138 @@
     <!-- Основной контент -->
     <div class="catalog-wrapper">
 
-        <!-- САЙДБАР -->
-        <aside class="catalog-sidebar">
-            <!-- Категории -->
-            <div class="sidebar-section">
-                <h3>Категория</h3>
-                <ul class="sidebar-categories">
-                    {% if subcategories %}
-                        {% for sub in subcategories %}
-                            <li>
-                                <a href="{{ sub.get_absolute_url }}">› {{ sub.name }}</a>
-                            </li>
-                        {% endfor %}
-                    {% else %}
-                        {% for cat in categories %}
-                            <li>
-                                <a href="{{ cat.get_absolute_url }}" {% if category and category.slug == cat.slug %}class="active"{% endif %}>
-                                    › {{ cat.name }}
-                                </a>
-                            </li>
-                        {% endfor %}
-                    {% endif %}
-                </ul>
-            </div>
+<!-- САЙДБАР -->
+<aside class="catalog-sidebar">
 
-            <!-- Производители -->
-            <div class="sidebar-section">
-                <h3>Производители</h3>
-                <form method="get" action="" class="manufacturer-filter">
-                    {% if category %}
-                        <!-- сохраняем текущую категорию -->
-                    {% endif %}
-                    {% for m in manufacturers %}
-                        <label class="checkbox-label">
-                            <input type="checkbox" name="manufacturer" value="{{ m.slug }}"
-                                {% if m.slug in selected_manufacturers %}checked{% endif %}
-                                onchange="this.form.submit()">
-                            {{ m.name }}
-                        </label>
-                    {% endfor %}
-                </form>
-            </div>
-        </aside>
+    <!-- Дерево категорий -->
+    <div class="sidebar-section">
+        <h3>Категории</h3>
+        <ul class="category-tree">
+            {% include 'includes/category_tree.html' with tree=category_tree %}
+        </ul>
+    </div>
+
+    <!-- Производители -->
+    <div class="sidebar-section">
+        <h3>Производители</h3>
+        <form method="get" action="" class="manufacturer-filter">
+            {% for m in manufacturers %}
+                <label class="checkbox-label">
+                    <input type="checkbox" name="manufacturer" value="{{ m.slug }}"
+                        {% if m.slug in selected_manufacturers %}checked{% endif %}
+                        onchange="this.form.submit()">
+                    {{ m.name }}
+                </label>
+            {% endfor %}
+        </form>
+    </div>
+
+</aside>
 
         <!-- СЕТКА ТОВАРОВ -->
-        <div class="catalog-grid-wrapper">
-            <div class="catalog-grid">
-                {% for product in products %}
-                    <div class="product-card">
-                        <a href="{{ product.get_absolute_url }}">
-                            {% if product.image %}
-                                <img src="{{ product.image.url }}" alt="{{ product.name }}" class="product-image">
-                            {% else %}
-                                <div class="product-image-placeholder"></div>
-                            {% endif %}
-                        </a>
-                        <div class="product-info">
-                            <p class="product-name">{{ product.name }}</p>
-                            <p class="product-description">{{ product.description|truncatewords:5 }}</p>
-                        </div>
+<div class="catalog-grid-wrapper">
+    <div class="catalog-toolbar">
+        <span class="catalog-count">Найдено: <strong>{{ products|length }}</strong> товаров</span>
+    </div>
+
+    <div class="catalog-grid">
+        {% for product in products %}
+        <a href="{{ product.get_absolute_url }}" class="product-card">
+
+            <!-- Изображение -->
+            <div class="product-card__image">
+                {% if product.image %}
+                    <img src="{{ product.image.url }}" alt="{{ product.name }}">
+                {% else %}
+                    <div class="product-card__no-image">
+                        <svg width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="#ccc" stroke-width="1">
+                            <rect x="3" y="3" width="18" height="18" rx="2"/>
+                            <circle cx="8.5" cy="8.5" r="1.5"/>
+                            <path d="M21 15l-5-5L5 21"/>
+                        </svg>
+                        <span>Нет фото</span>
                     </div>
-                {% empty %}
-                    <p class="no-products">Товары не найдены.</p>
-                {% endfor %}
+                {% endif %}
+
+                {% if product.old_price %}
+                    <span class="badge badge--sale">Акция</span>
+                {% endif %}
             </div>
 
-            <!-- ПАГИНАЦИЯ -->
-            {% if page_obj.paginator.num_pages > 1 %}
-                <div class="pagination">
-                    {% if page_obj.has_previous %}
-                        <a href="?page={{ page_obj.previous_page_number }}{% for m in selected_manufacturers %}&manufacturer={{ m }}{% endfor %}" class="page-arrow">←</a>
+            <!-- Информация -->
+            <div class="product-card__body">
+
+                {% if product.manufacturer %}
+                    <span class="product-card__brand">{{ product.manufacturer.name }}</span>
+                {% endif %}
+
+                <h3 class="product-card__name">{{ product.name }}</h3>
+
+                {% if product.short_description %}
+                    <p class="product-card__desc">{{ product.short_description|truncatewords:10 }}</p>
+                {% endif %}
+
+                <!-- Мини-характеристики -->
+                <div class="product-card__tags">
+                    {% if product.thickness %}
+                        <span class="tag">{{ product.thickness }}</span>
                     {% endif %}
-
-                    {% for num in page_obj.paginator.page_range %}
-                        {% if page_obj.number == num %}
-                            <span class="page-num active">{{ num }}</span>
-                        {% else %}
-                            <a href="?page={{ num }}{% for m in selected_manufacturers %}&manufacturer={{ m }}{% endfor %}" class="page-num">{{ num }}</a>
-                        {% endif %}
-                    {% endfor %}
-
-                    {% if page_obj.has_next %}
-                        <a href="?page={{ page_obj.next_page_number }}{% for m in selected_manufacturers %}&manufacturer={{ m }}{% endfor %}" class="page-arrow">→</a>
+                    {% if product.coating %}
+                        <span class="tag">{{ product.coating }}</span>
+                    {% endif %}
+                    {% if product.color_name %}
+                        <span class="tag">{{ product.color_name }}</span>
                     {% endif %}
                 </div>
+            </div>
+
+            <!-- Цена и кнопка -->
+            <div class="product-card__footer">
+                <div class="product-card__price-block">
+                    {% if product.old_price %}
+                        <span class="product-card__old-price">{{ product.old_price }} ₽</span>
+                    {% endif %}
+                    <span class="product-card__price">
+                        {{ product.price }} ₽{% if product.price_unit %}<small>/{{ product.price_unit }}</small>{% endif %}
+                    </span>
+                </div>
+                <span class="product-card__btn">Подробнее</span>
+            </div>
+
+        </a>
+        {% empty %}
+            <div class="no-products">
+                <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="#ccc" stroke-width="1">
+                    <circle cx="11" cy="11" r="8"/>
+                    <path d="M21 21l-4.35-4.35"/>
+                </svg>
+                <h3>Товары не найдены</h3>
+                <p>Попробуйте изменить параметры фильтра</p>
+            </div>
+        {% endfor %}
+    </div>
+
+    <!-- ПАГИНАЦИЯ -->
+    {% if page_obj.paginator.num_pages > 1 %}
+        <div class="pagination">
+            {% if page_obj.has_previous %}
+                <a href="?page={{ page_obj.previous_page_number }}{% for m in selected_manufacturers %}&manufacturer={{ m }}{% endfor %}" class="page-arrow">←</a>
+            {% endif %}
+
+            {% for num in page_obj.paginator.page_range %}
+                {% if page_obj.number == num %}
+                    <span class="page-num active">{{ num }}</span>
+                {% else %}
+                    <a href="?page={{ num }}{% for m in selected_manufacturers %}&manufacturer={{ m }}{% endfor %}" class="page-num">{{ num }}</a>
+                {% endif %}
+            {% endfor %}
+
+            {% if page_obj.has_next %}
+                <a href="?page={{ page_obj.next_page_number }}{% for m in selected_manufacturers %}&manufacturer={{ m }}{% endfor %}" class="page-arrow">→</a>
             {% endif %}
         </div>
+    {% endif %}
+</div>
     </div>
 
     <!-- Консультация -->
@@ -195,5 +246,16 @@
             </div>
         </div>
     </footer>
+    <script>
+    function toggleTree(button) {
+        const treeItem = button.closest('.tree-item');
+        const childrenUl = treeItem.querySelector(':scope > .tree-children');
+
+        if (!childrenUl) return;
+
+        treeItem.classList.toggle('open');
+        childrenUl.classList.toggle('show');
+    }
+</script>
 </body>
 </html>

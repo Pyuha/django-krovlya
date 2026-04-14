@@ -1,7 +1,36 @@
+/* ===== ШРИФТЫ ===== */
+@font-face {
+    font-family: "InterRegular"; 
+    src: url("/static/fonts/Inter/Inter-Regular.otf") format("opentype"); 
+    font-style: normal; 
+    font-weight: normal; 
+} 
 
+@font-face {
+    font-family: "InterSemiBold"; 
+    src: url("/static/fonts/Inter/Inter-SemiBold.otf") format("opentype"); 
+    font-style: normal; 
+    font-weight: normal; 
+} 
+
+@font-face {
+    font-family: "InterBold"; 
+    src: url("/static/fonts/Inter/Inter-Bold.otf") format("opentype"); 
+    font-style: normal; 
+    font-weight: normal; 
+} 
+
+@font-face {
+    font-family: "InterItalic"; 
+    src: url("/static/fonts/Inter/Inter-Italic.otf") format("opentype"); 
+    font-style: italic; 
+    font-weight: normal; 
+}
+
+
+/* ===== БАЗОВЫЕ СТИЛИ ===== */
 body {
-    font-family: "Inter";
-    font-weight: 400;
+    font-family: "InterRegular";
     display: inline-flex;
     width: 100%;
     flex-direction: column;
@@ -11,21 +40,27 @@ body {
     margin: 0px;
 }
 
-header {
-    font-family: "Inter";
-    font-weight: 600;
-    display: inline-flex;
-    padding-top: 22px;
-    padding-left: 140px;
-    padding-right: 140px;
-    padding-bottom: 23px;
-    width: 1440px;
-    justify-content: center;
-    align-items: center;
-    justify-content: space-between;
+.h1 {
+    margin: 0px;
+    font-size: 38px;
+    text-transform: uppercase;
+    font-family: "InterBold";
 }
 
-header .contact-details{
+
+/* ===== HEADER ===== */
+header {
+    font-family: "InterSemiBold";
+    display: inline-flex;
+    padding-top: 22px;
+    padding-bottom: 23px;
+    width: 1440px;
+    align-items: center;
+    justify-content: space-between;
+    box-sizing: border-box;
+}
+
+header .contact-details {
     display: inline-flex;
     height: 55px;
     font-size: 16px;
@@ -40,9 +75,10 @@ header .contact-details{
 .phone {
     margin-right: 22px;
     display: inline-flex;
+    align-items: center;
 }
 
-.phone img{
+.phone img {
     margin-right: 5px;
 }
   
@@ -50,9 +86,10 @@ header .contact-details{
     text-decoration: none;
     margin-right: 22px;
     display: inline-flex;
+    align-items: center;
 }
 
-.email img{
+.email img {
     margin-right: 5px;
 }
 
@@ -61,77 +98,156 @@ header .cont-button {
     height: 24px;
 }
 
-header .contact-details a{
-    /* Frame 36 */
-    width: 262.67px;
-    height: 69.33px;
-    /* Auto layout */
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    border-radius: 40px;
-    background: rgba(228, 0, 0, 1);
-    font-family: 'Inter';
-    /* font-style: Bold; */
-    font-size: 20px;
-    font-weight: 700;
-    line-height: 24px;
-    letter-spacing: 1%;
-    text-align: left;
+header .contact-details a {
+    background-color: #E40000;
+    padding-left: 23px;
+    padding-right: 23px;
+    padding-top: 16.5px;
+    padding-bottom: 16.5px;
     color: white;
+    border-radius: 30px;
+    font-family: "InterBold";
+    display: flex;
+    text-decoration: none;
+    transition: all 0.2s;
 }
 
-header .contact-details a:hover{
+header .contact-details a:hover {
     color: #E40000;
     background-color: white;
-    border-color: #E40000;
     outline: 1px solid #E40000;
     outline-offset: -1px;
 }
 
 
-.main-menu{
+/* ===== ГЛАВНОЕ МЕНЮ ===== */
+.main-menu {
     background-color: #3C4047;
     display: inline-flex;
     align-items: center;
-    justify-content: space-evenly;
-    color:white;
+    justify-content: center;
+    color: white;
     height: 59px;
     width: 100%;
 }
 
-.main-menu ul{
+.main-menu ul {
     list-style: none;
     display: inline-flex;
     justify-content: space-between;
     padding-inline-start: 0px;
     height: 59px;
     width: 1440px;
-    padding-left: 140px;
-    padding-right: 140px;
+    /* padding-left: 140px;
+    padding-right: 140px; */
     font-size: 16px;
-    font-family: "Inter";
-    font-weight: 400; 
-    display: inline-flex;
-    text-decoration: none;
+    font-family: "InterRegular";
+    margin: 0;
+    box-sizing: border-box;
 }
-.main-menu ul li{
+
+.main-menu ul li {
     display: inline-flex;
     width: 100%;
     align-items: center;
     justify-content: center;
-    padding: 18px;
-    padding-left: 20px;
-    padding-right: 20px;
-    
+    padding: 18px 20px;
+    transition: background-color 0.2s;
 }
+
 .main-menu ul li a {
     text-decoration: none;
     color: white;
+    display: flex;
+    align-items: center;
 }
 
-.main-menu ul li:hover{
+.main-menu ul li:hover {
     background-color: #E40000;
+}
+
+
+/* ===== ГЛАВНЫЙ БАННЕР ===== */
+.main-offer {
+    width: 100%;
+    height: 100%;
+    background-image: url("../image/main-page-back.jpg");
+    background-size: cover;
+    background-position: top;
+    background-repeat: no-repeat;
+}
+
+.main-offer .text-offer {
+    width: fit-content;
+    height: fit-content;
+    margin: 150px;
+    margin-left: 240px;
+    padding: 45px;
+    border-radius: 30px;
+}
+
+.main-offer .text-offer .text h1 {
+    font-family: "InterBold";
+    font-size: 85px;
+    font-weight: 700;
+    text-align: left;
+    margin: 0px;
+    margin-bottom: 46px;
+}
+
+.main-offer .text-offer a {
+    background-color: #E40000;
+    padding: 16.5px 23px;
+    color: white;
+    border-radius: 30px;
+    font-family: "InterBold";
+    display: inline-flex;
+    text-decoration: none;
+    align-items: center;
+    transition: all 0.2s;
+}
+
+.main-offer .text-offer a .img {
+    height: 20px;
+    width: 10px;
+    margin-left: 15px;
+    background-color: #ffffff;
+    mask-image: url("../image/Caret_Right_SM.svg");
+    mask-repeat: no-repeat;
+    mask-position: center;
+}
+
+.main-offer .text-offer a:hover {
+    color: #E40000;
+    background-color: white;
+    outline: 1px solid #E40000;
+    outline-offset: -1px;
+}
+
+.main-offer .text-offer a:hover .img {
+    background-color: #E40000;
+}
+/* ===== ХЛЕБНЫЕ КРОШКИ ===== */
+.nav-list ul {
+    padding: 10px 16px;
+    list-style: none;
+    display: inline-flex;
+    width: 1440px;
+    text-decoration: none;
+    box-sizing: border-box;
+}
+
+.nav-list ul li {
+    margin: 7px;
+}
+
+.nav-list ul li a {
+    text-decoration: none;
+    color: black;
+}
+
+.nav-list ul li a:hover {
+    color: #E40000;
 }
 
 .main-offer {

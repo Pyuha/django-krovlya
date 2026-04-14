@@ -166,6 +166,67 @@ header .contact-details a:hover {
     background-color: #E40000;
 }
 
+
+/* ===== ГЛАВНЫЙ БАННЕР ===== */
+.main-offer {
+    width: 100%;
+    height: 100%;
+    background-image: url("../image/main-page-back.jpg");
+    background-size: cover;
+    background-position: top;
+    background-repeat: no-repeat;
+}
+
+.main-offer .text-offer {
+    width: fit-content;
+    height: fit-content;
+    margin: 150px;
+    margin-left: 240px;
+    padding: 45px;
+    border-radius: 30px;
+}
+
+.main-offer .text-offer .text h1 {
+    font-family: "InterBold";
+    font-size: 85px;
+    font-weight: 700;
+    text-align: left;
+    margin: 0px;
+    margin-bottom: 46px;
+}
+
+.main-offer .text-offer a {
+    background-color: #E40000;
+    padding: 16.5px 23px;
+    color: white;
+    border-radius: 30px;
+    font-family: "InterBold";
+    display: inline-flex;
+    text-decoration: none;
+    align-items: center;
+    transition: all 0.2s;
+}
+
+.main-offer .text-offer a .img {
+    height: 20px;
+    width: 10px;
+    margin-left: 15px;
+    background-color: #ffffff;
+    mask-image: url("../image/Caret_Right_SM.svg");
+    mask-repeat: no-repeat;
+    mask-position: center;
+}
+
+.main-offer .text-offer a:hover {
+    color: #E40000;
+    background-color: white;
+    outline: 1px solid #E40000;
+    outline-offset: -1px;
+}
+
+.main-offer .text-offer a:hover .img {
+    background-color: #E40000;
+}
 /* ===== ХЛЕБНЫЕ КРОШКИ ===== */
 .nav-list ul {
     padding: 10px 16px;
@@ -189,6 +250,528 @@ header .contact-details a:hover {
     color: #E40000;
 }
 
+/* ==========================================
+   CATALOG TITLE
+   ========================================== */
+
+.catalog-title {
+    padding: 0 60px 20px;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.catalog-title h1 {
+    font-size: 36px;
+    font-weight: 800;
+    color: #1a1a1a;
+}
+
+/* ==========================================
+   CATALOG LAYOUT
+   ========================================== */
+
+.catalog-wrapper {
+    display: flex;
+    gap: 40px;
+    padding: 0 60px 60px;
+    width: 1400px;
+    margin: 0 auto;
+    align-items: flex-start;
+}
+
+/* ==========================================
+   SIDEBAR
+   ========================================== */
+
+.catalog-sidebar {
+    width: 260px;
+    min-width: 260px;
+    position: sticky;
+    top: 20px;
+}
+
+.sidebar-section {
+    margin-bottom: 30px;
+}
+
+.sidebar-section h3 {
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 15px;
+    color: #1a1a1a;
+    padding-bottom: 10px;
+    /* border-bottom: 2px solid #e40000; */
+}
+
+.sidebar-categories {
+    list-style: none;
+}
+
+.sidebar-categories li {
+    margin-bottom: 2px;
+}
+
+.sidebar-categories a {
+    display: block;
+    padding: 9px 14px;
+    list-style: none;
+    font-size: 14px;
+    color: #555;
+    border-radius: 8px;
+    transition: all 0.2s;
+}
+
+.sidebar-categories a:hover {
+    background: #f5f5f5;
+    color: #e40000;
+}
+
+.sidebar-categories a.active {
+    background: #e40000;
+    color: #fff;
+    font-weight: 600;
+}
+
+/* ==========================================
+   CATEGORY TREE
+   ========================================== */
+
+.category-tree {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.category-tree ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* Каждый элемент дерева */
+.tree-item {
+    margin: 0;
+}
+
+/* Строка: кнопка + ссылка */
+.tree-item__row {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 10px;
+    border-radius: 8px;
+    transition: background 0.2s;
+}
+
+.tree-item__row:hover {
+    background: #f5f5f5;
+}
+
+/* Активная (текущая) категория */
+.tree-item__row.active {
+    background: #e40000;
+}
+
+.tree-item__row.active .tree-link {
+    color: #fff;
+    font-weight: 700;
+}
+
+.tree-item__row.active .tree-arrow {
+    color: #fff;
+}
+
+/* Ссылка на категорию */
+.tree-link {
+    font-size: 14px;
+    color: #333;
+    text-decoration: none;
+    transition: color 0.2s;
+    flex: 1;
+}
+
+.tree-link:hover {
+    color: #e40000;
+}
+
+.tree-item__row.active .tree-link:hover {
+    color: #fff;
+}
+
+/* Кнопка раскрытия */
+.tree-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    border: none;
+    background: none;
+    cursor: pointer;
+    padding: 0;
+    color: #999;
+    border-radius: 4px;
+    transition: all 0.2s;
+}
+
+.tree-toggle:hover {
+    background: #eee;
+    color: #e40000;
+}
+
+/* Плейсхолдер для элементов без детей (выравнивание) */
+.tree-toggle-placeholder {
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+}
+
+/* Стрелка */
+.tree-arrow {
+    transition: transform 0.3s ease;
+}
+
+/* Стрелка повёрнута когда открыто */
+.tree-item.open > .tree-item__row .tree-arrow {
+    transform: rotate(90deg);
+}
+
+/* Дочерние элементы — скрыты по умолчанию */
+.tree-children {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease, opacity 0.3s ease;
+    opacity: 0;
+    padding-left: 20px;
+}
+
+/* Показать дочерние */
+.tree-children.show {
+    max-height: 2000px;
+    opacity: 1;
+}
+
+/* Линия-отступ для вложенности */
+.tree-children {
+    border-left: 2px solid #f0f0f0;
+    margin-left: 11px;
+}
+
+/* Глубокие уровни — чуть меньше шрифт */
+.tree-children .tree-children .tree-link {
+    font-size: 13px;
+}
+
+.tree-children .tree-children .tree-children .tree-link {
+    font-size: 12px;
+    color: #777;
+}
+
+/* ==========================================
+   BREADCRUMB CURRENT
+   ========================================== */
+
+.breadcrumb-current {
+    color: #333;
+    font-weight: 600;
+}
+
+/* Производители */
+
+.checkbox-label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 7px 0;
+    font-size: 14px;
+    color: #555;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.checkbox-label:hover {
+    color: #e40000;
+}
+
+.checkbox-label input[type="checkbox"] {
+    width: 17px;
+    height: 17px;
+    accent-color: #e40000;
+    cursor: pointer;
+}
+
+/* ==========================================
+   CATALOG GRID
+   ========================================== */
+
+.catalog-grid-wrapper {
+    flex: 1;
+    min-width: 0;
+}
+
+.catalog-toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #eee;
+}
+
+.catalog-count {
+    font-size: 14px;
+    color: #999;
+}
+
+.catalog-count strong {
+    color: #333;
+}
+
+.catalog-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+/* ==========================================
+   PRODUCT CARD
+   ========================================== */
+
+.product-card {
+    display: flex;
+    flex-direction: column;
+    background: #fff;
+    border: 1px solid #eee;
+    border-radius: 14px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    color: inherit;
+}
+
+.product-card:hover {
+    border-color: #e40000;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+    transform: translateY(-4px);
+}
+
+/* --- Изображение --- */
+
+.product-card__image {
+    position: relative;
+    height: 200px;
+    background: #f8f8f8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.product-card__image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s;
+}
+
+.product-card:hover .product-card__image img {
+    transform: scale(1.05);
+}
+
+.product-card__no-image {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    color: #ccc;
+    font-size: 12px;
+}
+
+/* Бейдж акции */
+
+.badge {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    padding: 4px 12px;
+    border-radius: 6px;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.badge--sale {
+    background: #e40000;
+    color: #fff;
+}
+
+/* --- Тело карточки --- */
+
+.product-card__body {
+    padding: 16px 16px 10px;
+    flex: 1;
+}
+
+.product-card__brand {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 600;
+    color: #e40000;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 6px;
+}
+
+.product-card__name {
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1.4;
+    color: #1a1a1a;
+    margin-bottom: 8px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.product-card__desc {
+    font-size: 12px;
+    color: #999;
+    line-height: 1.4;
+    margin-bottom: 10px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+/* Теги характеристик */
+
+.product-card__tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+}
+
+.tag {
+    display: inline-block;
+    padding: 3px 8px;
+    background: #f0f0f0;
+    border-radius: 4px;
+    font-size: 11px;
+    color: #666;
+}
+
+/* --- Подвал карточки (цена + кнопка) --- */
+
+.product-card__footer {
+    padding: 12px 16px 16px;
+    border-top: 1px solid #f0f0f0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.product-card__price-block {
+    display: flex;
+    flex-direction: column;
+}
+
+.product-card__old-price {
+    font-size: 12px;
+    color: #bbb;
+    text-decoration: line-through;
+}
+
+.product-card__price {
+    font-size: 18px;
+    font-weight: 800;
+    color: #1a1a1a;
+}
+
+.product-card__price small {
+    font-size: 13px;
+    font-weight: 400;
+    color: #999;
+}
+
+.product-card__btn {
+    display: inline-block;
+    padding: 8px 16px;
+    background: #e40000;
+    color: #fff;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: 600;
+    transition: background 0.3s;
+}
+
+.product-card:hover .product-card__btn {
+    background: #c00;
+}
+
+/* --- Пустой каталог --- */
+
+.no-products {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 60px 20px;
+    color: #999;
+}
+
+.no-products h3 {
+    font-size: 20px;
+    margin: 15px 0 8px;
+    color: #555;
+}
+
+.no-products p {
+    font-size: 14px;
+}
+
+/* ==========================================
+   PAGINATION
+   ========================================== */
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid #eee;
+}
+
+.page-num,
+.page-arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #555;
+    border: 1px solid #eee;
+    transition: all 0.2s;
+}
+
+.page-num:hover,
+.page-arrow:hover {
+    border-color: #e40000;
+    color: #e40000;
+}
+
+.page-num.active {
+    background: #e40000;
+    color: #fff;
+    border-color: #e40000;
+}
+
+/* ===== КАК СВЯЗАТЬСЯ ===== */
 .how-to-connect-block {
     width: 1440px;
     height: fit-content;
@@ -249,29 +832,15 @@ header .contact-details a:hover {
     height: 43px;
 }
 
-
-/* ===== РАБОТАЕМ С ===== */
-.working-with {
-    width: 1440px;
-    margin-bottom: 50px;
-}
-
-.working-with .text h2 {
-    margin: 0px;
-    font-size: 38px;
-    text-transform: uppercase;
-    font-family: "InterBold";
-    width: fit-content;
-}
-
-.working-with .text {
-    margin-bottom: 50px;
-}
+/* ==========================================
+   FOOTER
+   ========================================== */
 
 
-/* ===== FOOTER ===== */
+
 footer {
     background-color: #3C4047;
+    width: 100%;
     display: inline-flex;
     border-radius: 30px 30px 0px 0px;
     padding-top: 50px;
@@ -287,14 +856,11 @@ footer .footer-content {
     justify-content: space-between;
     align-items: flex-start;
     width: 1440px;
-    padding: 0 140px;
-    box-sizing: border-box;
 }
 
 footer .footer-content ul {
     list-style: none;
     margin: 0px;
-    padding: 0;
 }
 
 footer .footer-content ul li {
@@ -305,282 +871,67 @@ footer .footer-content .logo-down img {
     margin-bottom: 50px;
 }
 
-/* --- ЗАГОЛОВОК КАТАЛОГА --- */
-.catalog-title {
-    display: flex;
-    width: 1440px;
-    align-items: flex-start;
-    font-size: 79px;
-    font-family: "InterBold";
+/* ==========================================
+   RESPONSIVE
+   ========================================== */
+
+@media (max-width: 1100px) {
+    .catalog-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
 
-.catalog-title h1 {
-    font-size: 48px;
-    font-weight: 700;
-    color: #000;
-}
+@media (max-width: 768px) {
+    header {
+        padding: 15px 20px;
+        flex-direction: column;
+        gap: 15px;
+    }
 
-/* ===== ОСНОВНАЯ ОБЁРТКА КАТАЛОГА ===== */
-.catalog-wrapper {
-    display: flex;
-    width: 1440px;
-    gap: 40px;
-    padding: 0 60px 60px;
-    align-items: flex-start;
-}
+    .main-menu {
+        padding: 0 20px;
+    }
 
-/* --- САЙДБАР --- */
-.catalog-sidebar {
-    width: 220px;
-    flex-shrink: 0;
-}
+    .main-menu ul {
+        flex-wrap: wrap;
+    }
 
-.sidebar-section {
-    margin-bottom: 30px;
-}
+    .catalog-wrapper {
+        flex-direction: column;
+        padding: 0 20px 40px;
+    }
 
-.sidebar-section h3 {
-    font-size: 16px;
-    font-weight: 700;
-    margin-bottom: 12px;
-    color: #000;
-}
+    .catalog-sidebar {
+        width: 100%;
+        min-width: auto;
+        position: static;
+    }
 
-.sidebar-categories {
-    list-style: none;
-}
+    .catalog-grid {
+        grid-template-columns: 1fr;
+    }
 
-.sidebar-categories li {
-    margin-bottom: 8px;
-}
+    .catalog-title {
+        padding: 0 20px 15px;
+    }
 
-.sidebar-categories a {
-    text-decoration: none;
-    color: #333;
-    font-size: 14px;
-    transition: color 0.2s;
-}
+    .nav-list {
+        padding: 15px 20px;
+    }
 
-.sidebar-categories a:hover,
-.sidebar-categories a.active {
-    color: #e40000;
-    text-decoration: underline;
-}
+    .how-to-connect-block {
+        padding: 30px 20px;
+    }
 
-/* Чекбоксы производителей */
-.manufacturer-filter {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
+    .how-to-connect-block .leyout {
+        flex-direction: column;
+    }
 
-.checkbox-label {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 14px;
-    cursor: pointer;
-    color: #333;
-}
+    footer {
+        padding: 30px 20px;
+    }
 
-.checkbox-label input[type="checkbox"] {
-    width: 18px;
-    height: 18px;
-    accent-color: #e40000;
-    cursor: pointer;
-}
-
-/* --- СЕТКА ТОВАРОВ --- */
-.catalog-grid-wrapper {
-    flex: 1;
-}
-
-.catalog-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 24px;
-}
-
-/* ============================================
-   ДЕТАЛЬНАЯ СТРАНИЦА ТОВАРА (обновлённая)
-   ============================================ */
-.product-detail {
-    width: 1440px;
-    padding: 0 140px;
-    box-sizing: border-box;
-    margin-bottom: 80px;
-}
-
-.product-detail-layout {
-    display: flex;
-    gap: 60px;
-    margin-top: 30px;
-}
-
-/* --- Галерея фото --- */
-.product-gallery {
-    width: 400px;
-    flex-shrink: 0;
-}
-
-.product-gallery .main-photo {
-    width: 400px;
-    height: 400px;
-    background-color: #F0F0F0;
-    border-radius: 20px;
-    overflow: hidden;
-    margin-bottom: 15px;
-}
-
-.product-gallery .main-photo img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-}
-
-.product-gallery .thumbnails {
-    display: flex;
-    gap: 10px;
-}
-
-.product-gallery .thumb {
-    width: 80px;
-    height: 80px;
-    border-radius: 12px;
-    overflow: hidden;
-    cursor: pointer;
-    border: 2px solid transparent;
-    background-color: #F0F0F0;
-    transition: border-color 0.2s;
-}
-
-.product-gallery .thumb:hover {
-    border-color: #ccc;
-}
-
-.product-gallery .thumb.active {
-    border-color: #E40000;
-}
-
-.product-gallery .thumb img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-/* --- Информация о товаре --- */
-.product-info {
-    flex: 1;
-}
-
-.product-info h1 {
-    font-size: 28px;
-    font-family: "InterBold";
-    margin: 0 0 20px 0;
-    text-transform: none;
-    line-height: 1.3;
-}
-
-.product-short-desc {
-    font-size: 16px;
-    line-height: 1.6;
-    color: #555;
-    margin-bottom: 30px;
-}
-
-/* --- Таблица характеристик --- */
-.product-specs h3 {
-    font-family: "InterBold";
-    font-size: 18px;
-    margin: 0 0 15px 0;
-}
-
-.specs-table {
-    width: 100%;
-    border-collapse: collapse;
-}
-
-.specs-table tr {
-    border-bottom: 1px solid #eee;
-}
-
-.specs-table td {
-    padding: 12px 0;
-    font-size: 15px;
-}
-
-.specs-table .spec-name {
-    color: #777;
-    width: 55%;
-}
-
-.specs-table .spec-value {
-    color: #333;
-    font-family: "InterSemiBold";
-    text-align: right;
-}
-
-/* Скрытые строки */
-.spec-hidden {
-    display: none;
-}
-
-.spec-hidden.spec-show {
-    display: table-row;
-}
-
-/* Кнопка "Показать все" */
-.btn-toggle-specs {
-    display: inline-flex;
-    align-items: center;
-    margin-top: 20px;
-    padding: 14px 28px;
-    background: #F0F0F0;
-    border: none;
-    border-radius: 30px;
-    font-family: "InterSemiBold";
-    font-size: 15px;
-    color: #333;
-    cursor: pointer;
-    transition: all 0.2s;
-}
-
-.btn-toggle-specs:hover {
-    background: #e0e0e0;
-}
-
-.btn-toggle-specs .arrow-down {
-    width: 15px;
-    height: 15px;
-    margin-left: 10px;
-    background-color: #333;
-    mask-image: url("../image/Arrow_up.svg");
-    mask-repeat: no-repeat;
-    mask-position: center;
-    transform: rotate(180deg);
-    transition: transform 0.3s;
-}
-
-.btn-toggle-specs .arrow-down.arrow-up {
-    transform: rotate(0deg);
-}
-
-/* --- Полное описание --- */
-.product-full-description {
-    margin-top: 50px;
-    padding-top: 40px;
-    border-top: 1px solid #eee;
-}
-
-.product-full-description h3 {
-    font-family: "InterBold";
-    font-size: 20px;
-    margin: 0 0 20px 0;
-}
-
-.product-full-description .description-text {
-    font-size: 16px;
-    line-height: 1.8;
-    color: #555;
-    max-width: 800px;
+    .footer-content {
+        flex-direction: column;
+    }
 }
